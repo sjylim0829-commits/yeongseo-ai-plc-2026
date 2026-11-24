@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>교실 수업 도우미 - 발표자 추첨 & 집중 타이머</title>
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --primary-light: #e0e7ff;
+      --accent: #f59e0b;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --success: #10b981;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    header p {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 2rem;
+      width: 100%;
+      max-width: 900px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 1.25rem;
+      padding: 2rem;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+      width: 100%;
+    }
+
+    .card-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      background: var(--primary-light);
+      color: var(--primary);
+      border-radius: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+
+    /* 룰렛 스타일 */
+    .wheel-container {
+      position: relative;
+      width: 260px;
+      height: 260px;
+      margin-bottom: 1.5rem;
+    }
+
+    canvas {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .pointer {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 14px solid transparent;
+      border-right: 14px solid transparent;
+      border-top: 24px solid #ef4444;
+      z-index: 10;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    }
+
+    .result-display {
+      min-height: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      padding: 0.5rem 1.5rem;
+      background: var(--primary-light);
+      border-radius: 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .result-display.highlight {
+      transform: scale(1.1);
+      background: var(--accent);
+      color: white;
+    }
+
+    /* 타이머 스타일 */
+    .timer-circle {
+      position: relative;
+      width: 220px;
+      height: 220px;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .timer-time {
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: var(--text);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .timer-presets {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .preset-btn {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.875rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .preset-btn:hover {
+      background: var(--primary-light);
+      color: var(--primary);
+      border-color: var(--primary);
+    }
+
+    /* 공통 버튼 */
+    .btn-group {
+      display: flex;
+      gap: 0.75rem;
+      width: 100%;
+    }
+
+    button.btn-primary {
+      flex: 1;
+      padding: 0.85rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 0.75rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.2);
+    }
+
+    button.btn-primary:hover {
+      background: #4338ca;
+      transform: translateY(-1px);
+    }
+
+    button.btn-secondary {
+      padding: 0.85rem 1.25rem;
+      background: var(--bg);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    button.btn-secondary:hover {
+      background: #e2e8f0;
+    }
+
+    footer {
+      margin-top: 3rem;
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>✨ 즐거운 교실 수업 도우미</h1>
+    <p>안티그래비티로 1분 만에 만든 맞춤형 수업 보조 웹도구</p>
+  </header>
+
+  <div class="container">
+    <!-- 발표자 추첨 룰렛 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🎯</div>
+        <div class="card-title">오늘의 발표자 추첨</div>
+      </div>
+
+      <div class="wheel-container">
+        <div class="pointer"></div>
+        <canvas id="wheelCanvas" width="260" height="260"></canvas>
+      </div>
+
+      <div class="result-display" id="resultText">행운의 주인공은?!</div>
+
+      <div class="btn-group">
+        <button class="btn-primary" id="spinBtn" onclick="spinWheel()">🎲 룰렛 돌리기</button>
+      </div>
+    </div>
+
+    <!-- 집중 타이머 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">⏳</div>
+        <div class="card-title">모둠 활동 집중 타이머</div>
+      </div>
+
+      <div class="timer-circle">
+        <div class="timer-time" id="timerDisplay">03:00</div>
+      </div>
+
+      <div class="timer-presets">
+        <button class="preset-btn" onclick="setTimer(60)">1분</button>
+        <button class="preset-btn" onclick="setTimer(180)">3분</button>
+        <button class="preset-btn" onclick="setTimer(300)">5분</button>
+        <button class="preset-btn" onclick="setTimer(600)">10분</button>
+      </div>
+
+      <div class="btn-group">
+        <button class="btn-primary" id="startBtn" onclick="toggleTimer()">▶ 시작</button>
+        <button class="btn-secondary" onclick="resetTimer()">↺ 리셋</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    Made with Antigravity 🌟 코딩 없이 자연어로 만드는 수업 도구
+  </footer>
+
+  <script>
+    // --- 1. 룰렛 로직 ---
+    const students = ["김민준", "이서연", "박도윤", "최지우", "정예준", "윤서아", "한시우", "이지원", "장우진", "임하은"];
+    const colors = ["#fbcfe8", "#c7d2fe", "#fed7aa", "#bbf7d0", "#fef08a", "#ddd6fe", "#bae6fd", "#fecdd3", "#a7f3d0", "#fde68a"];
+    const canvas = document.getElementById("wheelCanvas");
+    const ctx = canvas.getContext("2d");
+    const numSegments = students.length;
+    const arc = 2 * Math.PI / numSegments;
+    let currentAngle = 0;
+    let isSpinning = false;
+
+    function drawWheel() {
+      const radius = canvas.width / 2;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      for (let i = 0; i < numSegments; i++) {
+        const angle = currentAngle + i * arc;
+        ctx.beginPath();
+        ctx.fillStyle = colors[i % colors.length];
+        ctx.moveTo(radius, radius);
+        ctx.arc(radius, radius, radius, angle, angle + arc);
+        ctx.lineTo(radius, radius);
+        ctx.fill();
+        ctx.stroke();
+
+        // 텍스트 그리기
+        ctx.save();
+        ctx.translate(radius, radius);
+        ctx.rotate(angle + arc / 2);
+        ctx.textAlign = "right";
+        ctx.fillStyle = "#1e293b";
+        ctx.font = "bold 14px sans-serif";
+        ctx.fillText(students[i], radius - 20, 5);
+        ctx.restore();
+      }
+    }
+
+    drawWheel();
+
+    function spinWheel() {
+      if (isSpinning) return;
+      isSpinning = true;
+      const spinBtn = document.getElementById("spinBtn");
+      const resultText = document.getElementById("resultText");
+      spinBtn.disabled = true;
+      resultText.classList.remove("highlight");
+      resultText.innerText = "두구두구... 뽑는 중!";
+
+      const spinRounds = 5 + Math.random() * 3; // 5~8바퀴
+      const extraAngle = Math.random() * 2 * Math.PI;
+      const totalRotation = spinRounds * 2 * Math.PI + extraAngle;
+      const duration = 3500; // 3.5초
+      const startTime = performance.now();
+      const startAngle = currentAngle;
+
+      function animate(time) {
+        const elapsed = time - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        // easeOutQuart 감속 함수
+        const easeOut = 1 - Math.pow(1 - progress, 4);
+        currentAngle = startAngle + totalRotation * easeOut;
+        drawWheel();
+
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          isSpinning = false;
+          spinBtn.disabled = false;
+          determineWinner();
+        }
+      }
+      requestAnimationFrame(animate);
+    }
+
+    function determineWinner() {
+      // 상단 포인터 기준 당첨자 계산 (top: 3 * Math.PI / 2)
+      const normalizedAngle = (currentAngle % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI);
+      const pointerAngle = (3 * Math.PI / 2 - normalizedAngle + 2 * Math.PI) % (2 * Math.PI);
+      const winningIndex = Math.floor(pointerAngle / arc) % numSegments;
+      const winner = students[winningIndex];
+
+      const resultText = document.getElementById("resultText");
+      resultText.innerText = `🎉 당첨! [ ${winner} ] 학생`;
+      resultText.classList.add("highlight");
+      playChime();
+    }
+
+    // --- 2. 타이머 로직 ---
+    let totalSeconds = 180;
+    let remainingSeconds = 180;
+    let timerInterval = null;
+    const timerDisplay = document.getElementById("timerDisplay");
+    const startBtn = document.getElementById("startBtn");
+
+    function updateTimerDisplay() {
+      const minutes = Math.floor(remainingSeconds / 60);
+      const seconds = remainingSeconds % 60;
+      timerDisplay.innerText = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    }
+
+    function setTimer(seconds) {
+      clearInterval(timerInterval);
+      timerInterval = null;
+      totalSeconds = seconds;
+      remainingSeconds = seconds;
+      startBtn.innerText = "▶ 시작";
+      updateTimerDisplay();
+    }
+
+    function toggleTimer() {
+      if (timerInterval) {
+        // 일시정지
+        clearInterval(timerInterval);
+        timerInterval = null;
+        startBtn.innerText = "▶ 계속";
+      } else {
+        // 시작
+        if (remainingSeconds <= 0) remainingSeconds = totalSeconds;
+        startBtn.innerText = "⏸ 일시정지";
+        timerInterval = setInterval(() => {
+          remainingSeconds--;
+          updateTimerDisplay();
+          if (remainingSeconds <= 0) {
+            clearInterval(timerInterval);
+            timerInterval = null;
+            startBtn.innerText = "▶ 시작";
+            playAlarm();
+            alert("⏰ 시간이 종료되었습니다!");
+          }
+        }, 1000);
+      }
+    }
+
+    function resetTimer() {
+      clearInterval(timerInterval);
+      timerInterval = null;
+      remainingSeconds = totalSeconds;
+      startBtn.innerText = "▶ 시작";
+      updateTimerDisplay();
+    }
+
+    // --- 3. 오디오 효과 (Web Audio API - 외부 파일 불필요) ---
+    function playChime() {
+      try {
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const notes = [523.25, 659.25, 783.99, 1046.50]; // C, E, G, C
+        notes.forEach((freq, idx) => {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = "sine";
+          osc.frequency.setValueAtTime(freq, audioCtx.currentTime + idx * 0.1);
+          gain.gain.setValueAtTime(0.2, audioCtx.currentTime + idx * 0.1);
+          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + idx * 0.1 + 0.3);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start(audioCtx.currentTime + idx * 0.1);
+          osc.stop(audioCtx.currentTime + idx * 0.1 + 0.3);
+        });
+      } catch (e) {
+        // 브라우저 오디오 정책상 미지원시 무시
+      }
+    }
+
+    function playAlarm() {
+      try {
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        for (let i = 0; i < 3; i++) {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = "square";
+          osc.frequency.setValueAtTime(880, audioCtx.currentTime + i * 0.2);
+          gain.gain.setValueAtTime(0.15, audioCtx.currentTime + i * 0.2);
+          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + i * 0.2 + 0.15);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start(audioCtx.currentTime + i * 0.2);
+          osc.stop(audioCtx.currentTime + i * 0.2 + 0.15);
+        }
+      } catch (e) {}
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,3405 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2026 영서중학교 AI·디지털 선도학교 교원학습공동체 운영 결과 발표 (20분)</title>
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <style>
+    :root {
+      --primary: #4F46E5;
+      --primary-dark: #3730A3;
+      --primary-soft: #EEF2FF;
+      --primary-border: #C7D2FE;
+      --sky: #0284C7;
+      --sky-soft: #E0F2FE;
+      --emerald: #059669;
+      --emerald-soft: #D1FAE5;
+      --amber: #B45309;
+      --amber-soft: #FEF3C7;
+      --rose: #E11D48;
+      --rose-soft: #FFE4E6;
+      --violet: #7C3AED;
+      --violet-soft: #F3E8FF;
+      --bg-main: #EEF2F6;
+      --bg-card: #FFFFFF;
+      --text-main: #0F172A;
+      --text-body: #334155;
+      --text-muted: #64748B;
+      --border: #E2E8F0;
+      --accent-gradient: linear-gradient(135deg, #4F46E5 0%, #0284C7 50%, #059669 100%);
+      --hero-gradient: linear-gradient(135deg, #0284C7 0%, #4F46E5 52%, #7C3AED 100%);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Malgun Gothic", sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      word-break: keep-all;
+      user-select: none;
+    }
+
+    /* Ambient Background */
+    .bg-glow {
+      position: fixed;
+      width: 680px;
+      height: 680px;
+      border-radius: 50%;
+      filter: blur(145px);
+      opacity: 0.34;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .glow-1 { top: -180px; left: -120px; background: radial-gradient(circle, #C7D2FE, transparent 70%); }
+    .glow-2 { bottom: -180px; right: -120px; background: radial-gradient(circle, #BAE6FD, transparent 70%); }
+    .glow-3 { top: 45%; left: 55%; transform: translate(-50%, -50%); background: radial-gradient(circle, #D1FAE5, transparent 75%); opacity: 0.25; }
+
+    /* Top Deck Header */
+    header.deck-header {
+      position: relative;
+      z-index: 30;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 8px 22px;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      height: 58px;
+      flex-shrink: 0;
+    }
+
+    .brand-area {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .badge-tag {
+      background: var(--primary-soft);
+      border: 1px solid var(--primary-border);
+      color: var(--primary-dark);
+      font-size: 11px;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .pulse-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #10B981;
+      box-shadow: 0 0 6px #10B981;
+    }
+
+    .meeting-title {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: #1E293B;
+      white-space: nowrap;
+    }
+
+    /* Chapter Tabs */
+    .part-nav {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .part-nav::-webkit-scrollbar { display: none; }
+
+    .part-pill {
+      background: #F8FAFC;
+      border: 1px solid #CBD5E1;
+      color: #475569;
+      font-size: 10.5px;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 999px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    body.transitions-ready .part-pill {
+      transition: all 0.18s ease;
+    }
+    .part-pill:hover {
+      background: #EEF2FF;
+      color: var(--primary-dark);
+      border-color: #A5B4FC;
+    }
+    .part-pill.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #FFFFFF;
+      font-weight: 800;
+      box-shadow: 0 2px 8px rgba(79, 70, 229, 0.25);
+    }
+
+    /* Header Right Controls */
+    .header-tools {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    .timer-widget {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: #F8FAFC;
+      border: 1px solid #CBD5E1;
+      padding: 3px 10px;
+      border-radius: 999px;
+    }
+    .timer-display {
+      font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: 14.5px;
+      font-weight: 900;
+      color: #0F172A;
+      min-width: 48px;
+      text-align: center;
+    }
+    .timer-display.running { color: #2563EB; }
+    .timer-display.warning { color: #D97706; }
+    .timer-display.ended { color: #E11D48; }
+
+    .mini-ctrl-btn {
+      background: #FFFFFF;
+      border: 1px solid #CBD5E1;
+      color: #334155;
+      font-size: 10.5px;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .mini-ctrl-btn:hover { background: #EEF2FF; color: var(--primary); }
+
+    .tool-btn {
+      background: #FFFFFF;
+      border: 1px solid #CBD5E1;
+      color: #334155;
+      padding: 5px 10px;
+      border-radius: 8px;
+      font-size: 11.5px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      white-space: nowrap;
+    }
+    body.transitions-ready .tool-btn {
+      transition: all 0.15s ease;
+    }
+    .tool-btn:hover { background: #F8FAFC; border-color: #94A3B8; }
+    .tool-btn.active {
+      background: #0F172A;
+      border-color: #0F172A;
+      color: #FFFFFF;
+    }
+    .archive-nav-btn {
+      background: linear-gradient(135deg, #FFF1F2 0%, #FFE4E6 100%);
+      border: 1px solid #FDA4AF;
+      color: #BE123C;
+      padding: 5px 10px;
+      border-radius: 8px;
+      font-size: 11.5px;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      white-space: nowrap;
+    }
+
+    .progress-track {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: #E2E8F0;
+    }
+    .progress-bar {
+      height: 100%;
+      background: var(--accent-gradient);
+      width: 0%;
+    }
+    body.transitions-ready .progress-bar {
+      transition: width 0.3s ease;
+    }
+
+    /* Audience Clean Mode (Hides presenter script & timer cues) */
+    body.audience-mode .timer-widget,
+    body.audience-mode .script-under-bar,
+    body.audience-mode .slide-time-badge {
+      display: none !important;
+    }
+    body.audience-mode .slide-wrapper {
+      max-height: calc(100vh - 134px);
+    }
+
+    /* Viewport & 16:9 Slide Stage */
+    main.presentation-viewport {
+      position: relative;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 8px 22px;
+      z-index: 10;
+      overflow: hidden;
+      min-height: 0;
+    }
+
+    .slide-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 1240px;
+      aspect-ratio: 16 / 9;
+      max-height: calc(100vh - 226px);
+      min-height: 455px;
+      background: var(--bg-card);
+      border: 1px solid #CBD5E1;
+      border-radius: 20px;
+      box-shadow: 0 18px 42px -12px rgba(15, 23, 42, 0.12);
+      overflow: hidden;
+      flex-shrink: 1;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      padding: 20px 32px 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateX(24px) scale(0.992);
+      pointer-events: none;
+      background: #FFFFFF;
+    }
+    body.transitions-ready .slide {
+      transition: opacity 0.26s ease, transform 0.26s ease, visibility 0.26s;
+    }
+    .slide.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(0) scale(1);
+      pointer-events: auto;
+    }
+    .slide.prev {
+      transform: translateX(-24px) scale(0.992);
+    }
+
+    /* Slide Header */
+    .slide-header-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 8px;
+      flex-shrink: 0;
+    }
+
+    .slide-eyebrow {
+      font-size: 11.5px;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: 0.6px;
+      margin-bottom: 3px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .subject-chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: 10.5px;
+      font-weight: 800;
+      background: var(--primary-soft);
+      color: var(--primary-dark);
+    }
+
+    .slide-title {
+      font-size: 23.5px;
+      font-weight: 900;
+      letter-spacing: -0.6px;
+      color: #0F172A;
+      line-height: 1.24;
+    }
+
+    .slide-time-badge {
+      background: #F8FAFC;
+      border: 1px solid #CBD5E1;
+      color: #475569;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 4px 11px;
+      border-radius: 999px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .slide-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: stretch;
+      gap: 10px;
+      min-height: 0;
+      margin: 2px 0 6px;
+    }
+
+    .slide-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 8px;
+      border-top: 1px solid #F1F5F9;
+      font-size: 11.5px;
+      color: var(--text-muted);
+      flex-shrink: 0;
+      gap: 12px;
+    }
+    .slide-footer a {
+      color: var(--primary);
+      font-weight: 800;
+      text-decoration: none;
+    }
+    .slide-footer a:hover { text-decoration: underline; }
+
+    /* Presenter Script Bar Underneath Slide */
+    .script-under-bar {
+      width: 100%;
+      max-width: 1240px;
+      background: #FFFFFF;
+      border: 1px solid #CBD5E1;
+      border-left: 5px solid var(--primary);
+      border-radius: 12px;
+      padding: 9px 16px;
+      box-shadow: 0 6px 18px -6px rgba(15, 23, 42, 0.08);
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      flex-shrink: 0;
+      max-height: 92px;
+      overflow-y: auto;
+    }
+    .script-under-badge {
+      background: var(--primary-soft);
+      border: 1px solid var(--primary-border);
+      color: var(--primary-dark);
+      font-size: 10.5px;
+      font-weight: 800;
+      padding: 3px 9px;
+      border-radius: 6px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .script-under-text {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #1E293B;
+      line-height: 1.5;
+      user-select: text;
+    }
+
+    /* Common Grid & Card Layouts */
+    .grid-3col {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-rows: minmax(0, 1fr);
+      gap: 14px;
+      flex: 1;
+      min-height: 0;
+    }
+
+    .grid-2col-asym {
+      display: grid;
+      grid-template-columns: 1.22fr 0.98fr;
+      grid-template-rows: minmax(0, 1fr);
+      gap: 16px;
+      flex: 1;
+      min-height: 0;
+    }
+
+    .grid-2col-even {
+      display: grid;
+      grid-template-columns: 1.05fr 1.05fr;
+      grid-template-rows: minmax(0, 1fr);
+      gap: 16px;
+      flex: 1;
+      min-height: 0;
+    }
+
+    .col-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      height: 100%;
+      min-height: 0;
+    }
+    .col-stack > .shot-card { flex: 1; min-height: 0; }
+
+    /* Browser / Screenshot Card */
+    .shot-card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 13px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      cursor: zoom-in;
+      position: relative;
+      min-height: 0;
+    }
+    .shot-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 24px rgba(15, 23, 42, 0.1);
+      border-color: #94A3B8;
+    }
+
+    .shot-bar {
+      background: #F8FAFC;
+      border-bottom: 1px solid #E2E8F0;
+      padding: 6px 11px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .shot-dots {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .shot-dots span { width: 6.5px; height: 6.5px; border-radius: 50%; }
+    .shot-dots span:nth-child(1) { background: #FB7185; }
+    .shot-dots span:nth-child(2) { background: #FBBF24; }
+    .shot-dots span:nth-child(3) { background: #34D399; }
+
+    .shot-bar-title {
+      font-size: 11px;
+      font-weight: 800;
+      color: #334155;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      flex: 1;
+    }
+    .shot-badge {
+      font-size: 10px;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 5px;
+      background: var(--primary-soft);
+      color: var(--primary-dark);
+      flex-shrink: 0;
+    }
+
+    .shot-img-wrap {
+      flex: 1;
+      position: relative;
+      background: #0F172A;
+      overflow: hidden;
+      min-height: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .shot-img-wrap.light-bg { background: #F8FAFC; }
+    .shot-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+    .shot-img-wrap img.contain-img {
+      object-fit: contain !important;
+      object-position: center !important;
+    }
+    .shot-card:hover .shot-img-wrap img { transform: scale(1.02); }
+
+    .shot-caption {
+      padding: 8px 12px;
+      background: #FFFFFF;
+      border-top: 1px solid #F1F5F9;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .shot-caption-text {
+      font-size: 11.8px;
+      font-weight: 800;
+      color: #0F172A;
+      line-height: 1.32;
+    }
+    .shot-caption-sub {
+      font-size: 10.8px;
+      color: #64748B;
+      font-weight: 500;
+      display: block;
+      margin-top: 2px;
+      line-height: 1.3;
+    }
+    .zoom-pill {
+      font-size: 10px;
+      font-weight: 800;
+      color: var(--primary);
+      background: var(--primary-soft);
+      padding: 3px 7px;
+      border-radius: 6px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* Floating Inset Thumbnail */
+    .inset-thumb {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      width: 42%;
+      height: 54%;
+      border-radius: 9px;
+      border: 2.5px solid #FFFFFF;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+      overflow: hidden;
+      background: #FFFFFF;
+      z-index: 5;
+      cursor: zoom-in;
+    }
+    .inset-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+    .inset-label {
+      position: absolute;
+      bottom: 0;
+      inset-inline: 0;
+      background: rgba(15, 23, 42, 0.84);
+      color: #FFFFFF;
+      font-size: 9.5px;
+      font-weight: 800;
+      text-align: center;
+      padding: 2px 4px;
+    }
+
+    /* Info / Summary / Quote Strips & Boxes */
+    .summary-banner {
+      background: linear-gradient(90deg, #F8FAFC 0%, #EEF2FF 100%);
+      border: 1px solid #CBD5E1;
+      border-left: 4px solid var(--primary);
+      border-radius: 10px;
+      padding: 7px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 12px;
+      color: #1E293B;
+      flex-shrink: 0;
+    }
+    .summary-banner strong { color: var(--primary-dark); font-weight: 800; }
+
+    .info-card {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
+      padding: 10px 13px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .info-card h4 {
+      font-size: 12.5px;
+      font-weight: 800;
+      color: #0F172A;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .info-card p, .info-card li {
+      font-size: 11.4px;
+      color: #334155;
+      line-height: 1.44;
+    }
+    .info-card ul { padding-left: 15px; display: flex; flex-direction: column; gap: 3px; }
+
+    .quote-box {
+      background: #FFFBEB;
+      border: 1px solid #FDE68A;
+      border-left: 4px solid #D97706;
+      border-radius: 10px;
+      padding: 8px 12px;
+      font-size: 11.4px;
+      color: #1E293B;
+      line-height: 1.44;
+    }
+    .quote-box.blue {
+      background: #F0F9FF;
+      border-color: #BAE6FD;
+      border-left-color: #0284C7;
+    }
+    .quote-box.green {
+      background: #ECFDF5;
+      border-color: #A7F3D0;
+      border-left-color: #059669;
+    }
+    .quote-box.purple {
+      background: #FAF5FF;
+      border-color: #E9D5FF;
+      border-left-color: #7C3AED;
+    }
+
+    /* High-Readability Science Cards (Slides 06 & 07) */
+    .sci-caption-box {
+      padding: 11px 14px 12px;
+      background: #FFFFFF;
+      border-top: 2px solid #99F6E4;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      flex-shrink: 0;
+    }
+    .sci-pill-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+    }
+    .sci-highlight-pill {
+      display: inline-block;
+      font-size: 12.2px;
+      font-weight: 800;
+      padding: 3px 9px;
+      border-radius: 6px;
+      background: #F0FDFA;
+      color: #0F766E;
+      border: 1px solid #99F6E4;
+    }
+    .sci-main-title {
+      font-size: 15.4px;
+      font-weight: 900;
+      color: #0F172A;
+      line-height: 1.3;
+      letter-spacing: -0.25px;
+    }
+    .sci-sub-desc {
+      font-size: 13.3px;
+      font-weight: 600;
+      color: #1E293B;
+      line-height: 1.42;
+    }
+
+    .sci-readable-card {
+      background: #F8FAFC;
+      border: 1.5px solid #CBD5E1;
+      border-radius: 14px;
+      padding: 13px 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 9px;
+      min-height: 0;
+    }
+    .sci-readable-card.teal-theme {
+      background: linear-gradient(180deg, #F0FDFA 0%, #FFFFFF 100%);
+      border-color: #5EEAD4;
+    }
+    .sci-readable-card h4 {
+      font-size: 16.6px;
+      font-weight: 900;
+      color: #0F172A;
+      letter-spacing: -0.3px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid rgba(15, 23, 42, 0.09);
+    }
+    .sci-readable-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+    .sci-readable-list li {
+      font-size: 14.2px;
+      font-weight: 600;
+      color: #1E293B;
+      line-height: 1.46;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .sci-step-tag {
+      background: #0F766E;
+      color: #FFFFFF;
+      font-size: 11.5px;
+      font-weight: 800;
+      padding: 2.5px 8px;
+      border-radius: 5px;
+      white-space: nowrap;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+    .sci-quote-callout {
+      background: #ECFDF5;
+      border: 1.5px solid #6EE7B7;
+      border-left: 5px solid #059669;
+      border-radius: 10px;
+      padding: 8px 13px;
+      font-size: 13.6px;
+      font-weight: 700;
+      color: #064E3B;
+      line-height: 1.46;
+    }
+
+    /* Slide 1 Cover Split */
+    .cover-split {
+      display: grid;
+      grid-template-columns: 1.06fr 1.14fr;
+      gap: 24px;
+      height: 100%;
+      align-items: center;
+      min-height: 0;
+    }
+    .cover-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--primary-soft);
+      border: 1px solid var(--primary-border);
+      padding: 4px 13px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--primary-dark);
+      margin-bottom: 10px;
+    }
+    .cover-title {
+      font-size: 32px;
+      font-weight: 900;
+      letter-spacing: -0.9px;
+      line-height: 1.22;
+      color: #0F172A;
+      margin-bottom: 8px;
+    }
+    .gradient-text {
+      background: var(--hero-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .cover-sub {
+      font-size: 13px;
+      color: #475569;
+      line-height: 1.48;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+    .roster-box {
+      width: 100%;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 13px;
+      padding: 9px 12px;
+    }
+    .roster-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+      padding-bottom: 5px;
+      border-bottom: 1px solid #E2E8F0;
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .roster-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 4px 7px;
+    }
+    .member-chip {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 6px;
+      padding: 3.5px 8px;
+      font-size: 11.4px;
+      font-weight: 700;
+      color: #1E293B;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 4px;
+    }
+    .member-chip.rep { background: #EEF2FF; border-color: #818CF8; }
+    .member-chip.pres { background: #FFF1F2; border-color: #FDA4AF; }
+    .role-badge {
+      font-size: 9.8px;
+      font-weight: 800;
+      padding: 1.5px 6px;
+      border-radius: 5px;
+      color: #FFFFFF;
+    }
+    .role-badge.rep { background: #4F46E5; }
+    .role-badge.pres { background: #E11D48; }
+
+    .cover-collage {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1.12fr 0.95fr;
+      gap: 11px;
+      height: 100%;
+      min-height: 0;
+    }
+    .cover-collage .shot-card:first-child { grid-column: 1 / -1; }
+
+    /* Step Pills Row */
+    .step-5row {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .step-pill-box {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-top: 3px solid var(--primary);
+      border-radius: 9px;
+      padding: 6px 8px;
+      text-align: center;
+    }
+    .step-pill-box strong { display: block; font-size: 11.5px; font-weight: 800; color: #0F172A; }
+    .step-pill-box span { font-size: 10.3px; color: #64748B; font-weight: 600; }
+
+    /* Quantitative Chart (Slide 17) */
+    .chart-panel {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 14px;
+      padding: 13px 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      min-height: 0;
+    }
+    .metric-row {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 6px 0;
+      border-bottom: 1px dashed #E2E8F0;
+    }
+    .metric-row:last-child { border-bottom: none; }
+    .metric-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11.8px;
+      font-weight: 800;
+      color: #0F172A;
+    }
+    .metric-gain {
+      font-size: 10.8px;
+      font-weight: 800;
+      color: #059669;
+      background: #D1FAE5;
+      padding: 2px 7px;
+      border-radius: 999px;
+    }
+    .bar-pair {
+      display: grid;
+      grid-template-columns: 44px 1fr 94px;
+      align-items: center;
+      gap: 8px;
+      font-size: 10.8px;
+      font-weight: 700;
+      color: #475569;
+    }
+    .bar-track {
+      height: 11px;
+      background: #E2E8F0;
+      border-radius: 999px;
+      position: relative;
+      overflow: hidden;
+    }
+    .bar-pre {
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      background: #94A3B8;
+      border-radius: 999px;
+    }
+    .bar-post {
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      background: linear-gradient(90deg, #4F46E5, #0284C7);
+      border-radius: 999px;
+      opacity: 0.9;
+    }
+
+    .kpi-grid-4 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .kpi-card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-left: 4px solid var(--primary);
+      border-radius: 10px;
+      padding: 8px 11px;
+    }
+    .kpi-num { font-size: 18px; font-weight: 900; color: var(--primary-dark); line-height: 1.15; }
+    .kpi-label { font-size: 11px; font-weight: 700; color: #334155; margin-top: 2px; }
+    .kpi-sub { font-size: 10px; color: #64748B; }
+
+    /* Slide 18 Shifts & Gallery */
+    .shift-3col {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      flex-shrink: 0;
+    }
+    .shift-card {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
+      padding: 10px 13px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .shift-flow {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 800;
+      flex-wrap: wrap;
+    }
+    .shift-from { color: #64748B; text-decoration: line-through; font-weight: 600; font-size: 11.2px; }
+    .shift-to { color: var(--primary-dark); background: var(--primary-soft); padding: 2px 8px; border-radius: 6px; }
+
+    .mini-gallery-12 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(3, minmax(0, 1fr));
+      gap: 7px;
+      height: 100%;
+      min-height: 0;
+    }
+    .mini-shot {
+      border-radius: 9px;
+      overflow: hidden;
+      border: 1px solid #CBD5E1;
+      position: relative;
+      cursor: zoom-in;
+      background: #0F172A;
+    }
+    .mini-shot img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+    .mini-shot span {
+      position: absolute;
+      bottom: 0; inset-inline: 0;
+      background: rgba(15, 23, 42, 0.82);
+      color: #FFFFFF;
+      font-size: 9.5px;
+      font-weight: 700;
+      padding: 2.5px 5px;
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Footer Navigation */
+    footer.deck-footer {
+      position: relative;
+      z-index: 30;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px 24px;
+      background: rgba(255, 255, 255, 0.94);
+      border-top: 1px solid var(--border);
+      height: 48px;
+      flex-shrink: 0;
+    }
+    .slide-dots { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .dot {
+      width: 7px; height: 7px; border-radius: 4px;
+      background: #CBD5E1; cursor: pointer;
+    }
+    body.transitions-ready .dot { transition: all 0.2s ease; }
+    .dot.active { width: 22px; background: var(--primary); }
+
+    .nav-buttons { display: flex; align-items: center; gap: 8px; }
+    .nav-btn {
+      background: #FFFFFF;
+      border: 1px solid #CBD5E1;
+      color: #1E293B;
+      padding: 5px 13px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .nav-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+    .slide-counter { font-size: 12.5px; font-weight: 900; color: #334155; min-width: 58px; text-align: center; }
+
+    /* Modals: Lightbox, Overview, Archive Hub, Full Script Print View */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.78);
+      backdrop-filter: blur(12px);
+      z-index: 500;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 26px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+    }
+    .modal-backdrop.open { opacity: 1; pointer-events: auto; }
+
+    .lightbox-img-box {
+      max-width: 90vw;
+      max-height: 78vh;
+      border-radius: 14px;
+      overflow: hidden;
+      background: #FFFFFF;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+      border: 2px solid rgba(255, 255, 255, 0.25);
+    }
+    .lightbox-img-box img { max-width: 90vw; max-height: 78vh; object-fit: contain; display: block; }
+    .lightbox-bar {
+      margin-top: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #FFFFFF;
+      padding: 9px 18px;
+      border-radius: 999px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    }
+    .lightbox-title { font-size: 13.5px; font-weight: 800; color: #0F172A; }
+    .lightbox-link {
+      background: var(--primary); color: #FFFFFF; text-decoration: none;
+      font-size: 12px; font-weight: 800; padding: 6px 13px; border-radius: 999px;
+    }
+    .lightbox-close {
+      background: #F1F5F9; border: none; color: #334155;
+      font-size: 12px; font-weight: 800; padding: 6px 12px; border-radius: 999px; cursor: pointer;
+    }
+
+    .dialog-card {
+      background: #FFFFFF;
+      border-radius: 20px;
+      width: 94%;
+      max-width: 980px;
+      max-height: 86vh;
+      padding: 24px 28px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+    }
+    .dialog-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #E2E8F0;
+      margin-bottom: 14px;
+      flex-shrink: 0;
+    }
+    .dialog-body { overflow-y: auto; padding-right: 6px; flex: 1; }
+
+    .overview-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .overview-thumb {
+      background: #F8FAFC;
+      border: 2px solid #E2E8F0;
+      border-radius: 12px;
+      padding: 12px 14px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      transition: all 0.15s ease;
+    }
+    .overview-thumb:hover { border-color: #818CF8; background: #EEF2FF; }
+    .overview-thumb.active { border-color: var(--primary); background: #EEF2FF; }
+
+    .hub-section-title {
+      font-size: 13px; font-weight: 900; color: var(--primary-dark);
+      margin: 12px 0 8px; padding-left: 8px; border-left: 4px solid var(--primary);
+    }
+    .archive-link-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 9px;
+    }
+    .archive-item {
+      display: flex; flex-direction: column; padding: 10px 13px;
+      border-radius: 11px; border: 1px solid #E2E8F0; background: #F8FAFC;
+      text-decoration: none; transition: all 0.15s ease;
+    }
+    .archive-item:hover { background: #EEF2FF; border-color: #818CF8; }
+    .archive-item .a-type { font-size: 10px; font-weight: 800; color: var(--primary); }
+    .archive-item .a-name { font-size: 12.5px; font-weight: 800; color: #0F172A; margin: 2px 0; }
+    .archive-item .a-desc { font-size: 11px; color: #64748B; }
+
+    .script-list-item {
+      padding: 12px 14px;
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
+      margin-bottom: 10px;
+      background: #F8FAFC;
+      user-select: text;
+    }
+    .script-list-item h4 { font-size: 13.5px; font-weight: 800; color: #0F172A; margin-bottom: 5px; }
+    .script-list-item p { font-size: 13px; color: #1E293B; line-height: 1.62; }
+
+    /* Password Protection Gate */
+    body.locked header.deck-header,
+    body.locked main.presentation-viewport,
+    body.locked footer.deck-footer,
+    body.locked .modal-backdrop {
+      visibility: hidden !important;
+      pointer-events: none !important;
+      user-select: none !important;
+    }
+    .auth-gate-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background:
+        radial-gradient(circle at 18% 20%, rgba(79, 70, 229, 0.12) 0%, transparent 48%),
+        radial-gradient(circle at 82% 80%, rgba(16, 185, 129, 0.12) 0%, transparent 48%),
+        linear-gradient(135deg, #EEF2FF 0%, #F8FAFC 52%, #F0FDFA 100%);
+      transition: opacity 0.28s ease, visibility 0.28s ease;
+    }
+    .auth-gate-overlay.unlocked {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .auth-gate-card {
+      width: 100%;
+      max-width: 440px;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(16px);
+      border: 1.5px solid #CBD5E1;
+      border-radius: 24px;
+      padding: 36px 32px 30px;
+      box-shadow: 0 24px 54px -12px rgba(15, 23, 42, 0.15);
+      text-align: center;
+    }
+    .auth-gate-card.shake {
+      animation: authShake 0.36s cubic-bezier(.36,.07,.19,.97) both;
+    }
+    @keyframes authShake {
+      10%, 90% { transform: translateX(-4px); }
+      20%, 80% { transform: translateX(6px); }
+      30%, 50%, 70% { transform: translateX(-8px); }
+      40%, 60% { transform: translateX(8px); }
+    }
+    .auth-lock-icon {
+      width: 58px;
+      height: 58px;
+      margin: 0 auto 14px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #EEF2FF 0%, #E0E7FF 100%);
+      border: 1px solid #C7D2FE;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      box-shadow: 0 8px 18px -6px rgba(79, 70, 229, 0.25);
+    }
+    .auth-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #F1F5F9;
+      border: 1px solid #CBD5E1;
+      color: #334155;
+      font-size: 11.5px;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+    .auth-title {
+      font-size: 21px;
+      font-weight: 900;
+      color: #0F172A;
+      line-height: 1.32;
+      letter-spacing: -0.4px;
+      margin-bottom: 8px;
+    }
+    .auth-desc {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #475569;
+      line-height: 1.5;
+      margin-bottom: 22px;
+    }
+    .auth-input-group {
+      position: relative;
+      display: flex;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .auth-pw-input {
+      width: 100%;
+      height: 48px;
+      padding: 0 46px 0 16px;
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      color: #0F172A;
+      background: #F8FAFC;
+      border: 1.8px solid #CBD5E1;
+      border-radius: 12px;
+      outline: none;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+    .auth-pw-input::placeholder {
+      letter-spacing: -0.2px;
+      font-weight: 600;
+      font-size: 14px;
+      color: #94A3B8;
+    }
+    .auth-pw-input:focus {
+      background: #FFFFFF;
+      border-color: #4F46E5;
+      box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.14);
+    }
+    .auth-eye-btn {
+      position: absolute;
+      right: 10px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      padding: 6px;
+      color: #64748B;
+      border-radius: 6px;
+    }
+    .auth-eye-btn:hover { background: #E2E8F0; color: #0F172A; }
+    .auth-submit-btn {
+      width: 100%;
+      height: 48px;
+      border: none;
+      border-radius: 12px;
+      background: var(--accent-gradient);
+      color: #FFFFFF;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 10px 20px -6px rgba(79, 70, 229, 0.42);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .auth-submit-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 24px -6px rgba(79, 70, 229, 0.52);
+    }
+    .auth-error-notice {
+      display: none;
+      margin-top: 12px;
+      padding: 9px 12px;
+      border-radius: 10px;
+      background: #FFF1F2;
+      border: 1px solid #FECDD3;
+      color: #BE123C;
+      font-size: 12.8px;
+      font-weight: 700;
+    }
+    .auth-error-notice.visible { display: block; }
+    .auth-footer-note {
+      margin-top: 18px;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: #64748B;
+    }
+
+    /* Print Stylesheet: Prints Full 20-Minute Presenter Script Cleanly */
+    @media print {
+      body { height: auto; overflow: visible; background: #FFFFFF; user-select: text; }
+      body.locked * { display: none !important; }
+      .auth-gate-overlay, header.deck-header, main.presentation-viewport, footer.deck-footer,
+      #lightboxModal, #overviewModal, #archiveModal, .bg-glow { display: none !important; }
+      #scriptModal {
+        position: static !important; opacity: 1 !important; pointer-events: auto !important;
+        background: #FFFFFF !important; padding: 0 !important; display: block !important;
+      }
+      #scriptModal .dialog-card {
+        max-width: 100% !important; width: 100% !important; max-height: none !important;
+        box-shadow: none !important; padding: 0 !important;
+      }
+      #scriptModal .dialog-body { overflow: visible !important; }
+      #scriptModal .no-print { display: none !important; }
+      .script-list-item { break-inside: avoid; background: #FFFFFF; border-color: #CBD5E1; }
+    }
+  </style>
+</head>
+<body class="locked">
+
+  <!-- Password Protection Gate -->
+  <div class="auth-gate-overlay" id="authGateOverlay" role="dialog" aria-modal="true" aria-labelledby="authGateTitle">
+    <div class="auth-gate-card" id="authGateCard">
+      <div class="auth-lock-icon">🔒</div>
+      <div class="auth-badge">2026 영서중학교 AI·디지털 선도학교</div>
+      <h1 class="auth-title" id="authGateTitle">교원학습공동체 운영 결과<br />발표자료 열람 인증</h1>
+      <p class="auth-desc">본 발표자료(총 5부 17장)는 교원 연수 및 결과 나눔용입니다.<br />안내받은 접근 비밀번호를 입력해 주세요.</p>
+      <form id="authGateForm" autocomplete="off">
+        <div class="auth-input-group">
+          <input
+            type="password"
+            id="authPwInput"
+            class="auth-pw-input"
+            inputmode="numeric"
+            maxlength="16"
+            placeholder="비밀번호 입력"
+            autocomplete="off"
+            autofocus
+            required
+          />
+          <button type="button" class="auth-eye-btn" id="authEyeBtn" title="비밀번호 표시 전환">👁️</button>
+        </div>
+        <button type="submit" class="auth-submit-btn">발표자료 열람하기 →</button>
+        <div class="auth-error-notice" id="authErrorNotice">비밀번호가 일치하지 않습니다. 다시 확인해 주세요.</div>
+      </form>
+      <div class="auth-footer-note">인증 완료 시 현재 브라우저 탭 세션 동안 잠금이 해제됩니다.</div>
+    </div>
+  </div>
+
+  <div class="bg-glow glow-1"></div>
+  <div class="bg-glow glow-2"></div>
+  <div class="bg-glow glow-3"></div>
+
+  <!-- Top Header -->
+  <header class="deck-header">
+    <div class="brand-area">
+      <div class="badge-tag">
+        <span class="pulse-dot"></span>
+        2026 영서중 AI·디지털 선도학교 교학공
+      </div>
+    </div>
+
+    <!-- 5-Part Chapter Navigation -->
+    <nav class="part-nav" id="partNav">
+      <button class="part-pill active" data-jump="0">1. 철학·기반 (1~3)</button>
+      <button class="part-pill" data-jump="3">2. 교과 AI수업 (4~10)</button>
+      <button class="part-pill" data-jump="10">3. 창체·동아리 (11~13)</button>
+      <button class="part-pill" data-jump="13">4. 학교업무 혁신 (14~15)</button>
+      <button class="part-pill" data-jump="15">5. 성과·일반화 (16~17)</button>
+    </nav>
+
+    <!-- Tools & Timer -->
+    <div class="header-tools">
+      <div class="timer-widget" title="20분 발표 카운트다운 타이머">
+        <span class="timer-display" id="timerDisplay">20:00</span>
+        <button class="mini-ctrl-btn" id="timerToggleBtn">▶</button>
+        <button class="mini-ctrl-btn" id="timerResetBtn">↺</button>
+      </div>
+      <button class="tool-btn" id="audienceModeBtn" title="청중 투사 모드: 대본·시간 숨김 토글 (단축키 P)">👁️ 청중 모드</button>
+      <button class="tool-btn" id="scriptModalBtn" title="20분 전체 발표 대본 보기 및 인쇄 (단축키 N)">📜 전체 대본</button>
+      <button class="archive-nav-btn" id="archiveModalBtn" title="원본 노션·패들렛·웹앱 링크 허브 (단축키 L)">📂 링크·웹앱 허브</button>
+      <button class="tool-btn" id="overviewBtn" title="17장 전체 슬라이드 보기 (단축키 O)">⊞ 목차</button>
+      <button class="tool-btn" id="fullscreenBtn" title="전체화면 (단축키 F)">⛶</button>
+      <button class="tool-btn" id="lockDeckBtn" title="발표자료 화면 다시 잠그기">🔒</button>
+    </div>
+
+    <div class="progress-track">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+  </header>
+
+  <!-- Main Viewport -->
+  <main class="presentation-viewport">
+    <div class="slide-wrapper">
+
+      <!-- =====================================================================
+           SLIDE 01: COVER & 16 TEACHERS ROSTER (00:00 ~ 01:00 | 60초)
+      ====================================================================== -->
+      <section class="slide active" data-part="0" data-time="00:00~01:00 (60초)" data-script="선생님 여러분, 안녕하십니까. 올 한 해 우리 영서중학교에서 운영한 ‘2026 AI·디지털 선도학교 교원학습공동체’의 1년간 운영 결과를 발표할 수학과 임종윤입니다. 오늘 약 20분 동안 저희 9개 교과 16명의 선생님들이 함께 고민하며 만들어낸 연수 문화부터, 수학·과학·정보·미술·국어·사회 교과 수업과 창의적 체험활동, 그리고 선생님들의 퇴근 시간을 앞당겨 준 학교 행정·생기부 업무 자동화 기록까지 실제 결과물 중심으로 생생하게 공유해 드리겠습니다. 저희 공동체는 대표교사이신 과학 홍은영 부장님을 필두로 수석선생님, 부장님, 저경력·비전공 선생님까지 16명이 자발적으로 모인 ‘배움과 나눔의 실험실’이었습니다.">
+        <div class="slide-content" style="margin:0;">
+          <div class="cover-split">
+            <div>
+              <div class="cover-pill">✨ 2026 영서중학교 AI·디지털 선도학교 교원학습공동체 (YATL)</div>
+              <h1 class="cover-title">
+                ‘배움’은 동료의 눈높이 연수로,<br />
+                <span class="gradient-text">‘나눔’은 경계 없는 수업 고충으로!</span>
+              </h1>
+              <p class="cover-sub">
+                다교과 AI 수업 혁신(수학·과학·정보·미술·인문·창체)부터 <strong>교사 바이브 코딩 & 학교 업무 자동화</strong>까지 1년의 실천 기록
+              </p>
+
+              <div class="roster-box">
+                <div class="roster-header">
+                  <span>👥 다교과 교원학습공동체 참여 교원 (9개 교과)</span>
+                  <span style="color:#4338CA; background:#EEF2FF; padding:2px 8px; border-radius:999px; font-size:10.5px;">총 16명 (전 교원의 36.4%)</span>
+                </div>
+                <div class="roster-grid">
+                  <div class="member-chip"><span>박준영 수석님 (국어)</span></div>
+                  <div class="member-chip"><span>이소라 부장님 (진로)</span></div>
+                  <div class="member-chip rep"><span>홍은영 부장님 (과학)</span><span class="role-badge rep">대표교사</span></div>
+                  <div class="member-chip"><span>강소혜 부장님 (미술)</span></div>
+                  <div class="member-chip"><span>이수복 부장님 (수학)</span></div>
+                  <div class="member-chip"><span>이은영 부장님 (가정)</span></div>
+                  <div class="member-chip"><span>변희연 부장님 (미술)</span></div>
+                  <div class="member-chip"><span>노민선 선생님 (과학)</span></div>
+                  <div class="member-chip"><span>김정완 선생님 (수학)</span></div>
+                  <div class="member-chip"><span>정수아 선생님 (국어)</span></div>
+                  <div class="member-chip"><span>최효석 선생님 (과학)</span></div>
+                  <div class="member-chip"><span>전세연 선생님 (정보)</span></div>
+                  <div class="member-chip"><span>강주은 선생님 (국어)</span></div>
+                  <div class="member-chip pres"><span>임종윤 선생님 (수학)</span><span class="role-badge pres">발표자</span></div>
+                  <div class="member-chip"><span>홍주은 선생님 (사회)</span></div>
+                  <div class="member-chip"><span>백종환 선생님 (역사)</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="cover-collage">
+              <div class="shot-card zoom-trigger" data-img="assets/notion_workspace.png" data-title="영서중 AI·디지털 선도학교 교원학습공동체 노션(Notion) 통합 허브" data-url="https://app.notion.com/p/AI-3134913c2bb98017a95dcd0fb5e3b735">
+                <div class="shot-bar">
+                  <div class="shot-dots"><span></span><span></span><span></span></div>
+                  <span class="shot-bar-title">Notion · AI디지털 선도학교 교원학습공동체 통합 허브</span>
+                  <span class="shot-badge">아카이브</span>
+                </div>
+                <div class="shot-img-wrap"><img src="assets/notion_workspace.png" alt="노션 허브" /></div>
+              </div>
+              <div class="shot-card zoom-trigger" data-img="assets/padlet_6wol_live.png" data-title="6월 정기 모임 패들렛 (5단계 수업 고민 분석)" data-url="https://padlet.com/sjylim0829/ai-6-4feja002kbn5lpd7">
+                <div class="shot-bar">
+                  <div class="shot-dots"><span></span><span></span><span></span></div>
+                  <span class="shot-bar-title">6월 5단계 수업고민 패들렛</span>
+                </div>
+                <div class="shot-img-wrap"><img src="assets/padlet_6wol_live.png" alt="6월 패들렛" /></div>
+              </div>
+              <div class="shot-card zoom-trigger" data-img="assets/padlet_9wol_live.png" data-title="9월 7일 모임 패들렛 (캔바 AI 바이브 코딩 나눔 · 댓글 45건)" data-url="https://padlet.com/sjylim0829/260907-ai-s023ck0j0wsjhppwt7at">
+                <div class="shot-bar">
+                  <div class="shot-dots"><span></span><span></span><span></span></div>
+                  <span class="shot-bar-title">9월 바이브 코딩 패들렛 (댓글 45건)</span>
+                </div>
+                <div class="shot-img-wrap"><img src="assets/padlet_9wol_live.png" alt="9월 패들렛" /></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slide-footer">
+          <span>💡 모든 슬라이드의 스크린샷을 클릭하면 <strong>전체화면 확대(Lightbox)</strong> 및 원본 링크 이동이 가능합니다. (단축키: <strong>P</strong> 청중모드 · <strong>N</strong> 전체대본)</span>
+          <span>PART 1 · 출발과 운영 철학</span>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           SLIDE 02: PROBLEM DIAGNOSIS & INFRASTRUCTURE (01:00 ~ 02:05 | 65초)
+      ====================================================================== -->
+      <section class="slide" data-part="0" data-time="01:00~02:05 (65초)" data-script="저희가 2월과 3월 첫 모임에서 가장 먼저 진단한 문제는 학교 현장의 ‘이중의 고립’이었습니다. 일회성 외부 강사 연수는 우리 학교의 무선망이나 다문화·기초학력 편차 여건과 동떨어져 금세 휘발되었고, AI가 낯선 선생님은 ‘기기 사용법만 가르치다 수업 본질을 놓치는 주객전도’에 위축된 반면, 코딩과 API에 능숙한 선생님조차 ‘기술이 학생의 깊은 사고로 이어지지 않는 벽’을 홀로 고민하고 계셨습니다. 이를 해결하기 위해 선도학교 예산 3,500만 원 중 89.7%를 교육활동에 집중 투입해 챗GPT·클로드·제미나이를 동시 비교하는 ‘이음AI’와 맞춤형 유료 에듀테크를 도입했고, 상시 질문 패들렛과 노션 통합 허브로 흩어진 자료와 고민을 하나로 묶었습니다.">
+        <div class="slide-header-row">
+          <div>
+            <div class="slide-eyebrow">PART 1 · SETUP & INFRASTRUCTURE <span class="subject-chip">2~3월 기반 구축</span></div>
+            <h2 class="slide-title">‘이중의 고립’을 넘어선 3각 협업 생태계 (이음AI × 상시 패들렛 × 노션 허브)</h2>
+          </div>
+          <span class="slide-time-badge">⏱️ 01:00~02:05 (65초)</span>
+        </div>
+
+        <div class="slide-content">
+          <div class="summary-banner">
+            <span>🔍 <strong>출발점 진단:</strong> 초보 교사의 ‘수업 주객전도 두려움’ + 숙련 교사의 ‘사고력 전이 한계’ ➔ <strong>전담 디지털 튜터 상시 배치(수업 결손 0건) & 예산 89.7%(3,140만원) 교육활동 집중 투입</strong></span>
+          </div>
+
+          <div class="grid-3col">
+            <div class="shot-card zoom-trigger" data-img="assets/plan_p1.png" data-title="2026 AI·디지털 활용 선도학교 운영 계획서 (영서중학교)" data-url="https://app.notion.com/p/AI-3134913c2bb98017a95dcd0fb5e3b735">
+              <div class="shot-bar">
+                <div class="shot-dots"><span></span><span></span><span></span></div>
+                <span class="shot-bar-title">2026 선도학교 운영 계획서 & 멀티엔진 도입</span>
+                <span class="shot-badge">이음AI</span>
+              </div>
+              <div class="shot-img-wrap light-bg"><img class="contain-img" src="assets/plan_p1.png" alt="운영계획서" /></div>
+              <div class="shot-caption">
+                <div>
+                  <div class="shot-caption-text">1. 이음AI(GPT·Claude·Gemini·Exaone) 도입</div>
+                  <span class="shot-caption-sub">전교생 1인 1디벗(529대) + 1인당 맞춤 에듀테크 구독 지원</span>
+                </div>
+                <span class="zoom-pill">🔍 확대</span>
+              </div>
+            </div>
+
+            <div class="shot-card zoom-trigger" data-img="assets/padlet_init_live.png" data-title="2~3월 초기 상시 패들렛 — 「이런 수업, 어떤 도구?」 동료 Q&A" data-url="https://padlet.com/chlgytjr111/ai-wcol3kwzmsseism8">
+              <div class="shot-bar">
+                <div class="shot-dots"><span></span><span></span><span></span></div>
+                <span class="shot-bar-title">상시 패들렛 「이런 수업, 어떤 도구?」</span>
+                <span class="shot-badge" style="background:var(--sky-soft); color:var(--sky);">동료 코칭</span>
+              </div>
+              <div class="shot-img-wrap"><img src="assets/padlet_init_live.png" alt="초기 패들렛" /></div>
+              <div class="shot-caption">
+                <div>
+                  <div class="shot-caption-text">2. 시공간 제약 없는 즉각적 동료 Q&A 보드</div>
+                  <span class="shot-caption-sub">"원하는 수업 장면은 있는데 어떤 도구를 쓸까요?" 즉시 연결</span>
+                </div>
+                <span class="zoom-pill">🔍 확대</span>
+              </div>
+            </div>
+
+            <div class="shot-card zoom-trigger" data-img="assets/notion_workspace.png" data-title="노션(Notion) 통합 아카이브 허브 (계정·예산·회의록·워크북·수업기록)" data-url="https://app.notion.com/p/AI-3134913c2bb98017a95dcd0fb5e3b735">
+              <div class="shot-bar">
+                <div class="shot-dots"><span></span><span></span><span></span></div>
+                <span class="shot-bar-title">노션(Notion) × 구글 드라이브 통합 허브</span>
+                <span class="shot-badge" style="background:var(--emerald-soft); color:var(--emerald);">일원화</span>
+              </div>
+              <div class="shot-img-wrap"><img src="assets/notion_workspace.png" alt="노션 아카이브" /></div>
+              <div class="shot-caption">
+                <div>
+                  <div class="shot-caption-text">3. 계정 · 예산 · 회의록 · 수업안 원스톱 관리</div>
+                  <span class="shot-caption-sub">사전 패들렛 수합 ➔ 대면 모임은 30~60분 고밀도 실습·토의</span>
+                </div>
+                <span class="zoom-pill">🔍 확대</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-footer">
+          <span>협력 거버넌스: <strong>과학정보부(기기·튜터·윤리)</strong> × <strong>연구부(교학공·수업공개)</strong> × <strong>교무부(생기부 기재윤리)</strong> 유기적 공조</span>
+          <a href="https://app.notion.com/p/AI-3134913c2bb98017a95dcd0fb5e3b735" target="_blank">노션 통합 허브 열기 ↗</a>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           SLIDE 03: DUAL-TRACK PROTOCOL & 5-STEP VALIDITY (02:05 ~ 03:10 | 65초)
+      ====================================================================== -->
+      <section class="slide" data-part="0" data-time="02:05~03:10 (65초)" data-script="저희 교학공 운영의 핵심 차별점은 ‘배움 트랙’과 ‘나눔 트랙’을 전략적으로 분리하고 순환시킨 점입니다. 왼쪽 ‘나눔 트랙’에서는 기술 계급장을 모두 내려놓고 『성장하는 교사, 다섯 가지 질문』 워크북에 따라 이 도구가 내 수업에 정말 타당한지 5단계로 교실의 진짜 아픔을 나눴습니다. 놀라웠던 건 API 자동 피드백을 직접 구축한 숙련 선생님이 먼저 ‘학생에게 내적 동기가 없으니 AI 피드백을 읽고도 글을 안 고치더라’는 실패담을 고백하자, 입문 선생님들도 마음의 벽을 허물고 고민을 꺼내놓으셨다는 점입니다. 이렇게 모인 오늘의 수업 고충은 오른쪽 ‘배움 트랙’에서 2주 내 동료 선생님의 눈높이 실습 특강으로 즉각 개설되었습니다.">
+        <div class="slide-header-row">
+          <div>
+            <div class="slide-eyebrow">PART 1 · DUAL-TRACK PROTOCOL <span class="subject-chip">배움-나눔 이원화 순환</span></div>
+            <h2 class="slide-title">5단계 수업 타당성(AS-IS/TO-BE) 성찰 × 수요 응답형 동료 눈높이 연수</h2>
+          </div>
+          <span class="slide-time-badge">⏱️ 02:05~03:10 (65초)</span>
+        </div>
+
+        <div class="slide-content">
+          <div class="grid-2col-even">
+            <!-- Left: Sharing Track -->
+            <div class="shot-card zoom-trigger" data-img="assets/padlet_6wol_live.png" data-title="[나눔 트랙] 6월 5단계 수업 고민 분석 패들렛 (초보·숙련 교사 실패담과 처방 교차)" data-url="https://padlet.com/sjylim0829/ai-6-4feja002kbn5lpd7">
+              <div class="shot-bar">
+                <div class="shot-dots"><span></span><span></span><span></span></div>
+                <span class="shot-bar-title">[나눔 트랙] 6월 수업 타당성 분석 패들렛 (댓글 14건+)</span>
+                <span class="shot-badge" style="background:var(--rose-soft); color:var(--rose);">수평적 고충 나눔</span>
+              </div>
+              <div class="shot-img-wrap">
+                <img src="assets/padlet_6wol_live.png" alt="6월 패들렛" />
+                <div class="inset-thumb zoom-trigger" data-img="assets/guidebook_p1.png" data-title="『성장하는 교사, 다섯 가지 질문』 3.1 수업 고민 워크시트" data-url="https://padlet.com/sjylim0829/ai-6-4feja002kbn5lpd7">
+                  <img class="contain-img" src="assets/guidebook_p1.png" alt="워크북" />
+                  <div class="inset-label">가이드북 3.1 워크시트</div>
+                </div>
+              </div>
+              <div class="shot-caption">
+                <div>
+                  <div class="shot-caption-text">초보 교사 ‘주객전도 슬픔’ × 숙련 교사 ‘API·챗봇 실패담’ 교차</div>
+                  <span class="shot-caption-sub">➔ 무설치 단일 버튼 웹도구 & 동료질문 결합 하이터치 공동 처방 도출</span>
+                </div>
+                <span class="zoom-pill">🔍 확대</span>
+              </div>
+            </div>
+
+            <!-- Right: Learning Track -->
+            <div class="shot-card zoom-trigger" data-img="assets/padlet_9wol_live.png" data-title="[배움 트랙] 9월 7일 캔바 AI 바이브 코딩 동료 연수 패들렛 (댓글 45건 폭발적 호응)" data-url="https://padlet.com/sjylim0829/260907-ai-s023ck0j0wsjhppwt7at">
+              <div class="shot-bar">
+                <div class="shot-dots"><span></span><span></span><span></span></div>
+                <span class="shot-bar-title">[배움 트랙] 9월 동료 주도 바이브 코딩 연수 (댓글 45건)</span>
+                <span class="shot-badge" style="background:var(--emerald-soft); color:var(--emerald);">애자일 동료 연수</span>
+              </div>
+              <div class="shot-img-wrap">
+                <img src="assets/padlet_9wol_live.png" alt="9월 패들렛" />
+                <div class="inset-thumb zoom-trigger" data-img="assets/ppt_9wol_live.png" data-title="9월 7일 나눔 진행용 교사 자체 제작 HTML 웹 슬라이드" data-url="https://padlet.com/sjylim0829/260907-ai-s023ck0j0wsjhppwt7at">
+                  <img src="assets/ppt_9wol_live.png" alt="9월 슬라이드" />
+                  <div class="inset-label">자체 제작 웹 슬라이드</div>
+                </div>
+              </div>
+              <div class="shot-caption">
+                <div>
+                  <div class="shot-caption-text">오늘의 고충이 2주 뒤 동료 특강으로! (4단계 눈높이 연수)</div>
+                  <span class="shot-caption-sub">이음AI 기초 ➔ 9.7. 캔바 바이브코딩 ➔ 9.21. 안티그래비티 2.0 ➔ 전 교원 확산</span>
+                </div>
+                <span class="zoom-pill">🔍 확대</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step-5row">
+            <div class="step-pill-box"><strong>1단계 · 문제 확인</strong><span>교실 속 진짜 아픔 진단</span></div>
+            <div class="step-pill-box" style="border-top-color:var(--sky);"><strong>2단계 · 요구 분석</strong><span>현재(AS-IS) ➔ 이상(TO-BE)</span></div>
+            <div class="step-pill-box" style="border-top-color:var(--violet);"><strong>3단계 · 과제 분석</strong><span>교과 성취기준·타당성 매핑</span></div>
+            <div class="step-pill-box" style="border-top-color:var(--emerald);"><strong>4단계 · 학습자 분석</strong><span>다문화·기초학력·디지털 편차</span></div>
+            <div class="step-pill-box" style="border-top-color:var(--amber);"><strong>5단계 · 환경 분석</strong><span>무설치 웹앱 & 1인 1작은시도</span></div>
+          </div>
+        </div>
+
+        <div class="slide-footer">
+          <span>💬 9월 패들렛 동료 격려: <em>"웹앱 배포까지 가능해 놀랐습니다!" / "괴로워하지 않고 즐겁게 흐름을 타는 원동력을 얻었습니다!"</em> (누적 댓글 60건+)</span>
+          <a href="https://padlet.com/sjylim0829/260907-ai-s023ck0j0wsjhppwt7at" target="_blank">9월 패들렛 열기 ↗</a>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           SLIDE 04: [수학 ①] 클라우드 DB 수학 LMS & 중1 생태 동물원 좌표평면 (03:10 ~ 04:30 | 80초)
+      ====================================================================== -->
+      <section class="slide" data-part="1" data-time="03:10~04:30 (80초)" data-script="이제 2부, 교과별 AI·디지털 수업 실천 기록입니다. 먼저 수학과입니다. 수학과에서는 기성 문제풀이 앱의 한계를 넘어 ‘영서 디지털 수학 통합 플랫폼’을 자체 개발해 운영했습니다. 정답이나 힌트를 미리 노출하지 않는 제로 스포일러 원칙 아래, 학생이 디벗 화면에서 60프레임 HTML5 캔버스 도형을 직접 드래그하며 외심·내심·사각형의 불변 성질을 스스로 발견하게 했고, 학번으로 로그인하면 모든 풀이 과정과 오답 패턴이 수파베이스 클라우드 DB에 실시간 저장되어 개인별 탐구보고서로 자동 환류됩니다. 오른쪽은 1학년 ‘생태 친화적 동물원 재설계’ 4차시 수행평가인데요, 소음 구역인 제4사분면의 동물을 생태 맞춤 사분면으로 옮기고 절댓값 수식으로 생태 통로 길이를 유도했습니다. 다문화·기초학력 학생용 핵심어 비계 카드를 지원해 미참여자 0명, 완수율 100%를 달성했습니다.">
+        <div class="slide-header-row">
+          <div>
+            <div class="slide-eyebrow" style="color:#2563EB;">PART 2 · SUBJECT AI RECORDS — MATHEMATICS ① <span class="subject-chip">수학 1·2학년 코스웨어 & 중1 수행</span></div>
+            <h2 class="slide-title">[수학 ①] 클라우드 DB(Supabase) 연동 수학 LMS & 중1 생태 동물원 좌표평면 재설계</h2>
+          </div>
+          <span class="slide-time-badge">⏱️ 03:10~04:30 (80초)</span>
+        </div>
+
+        <div class="slide-content">
+          <div class="grid-2col-asym">
+            <!-- Left: Cloud Math LMS Portal -->
+            <div class="shot-card zoom-trigger" data-img="assets/math_lms_portal.png" data-title="교사 자체 개발 ‘영서 디지털 수학 통합 플랫폼’ (Supabase Cloud DB 실시간 연동 LMS)" data-url="https://sjylim0829-commits.github.io/redbook-math-app/portal.html">
+              <div class="shot-bar">
+                <div class="shot-dots"><span></span><span></span><span></span></div>
+                <span class="shot-bar-title">영서 디지털 수학 통합 플랫폼 (Supabase DB 실시간 연동 코스웨어)</span>
+                <span class="shot-badge">자체 개발 LMS</span>
+              </div>
+              <div class="shot-img-wrap light-bg">
+                <img src="assets/math_lms_portal.png" alt="수학 LMS 포털" />
+                <div class="inset-thumb zoom-trigger" data-img="assets/math_g1_courseware.png" data-title="중1 좌표평면과 그래프 60fps 동적 조작 코스웨어 (제로 스포일러)" data-url="https://sjylim0829-commits.github.io/redbook-math-app/portal.html">
+                  <img src="assets/math_g1_courseware.png" alt="중1 코스웨어" />
+                  <div class="inset-label">60fps 동적 조작 코스웨어</div>
+                </div>
+              </div>
+              <div class="shot-caption">
+                <div>
+                  <div class="shot-caption-text">정답 스포일러 Zero · 60fps Canvas 기하 실험 · 자동 탐구보고서</div>
+                  <span class="shot-caption-sub">학생 풀이·오답 로그 클라우드 실시간 저장 및 교사 대시보드 도달률 모니터링</span>
+                </div>
+                <span class="zoom-pill">🔍 확대</span>
+              </div>
+            </div>
+
+            <!-- Right: Grade 1 Eco-Zoo Redesign -->
+            <div class="col-stack">
+              <div class="shot-card zoom-trigger" data-img="assets/math_ecozoo_sim.png" data-title="[중1 수학 4차시] 좌표평면·GeoGebra 활용 생태 친화적 동물원 재설계 웹앱" data-url="https://sjylim0829-commits.github.io/examination/">
+                <div class="shot-bar">
+                  <div class="shot-dots"><span></span><span></span><span></span></div>
+                  <span class="shot-bar-title">중1 수학 · 좌표평면 생태 동물원 재설계 시뮬레이션</span>
+                  <span class="shot-badge" style="background:var(--emerald-soft); color:var(--emerald);">완수율 100%</span>
+                </div>
+                <div class="shot-img-wrap light-bg">
+                  <img src="assets/math_ecozoo_sim.png" alt="동물원 시뮬레이션" />
+                  <div class="inset-thumb zoom-trigger" style="width:38%; height:62%;" data-img="assets/math_ecozoo_student.png" data-title="중1 학생 제출 수행평가 답안 카드 (Google Drive 자동 저장)" data-url="https://sjylim0829-commits.github.io/examination/">
+                    <img class="contain-img" src="assets/math_ecozoo_student.png" alt="학생 답안카드" />
+                    <div class="inset-label">학생 제출 답안카드</div>
+                  </div>
+                </div>
+                <div class="shot-caption" style="padding:7px 11px;">
+                  <div>
+                    <div class="shot-caption-text">제4사분면(소음) ➔ 생태 맞춤 사분면 이동 & 절댓값 생태 통로 유도</div>
+                    <span class="shot-caption-sub">모눈 칸 세기에서 절댓값 수식(|x₂-x₁|)으로 넘어가는 단계적 핵심어 카드 비계</span>
+                  </div>
+                  <span class="zoom-pill">🔍 확대</span>
+                </div>
+              </div>
+
+              <div class="quote-box blue">
+                💬 <strong>[중1 정○○ 학생 소감]</strong> "동물원 지도에 좌표평면을 얹어 북극곰·수달·기린을 안전한 사분면으로 옮겨 주고 생태 통로 길이(70m, 50m)를 수식으로 구해보니 <strong>차가운 줄 알았던 수학이 생명을 살리는 따스한 도구</strong>로 느껴졌어요."
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-footer">
+          <span>참여 대상: 1·2학년 14학급(348명) · 다문화·기초학력 맞춤형 비계 제공으로 <strong>수행평가 미참여자 0명 달성</strong> (이수복·김정완·임종윤T)</span>
+          <a href="https://sjylim0829-commits.github.io/redbook-math-app/portal.html" target="_blank">영서 디지털 수학 포털 열기 ↗</a>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           SLIDE 05: [수학 ②] 중2 화단 식물 기하학 & 도형의 닮음 탐구 랩 Starmix (04:30 ~ 05:40 | 70초)
+      ====================================================================== -->
+      <section class="slide" data-part="1" data-time="04:30~05:40 (70초)" data-script="이어서 2학년 수학 수업과 10월 12일 남부 지구별 자율장학 공개수업으로 나눈 사례입니다. 왼쪽은 자체 제작한 도형의 닮음 인터랙티브 탐구 랩 ‘Starmix’입니다. 학생들이 직각삼각형이나 입체도형의 가로·세로 배율 슬라이더를 다르게 조작해보며 언제 도형이 왜곡되고 언제 닮음이 성립하는지 시각적으로 실험합니다. 이를 바탕으로 교정 화단에 떨어진 아이비·담쟁이 낙엽의 끝점 다섯 개를 오각형과 세 쌍의 대응 삼각형으로 기하학적 단순화를 한 뒤, 자연물 실측에서 생기는 미세 오차를 지오지브라 동적 측정값으로 보정하며 SSS, SAS, AA 닮음 조건과 2대 3 생장 닮음비를 연역적으로 증명하고 패들렛으로 공유했습니다.">
+        <div class="slide-header-row">
+          <div>
+            <div class="slide-eyebrow" style="color:#2563EB;">PART 2 · SUBJECT AI RECORDS — MATHEMATICS ② <span class="subject-chip">중2 기하 탐구 & 지구별 자율장학 공개수업</span></div>
+            <h2 class="slide-title">[수학 ②] 도형의 닮음 인터랙티브 랩(Starmix) & 화단 식물의 기하학적 단순화 증명</h2>
+          </div>
+          <span class="slide-time-badge">⏱️ 04:30~05:40 (70초)</span>
+        </div>
+
+        <div class="slide-content">
+          <div class="grid-3col">
+            <div class="shot-card zoom-trigger" data-img="assets/math_starmix_lab.png" data-title="[자체 개발 웹앱] 중2 도형의 닮음 인터랙티브 탐구 랩 (Starmix Similarity Lab)" data-url="https://sjylim0829-commits.github.io/Starmix/">
+              <div class="shot-bar">
+                <div class="shot-dots"><span></span><span></span><span></span></div>
+                <span class="shot-bar-title">Starmix · 평면·3D 입체 닮음 탐구 랩</span>
+                <span class="shot-badge">무설치 웹앱</span>
+              </div>
+              <div class="shot-img-wrap light-bg"><img src="assets/math_starmix_lab.png" alt="Starmix 랩" /></div>
+              <div class="shot-caption">
+                <div>
+                  <div class="shot-caption-text">1. 왜곡 실험 & 포개어보기 동적 조작</div>
+                  <span class="shot-caption-sub">가로·세로 배율 슬라이더 조작으로 닮음 성질·반례 직관 발견</span>
+                </div>
+                <span class="zoom-pill">🔍 확대</span>
+              </div>
+            </div>
+
+            <div class="shot-card zoom-trigger" data-img="assets/math_g2_similarity.png" data-title="중2 도형의 닮음 7단계(Tab 0~6) 클라우드 웹코스웨어" data-url="https://sjylim0829-commits.github.io/redbook-math-app/portal.html">
+              <div class="shot-bar">
+                <div class="shot-dots"><span></span><span></span><span></span></div>
+                <span class="shot-bar-title">중2 도형의 닮음 단계별 클라우드 코스웨어</span>
+                <span class="shot-badge" style="background:var(--sky-soft); color:var(--sky);">과정 평가</span>
+              </div>
+              <div class="shot-img-wrap light-bg"><img src="assets/math_g2_similarity.png" alt="닮음 코스웨어" /></div>
+              <div class="shot-caption">
+                <div>
+                  <div class="shot-caption-text">2. 개념 발견 ➔ 정당화 ➔ 수준별 미션</div>
+                  <span class="shot-caption-sub">짝·모둠 협력 추론 및 전자칠판 미러링 즉시 비교·피드백</span>
+                </div>
+                <span class="zoom-pill">🔍 확대</span>
+              </div>
+            </div>
+
+            <div class="shot-card zoom-trigger" data-img="assets/math_g2_leaf_sheet.png" data-title="[중2 수행평가 & 10.12. 지구별 자율장학] 화단 식물의 오각형 단순화 및 SSS·SAS·AA 닮음 증명" data-url="https://sjylim0829-commits.github.io/Starmix/">
+              <div class="shot-bar">
+                <div class="shot-dots"><span></span><span></span><span></span></div>
+                <span class="shot-bar-title">화단 식물(아이비) 다각형 분해 & GeoGebra 증명</span>
+                <span class="shot-badge" style="background:var(--emerald-soft); color:var(--emerald);">10.12. 공개수업</span>
+              </div>
+              <div class="shot-img-wrap light-bg"><img class="contain-img" src="assets/math_g2_leaf_sheet.png" alt="2학기 수학 활동지" /></div>
+              <div class="shot-caption">
+                <div>
+                  <div class="shot-caption-text">3. 실측 오차(±2mm)를 GeoGebra로 보정·증명</div>
+                  <span class="shot-caption-sub">오각형을 삼각형 3쌍으로 분해해 2:3 생장 닮음비·수광 효율 성찰</span>
+                </div>
+                <span class="zoom-pill">🔍 확대</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="summary-banner">
+            <span>🔄 <strong>수업 성찰 & 환류:</strong> 자연물 자·각도기 실측 시 발생하는 미세 오차로 연역적 증명과 혼란을 겪는 학생들을 위해 <strong>‘실측 오차 허용 기준 + GeoGebra 공학 대조 정당화 가이드’</strong>를 체계화함</span>
+          </div>
+        </div>
+
+        <div class="slide-footer">
+          <span>성취기준 [9수03-05, 06] 연계 · 패들렛 학급 증명서 포트폴리오 공유</span>
+          <a href="https://sjylim0829-commits.github.io/Starmix/" target="_blank">Starmix 닮음 탐구 랩 실행 ↗</a>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           SLIDE 06: [과학 ①] 클로드 바이브 코딩 시뮬레이션 & 생태지도·광합성 AI 시각화 (05:40 ~ 07:00 | 80초)
+      ====================================================================== -->
+      <section class="slide" data-part="1" data-time="05:40~07:00 (80초)" data-script="다음은 과학과 기록입니다. 과학과 선생님들은 교실에 꼭 맞는 실험 도구를 AI로 직접 제작해 투입하셨습니다. 왼쪽 화면은 최효석 선생님이 이음AI의 클로드에게 ‘온도와 입자 수만 바꿀 수 있고 빠르기는 잔상 길이로 표현해줘’라고 자연어로 요청해 단 몇 분 만에 완성한 1학년 입자 운동 시뮬레이션입니다. 본 실험 전 예비탐구 시뮬레이션으로 활용해 학생들이 스스로 변인 통제 가설을 세우게 했습니다. 가운데는 GAS 동물 관찰 카드 웹앱과 캔바 공동 생태지도이고, 오른쪽은 대표교사이신 홍은영 부장님의 2학년 광합성 수업입니다. 학생들이 그린 손그림을 이음AI의 챗GPT·클로드·제미나이로 각각 변환해 패들렛에 올리며 AI 모델마다 과학 개념을 시각화하는 차이를 비교했습니다.">
+        <div class="slide-header-row">
+          <div>
+            <div class="slide-eyebrow" style="color:#0D9488;">PART 2 · SUBJECT AI RECORDS — SCIENCE ① <span class="subject-chip" style="background:#CCFBF1; color:#0F766E;">과학 1·2학년 시뮬레이션 & 멀티엔진 비교</span></div>
+            <h2 class="slide-title">[과학 ①] 자연어 바이브 코딩 ‘입자 시뮬레이션’ & 생태지도 · 광합성 멀티 AI 비교</h2>
+          </div>
+          <span class="slide-time-badge">⏱️ 05:40~07:00 (80초)</span>
+        </div>
+
+        <div class="slide-content">
+          <div class="grid-3col">
+            <div class="shot-card zoom-trigger" data-img="assets/particle_sim_live.png" data-title="[과학 1학년 · 최효석T] 이음AI(Claude) 바이브 코딩으로 제작한 입자 운동 시뮬레이션" data-url="assets/particle_sim.html">
+              <div class="shot-bar">
+                <div class="shot-dots"><span></span><span></span><span></span></div>
+                <span class="shot-bar-title" style="font-size:12.2px;">중1 과학 · 입자 운동 시뮬레이션</span>
+                <span class="shot-badge" style="background:var(--violet-soft); color:var(--violet); font-size:10.8px;">최효석T 제작</span>
+              </div>
+              <div class="shot-img-wrap" style="background:#1B1B1B;">
+                <img class="contain-img" src="assets/particle_sim_live.png" alt="입자 시뮬레이션 실행 화면" style="transform:scale(1.36); transform-origin:center 18%;" />
+                <div class="inset-thumb zoom-trigger" style="width:39%; height:44%;" data-img="assets/claude_vibe_coding.jpg" data-title="이음AI(Claude)에 자연어 프롬프트를 입력해 시뮬레이션을 생성한 화면" data-url="assets/particle_sim.html">
+                  <img src="assets/claude_vibe_coding.jpg" alt="입자 운동 프롬프트" />
+                  <div class="inset-label">이음AI 프롬프트 화면</div>
+                </div>
+              </div>
+              <div class="sci-caption-box">
+                <div class="sci-pill-row">
+                  <span class="sci-highlight-pill" style="background:#F5F3FF; color:#6D28D9; border-color:#DDD6FE;">💬 "온도·입자 수 조절 + 잔상 길이로 빠르기 표현"</span>
+                  <span class="zoom-pill">🔍 확대</span>
+                </div>
+                <div class="sci-main-title">1. 자연어 3줄로 만든 예비탐구 실험실</div>
+                <div class="sci-sub-desc">본 실험 전 변인 통제 조작으로 학생 스스로 가설 수립</div>
+              </div>
+            </div>
+
+            <div class="shot-card zoom-trigger" data-img="assets/sci_map_strip.png" data-title="[과학 1학년] GAS 동물 관찰 카드 웹앱 ➔ 동물원 현장 관찰 패들렛 ➔ Canva 공동 생태지도" data-url="https://padlet.com/chlgytjr111/2026-1-r9q8je40x6mokv5m">
+              <div class="shot-bar">
+                <div class="shot-dots"><span></span><span></span><span></span></div>
+                <span class="shot-bar-title" style="font-size:12.2px;">중1 과학 · 관찰 카드 웹앱 & 생태지도</span>
+                <span class="shot-badge" style="background:#CCFBF1; color:#0F766E; font-size:10.8px;">현장×디지털</span>
+              </div>
+              <div class="shot-img-wrap light-bg" style="flex-direction:column; padding:8px; gap:6px; background:#F1F5F9;">
+                <div class="zoom-trigger" style="flex:1.05; width:100%; min-height:0; border-radius:8px; overflow:hidden; border:1px solid #CBD5E1; position:relative; background:#FFFFFF;" data-img="assets/science_animal_card_app.png" data-title="GAS 자체 개발 ‘멸종위기동물 관찰 카드 생성기’ 웹앱" data-url="https://padlet.com/chlgytjr111/2026-1-r9q8je40x6mokv5m">
+                  <img src="assets/science_animal_card_app.png" alt="동물 카드 웹앱" style="width:100%; height:100%; object-fit:cover; object-position:center 12%;" />
+                  <span style="position:absolute; top:6px; left:7px; background:rgba(15,118,110,0.92); color:#FFF; font-size:10.5px; font-weight:800; padding:2px 7px; border-radius:5px;">① GAS 동물 관찰 카드 웹앱</span>
+                </div>
+                <div style="flex:0.95; width:100%; min-height:0; border-radius:8px; overflow:hidden; border:1px solid #CBD5E1; background:#FFFFFF; padding:3px; display:flex; align-items:center; justify-content:center; position:relative;">
+                  <img class="contain-img" src="assets/sci_map_strip.png" alt="생태지도 3단계 산출물" />
+                  <span style="position:absolute; top:5px; left:7px; background:rgba(15,23,42,0.84); color:#FFF; font-size:10.5px; font-weight:800; padding:2px 7px; border-radius:5px;">② 현장 관찰 패들렛 ➔ Canva 생태지도</span>
+                </div>
+              </div>
+              <div class="sci-caption-box">
+                <div class="sci-pill-row">
+                  <span class="sci-highlight-pill">🐾 GAS 카드 발급 ➔ 패들렛 ➔ Canva 지도</span>
+                  <span class="zoom-pill">🔍 확대</span>
+                </div>
+                <div class="sci-main-title">2. 사전 조사 vs 동물원 직접 관찰 대조</div>
+                <div class="sci-sub-desc">인터넷 정보와 실제 관찰 근거를 구분해 공동 생태지도 완성</div>
+              </div>
+            </div>
+
+            <div class="shot-card zoom-trigger" data-img="assets/science_padlet_live.png" data-title="[과학 2학년 · 홍은영T] 광합성 산물의 저장과 이용 이음AI 정보그림 패들렛 (160명+ 참여)" data-url="https://padlet.com/tracy02/padlet-u7lge642nsm7fgwq">
+              <div class="shot-bar">
+                <div class="shot-dots"><span></span><span></span><span></span></div>
+                <span class="shot-bar-title" style="font-size:12.2px;">중2 과학 · 광합성 멀티 AI 정보그림</span>
+                <span class="shot-badge" style="font-size:10.8px;">홍은영T</span>
+              </div>
+              <div class="shot-img-wrap">
+                <img src="assets/science_padlet_live.png" alt="광합성 패들렛" />
+                <div class="inset-thumb zoom-trigger" style="width:40%; height:52%;" data-img="assets/science_photo_work_2.png" data-title="학생 손그림을 이음AI로 변환한 광합성 산물 정보그림" data-url="https://padlet.com/tracy02/padlet-u7lge642nsm7fgwq">
+                  <img class="contain-img" src="assets/science_photo_work_2.png" alt="학생 작품" />
+                  <div class="inset-label">학생 AI 변환 작품</div>
+                </div>
+              </div>
+              <div class="sci-caption-box">
+                <div class="sci-pill-row">
+                  <span class="sci-highlight-pill" style="background:#EFF6FF; color:#1D4ED8; border-color:#BFDBFE;">🤖 GPT · Claude · Gemini 표현 비교</span>
+                  <span class="zoom-pill">🔍 확대</span>
+                </div>
+                <div class="sci-main-title">3. 손그림 개념도 ➔ 멀티엔진 AI 변환</div>
+                <div class="sci-sub-desc">160명+ 패들렛 공유로 모델별 과학 개념 시각화 양상 탐구</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-footer" style="font-size:12.2px; font-weight:600; color:#334155;">
+          <span>교내 『서로 배우는 수업공개』 과학 AI 수업 나눔 2회(9.9. / 10.27.) 실시 (홍은영·노민선·최효석T)</span>
+          <a href="assets/particle_sim.html" target="_blank">⚛️ 입자 운동 시뮬레이션 직접 실행해보기 ↗</a>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           SLIDE 07: [과학 ②] 상상 속 세포 AI 환각 검증 & 익명 동료평가 웹앱 (07:00 ~ 08:15 | 75초)
+      ====================================================================== -->
+      <section class="slide" data-part="1" data-time="07:00~08:15 (75초)" data-script="2학기 과학 수업에서는 한 걸음 더 나아가 ‘AI가 만든 결과물을 과학 지식으로 비판적으로 검증하는 힘’을 길렀습니다. 정보 시간에 수집한 교내 식물 데이터를 이어받아, 예를 들어 회양목에 필요한 ‘수분을 잡아두는 상상 속 세포’를 먼저 손으로 스케치하고 생성형 AI로 구체화합니다. 그다음 4차시에는 실제 회양목 잎을 현미경으로 관찰한 사진과 대조하며 AI 그림의 오류를 찾아냅니다. 왼쪽 아래 학생 기록을 보시면 ‘내 스케치에서 세포벽과 세포막 구분이 모호해서 AI도 경계를 잘못 그렸기 때문에 AI 그림을 그대로 쓰지 않고 직접 수정하겠다’고 적었습니다. 또한 교사가 AI로 직접 만든 ‘익명 동료평가 웹앱’으로 이름 가리기 수기 행정을 없애고 즉각 피드백을 나눴습니다.">
+        <div class="slide-header-row">
+          <div>
+            <div class="slide-eyebrow" style="color:#0D9488;">PART 2 · SUBJECT AI RECORDS — SCIENCE ② <span class="subject-chip" style="background:#CCFBF1; color:#0F766E;">AI 환각(Hallucination) 비판적 검증 & 과정평가</span></div>
+            <h2 class="slide-title">[과학 ②] ‘상상 속 세포’ AI 생성 vs 실제 현미경 관찰 대조 & 익명 동료평가 웹앱</h2>
+          </div>
+          <span class="slide-time-badge">⏱️ 07:00~08:15 (75초)</span>
+        </div>
+
+        <div class="slide-content">
+          <!-- Top 4-Step Visual Evidence Strip (Full-Width Readable Ratio) -->
+          <div class="shot-card zoom-trigger" style="flex:1.06;" data-img="assets/sci_cell_strip.png" data-title="[2학기 과학 5차시] ① 식물 조사 카드 ➔ ② 가설 세포 스케치 ➔ ③ AI 세포 완성 ➔ ④ 실제 회양목 잎 현미경 사진 대조" data-url="https://student.amplify.com/join/JHY3XC">
+            <div class="shot-bar">
+              <div class="shot-dots"><span></span><span></span><span></span></div>
+              <span class="shot-bar-title" style="font-size:12.8px;">학교 식물지도 연계 ‘상상 속 세포 설계’ 4단계 산출물 및 실제 현미경 비교 검증 (클릭 시 크게 확대)</span>
+              <span class="shot-badge" style="background:var(--rose-soft); color:var(--rose); font-size:11px;">AI 오류 교과지식 검증</span>
+            </div>
+            <div class="shot-img-wrap light-bg" style="padding:4px 8px;">
+              <img class="contain-img" src="assets/sci_cell_strip.png" alt="상상 속 세포 4단계 비교" />
+            </div>
+          </div>
+
+          <!-- Bottom 2-Column High-Readability Cards -->
+          <div class="grid-2col-even" style="flex:0.96;">
+            <div class="sci-readable-card teal-theme">
+              <h4>🔬 생성형 AI 그림을 맹신하지 않는 과학적 메타인지</h4>
+              <ul class="sci-readable-list">
+                <li>
+                  <span class="sci-step-tag">가설 설계</span>
+                  <span><strong>Desmos Amplify</strong> 탐구 후 식물 기관 기능에 맞는 소기관(엽록체·세포벽·액포) 가설 스케치</span>
+                </li>
+                <li>
+                  <span class="sci-step-tag">실물 대조</span>
+                  <span>생성형 AI 세포 그림과 <strong>실제 현미경 관찰 사진</strong>을 대조해 <strong>AI 수용 여부와 과학적 근거</strong> 서술</span>
+                </li>
+              </ul>
+              <div class="sci-quote-callout">
+                💬 [중1 고○○ · AI 그림 불수용 사유] “원본 스케치에서 세포벽과 세포막 구분이 모호해 <strong>AI도 두 경계를 잘못 그렸으므로 수용하지 않고 직접 수정</strong>하겠다.”
+              </div>
+            </div>
+
+            <div class="sci-readable-card">
+              <h4>🛠️ GAS 자체 개발 「익명 동료평가 웹앱」 & 교학공 성찰 환류</h4>
+              <ul class="sci-readable-list">
+                <li>
+                  <span class="sci-step-tag" style="background:#4F46E5;">운영 혁신</span>
+                  <span>종이 활동지의 이름을 가리고 수합·재배부하던 수기 행정을 <strong>무설치 웹앱 자동 배정(1인 3작품 루브릭)</strong>으로 간소화</span>
+                </li>
+                <li>
+                  <span class="sci-step-tag" style="background:#D97706;">수업 성찰</span>
+                  <span>절차적 편의성은 높아졌으나, 학생들의 동료 피드백 문장이 추상적이어서 실제 작품 수정 연결이 아쉬웠음</span>
+                </li>
+                <li>
+                  <span class="sci-step-tag" style="background:#059669;">환류 처방</span>
+                  <span>본 평가 전 <strong>‘예시 작품 공동 루브릭 채점 & 구체적 수정 제안 문장 틀 연습’</strong> 단계를 신설해 평가 질 제고!</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-footer" style="font-size:12.2px; font-weight:600; color:#334155;">
+          <span>정보(학교 식생 데이터 수집) ➔ 과학(식물지도·세포 검증) 범교과 데이터 연계 완성</span>
+          <a href="https://padlet.com/chlgytjr111/2026-1-r9q8je40x6mokv5m" target="_blank">1학년 과학 전체 패들렛 열기 ↗</a>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           SLIDE 08: [정보] 엔트리 게임 · Delightex 3D AR & 생태 데이터 시각화 (08:15 ~ 09:30 | 75초)
+      ====================================================================== -->
+      <section class="slide" data-part="1" data-time="08:15~09:30 (75초)" data-script="다음은 전세연 선생님이 이끄신 정보 교과 기록입니다. 1학기에는 과학에서 조사한 동물과 미술에서 만든 캐릭터를 이어받아, 멸종위기동물이 위기를 극복하는 2D 엔트리 게임을 프로그래밍하고 딜라이트 에듀로 3D 가상공간과 증강현실 AR 서식지까지 구현했습니다. 특히 아직 배우지 않은 코딩 기능을 이음AI에게 질문할 때, AI가 블록 대신 자연어와 순서도로 힌트를 주자 학생들이 이를 해석해 스스로 블록코딩으로 변환하는 놀라운 알고리즘 역량을 보여주었습니다. 2학기에는 교정 생물 데이터를 구글 시트로 전처리·시각화했는데요, 만능 생성형 AI가 학생의 분류 사고까지 대신해주는 부작용을 성찰하며 ‘사고 과정을 살리는 적정 도구 선별’이라는 귀한 원칙을 도출했습니다.">
+        <div class="slide-header-row">
+          <div>
+            <div class="slide-eyebrow" style="color:#7C3AED;">PART 2 · SUBJECT AI RECORDS — INFORMATICS <span class="subject-chip" style="background:var(--violet-soft); color:var(--violet);">정보 1·2학기 코딩·3D AR & 데이터 문해력</span></div>
+            <h2 class="slide-title">[정보] 엔트리 게임 · Delightex 3D AR 구현 & 학교 생태 데이터 전처리·시각화</h2>
+          </div>
+          <span class="slide-time-badge">⏱️ 08:15~09:30 (75초)</span>
+        </div>
+
+        <div class="slide-content">
+          <div class="grid-3col">
+            <div class="shot-card zoom-trigger" data-img="assets/info_entry_class.jpg" data-title="[1학기 정보 1~5차시 · 전세연T] 멸종위기동물 보호 시나리오 알고리즘 설계 및 Entry 게임 개발" data-url="https://padlet.com/sjylim0829/2026-uabqfny3nkkvyuik">
+              <div class="shot-bar">
+                <div class="shot-dots"><span></span><span></span><span></span></div>
+                <span class="shot-bar-title">1학기 · Entry 게임 코딩 & 이음AI 알고리즘 변환</span>
+                <span class="shot-badge" style="background:var(--violet-soft); color:var(--violet);">전세연T</span>
+              </div>
+              <div class="shot-img-wrap"><img src="assets/info_entry_class.jpg" alt="엔트리 수업" /></div>
+              <div class="shot-caption">
+                <div>
+                  <div class="shot-caption-text">1. 이음AI 자연어·순서도 답변 ➔ 블록코딩 변환</div>
+                  <span class="shot-caption-sub">함수·제어문 활용 위기극복 게임 제작 및 동료 시연 피드백</span>
+                </div>
+                <span class="zoom-pill">🔍 확대</span>
+              </div>
+            </div>
+
+            <div class="shot-card zoom-trigger" data-img="assets/info_ar_class.jpg" data-title="[1학기 정보 6~7차시] Delightex Edu 활용 3D 가상공간 물리엔진 및 AR(증강현실) 서식지 구현" data-url="https://padlet.com/sjylim0829/2026-uabqfny3nkkvyuik">
+              <div class="shot-bar">
+                <div class="shot-dots"><span></span><span></span><span></span></div>
+                <span class="shot-bar-title">Delightex Edu · 2D에서 3D 물리엔진·AR 확장</span>
+                <span class="shot-badge" style="background:var(--sky-soft); color:var(--sky);">3D · AR</span>
+              </div>
+              <div class="shot-img-wrap"><img src="assets/info_ar_class.jpg" alt="AR 수업" /></div>
+              <div class="shot-caption">
+                <div>
+                  <div class="shot-caption-text">2. 회복된 멸종위기동물 서식지 AR 교실 구현</div>
+                  <span class="shot-caption-sub">컴퓨터 조작 미숙 학생-숙련 학생 매칭 동료교수로 전원 완수</span>
+                </div>
+                <span class="zoom-pill">🔍 확대</span>
+              </div>
+            </div>
+
+            <div class="shot-card zoom-trigger" data-img="assets/inf_ecodata_strip.png" data-title="[2학기 정보 5차시] 교정 생물 관찰(Google Lens·이음AI) ➔ 구글 시트 전처리·구조화 ➔ 차트 시각화" data-url="https://padlet.com/sjylim0829/2026-uabqfny3nkkvyuik">
+              <div class="shot-bar">
+                <div class="shot-dots"><span></span><span></span><span></span></div>
+                <span class="shot-bar-title">2학기 · 우리 학교 생태·환경 데이터 분석·시각화</span>
+                <span class="shot-badge" style="background:var(--emerald-soft); color:var(--emerald);">데이터 리터러시</span>
+              </div>
+              <div class="shot-img-wrap light-bg">
+                <img class="contain-img" src="assets/inf_ecodata_strip.png" alt="생태 데이터 시각화" />
+                <div class="inset-thumb zoom-trigger" data-img="assets/info_ecodata_web.png" data-title="자체 제작 생태데이터 프로젝트 수업 안내 웹페이지" data-url="https://padlet.com/sjylim0829/2026-uabqfny3nkkvyuik">
+                  <img src="assets/info_ecodata_web.png" alt="생태데이터 수업웹" />
+                  <div class="inset-label">수업 안내 웹페이지</div>
+                </div>
+              </div>
+              <div class="shot-caption">
+                <div>
+                  <div class="shot-caption-text">3. 직접 수집한 생물 데이터 전처리 · 차트 해석</div>
+                  <span class="shot-caption-sub">"내 데이터가 타인에게 쓰인다 생각하니 정확도에 책임감 생겨"</span>
+                </div>
+                <span class="zoom-pill">🔍 확대</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="summary-banner">
+            <span>💡 <strong>사고의 외주화를 막는 교학공 성찰(10.21. 권역 연수 확산):</strong> 생물 분류 단계에서 모든 답을 다 주는 생성형 AI보다 명칭만 알려주는 <strong>Google Lens</strong>가 학생 스스로 분류 기준을 세우는 사고력 촉진에 더 타당함을 규명!</span>
+          </div>
+        </div>
+
+        <div class="slide-footer">
+          <span>교내 공개수업(9.21.) & 남부 교사단 디지털 소외 토론 나눔(10.12.) · 바이브코딩 권역 연수 출강(10.21.)</span>
+          <span>성취기준 [9정02-02~04, 9정03-08]</span>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           SLIDE 09: [미술] 이음AI 3D 에코 아바타 & 그린 리빙랩 순환 설치미술 (09:30 ~ 10:45 | 75초)
+      ====================================================================== -->
+      <section class="slide" data-part="1" data-time="09:30~10:45 (75초)" data-script="다음은 변희연, 강소혜 부장님의 미술과 기록입니다. 1학기 8차시 ‘에코 아바타’ 수업에서는 과학 패들렛의 동물 조사 카드에서 나와 닮은 멸종위기종과 ‘나 키워드’ 세 가지를 찾아 4등분 도화지에 2D 캐릭터를 채색한 뒤, 개인정보 입력 금지와 출처 표기 등 생성형 AI 윤리를 익히고 이음AI 제미나이에게 조건 프롬프트를 입력해 입체감 있는 3D 캐릭터로 변환했습니다. 1학년 1반부터 8반까지 모든 학급 패들렛과 ‘다했니’에 스케치부터 프롬프트 캡처본, 3D 완성작까지 3단계 과정이 고스란히 축적되었고, 9월 9일에는 남부 교사단 대표로 ‘AI로 재해석하는 서양미술사’ 공개수업까지 펼쳤습니다. 2학기에는 친환경 재료를 패들렛으로 3차 인증하며 교내 설치미술 후 폐기물 제로 순환 철거까지 실천했습니다.">
+        <div class="slide-header-row">
+          <div>
+            <div class="slide-eyebrow" style="color:#DB2777;">PART 2 · SUBJECT AI RECORDS — FINE ARTS <span class="subject-chip" style="background:#FCE7F3; color:#BE185D;">미술 1·2학기 AI 캐릭터 & 그린 리빙랩</span></div>
+            <h2 class="slide-title">[미술] 이음AI(Gemini) 3D ‘에코 아바타’ 창작 & 폐기물 제로 생태 설치미술</h2>
+          </div>
+          <span class="slide-time-badge">⏱️ 09:30~10:45 (75초)</span>
+        </div>
+
+        <div class="slide-content">
+          <div class="grid-3col">
+            <div class="shot-card zoom-trigger" data-img="assets/art_avatar_class.jpg" data-title="[1학기 미술 8차시 · 변희연·강소혜T] 나와 닮은 멸종위기종 2D 드로잉 ➔ 이음AI(제미나이) 3D 캐릭터 변환 수업" data-url="https://padlet.com/bbx25067/26-1-3-5ugatlpunu4vm9h4">
+              <div class="shot-bar">
+                <div class="shot-dots"><span></span><span></span><span></span></div>
+                <span class="shot-bar-title">1학기 · 에코 아바타 2D ➔ 이음AI 3D 변환</span>
+                <span class="shot-badge" style="background:#FCE7F3; color:#BE185D;">프롬프트 설계</span>
+              </div>
+              <div class="shot-img-wrap">
+                <img src="assets/art_avatar_class.jpg" alt="에코아바타 수업" />
+                <div class="inset-thumb zoom-trigger" style="width:34%; height:44%;" data-img="assets/qr_art_padlet.png" data-title="1학년 3반 에코 아바타 패들렛 대표 QR코드 (1~8반 전 학급 운영)" data-url="https://padlet.com/bbx25067/26-1-3-5ugatlpunu4vm9h4">
+                  <img class="contain-img" src="assets/qr_art_padlet.png" alt="미술 패들렛 QR" />
+                  <div class="inset-label">1~8반 패들렛 QR</div>
+                </div>
+              </div>
+              <div class="shot-caption">
+                <div>
+                  <div class="shot-caption-text">1. ‘나 키워드’ 3개 반영 2D 채색 & AI 3D 변환</div>
+                  <span class="shot-caption-sub">초상권·개인정보 금지 AI 윤리 숙지 후 조건 프롬프트 정교화</span>
+                </div>
+                <span class="zoom-pill">🔍 확대</span>
+              </div>
+            </div>
+
+            <div class="shot-card zoom-trigger" data-img="assets/art_avatar_work1.jpg" data-title="학생 에코 아바타 4등분 시안·3D 변환 포트폴리오 & 온·오프라인 전시" data-url="https://padlet.com/techsegu1/padlet-wo79pdok4fskbyod">
+              <div class="shot-bar">
+                <div class="shot-dots"><span></span><span></span><span></span></div>
+                <span class="shot-bar-title">패들렛 · ‘다했니’ 3단계 과정 포트폴리오 & 전시</span>
+                <span class="shot-badge" style="background:var(--primary-soft); color:var(--primary-dark);">9.9. 권역공개</span>
+              </div>
+              <div class="shot-img-wrap">
+                <img src="assets/art_avatar_work1.jpg" alt="에코아바타 작품1" />
+                <div class="inset-thumb zoom-trigger" data-img="assets/art_avatar_work2.jpg" data-title="학생 에코 아바타 작품 및 4컷 생태 만화 확장" data-url="https://padlet.com/bbx25067/26-1-3-5ugatlpunu4vm9h4">
+                  <img src="assets/art_avatar_work2.jpg" alt="에코아바타 작품2" />
+                  <div class="inset-label">학생 창작 산출물</div>
+                </div>
+              </div>
+              <div class="shot-caption">
+                <div>
+                  <div class="shot-caption-text">2. 스케치 ➔ 채색 ➔ 프롬프트 캡처 ➔ 3D 전시</div>
+                  <span class="shot-caption-sub">9.9. 남부 교사단 『AI로 재해석하는 서양미술사』 관내 수업공개</span>
+                </div>
+                <span class="zoom-pill">🔍 확대</span>
+              </div>
+            </div>
+
+            <div class="shot-card zoom-trigger" data-img="assets/art_livinglab_strip.png" data-title="[2학기 미술 10차시] 그린 리빙랩 생태 설치미술 — 패들렛 1~3차 친환경 재료 인증 및 폐기물 제로 순환 철거" data-url="https://padlet.com/sjylim0829/2026-uabqfny3nkkvyuik">
+              <div class="shot-bar">
+                <div class="shot-dots"><span></span><span></span><span></span></div>
+                <span class="shot-bar-title">2학기 · 그린 리빙랩 설치미술 & 패들렛 재료인증</span>
+                <span class="shot-badge" style="background:var(--emerald-soft); color:var(--emerald);">Zero-Waste</span>
+              </div>
+              <div class="shot-img-wrap light-bg">
+                <img class="contain-img" src="assets/art_livinglab_strip.png" alt="그린 리빙랩 미술" />
+              </div>
+              <div class="shot-caption">
+                <div>
+                  <div class="shot-caption-text">3. 패들렛 1~3차 친환경 재료 인증 & 순환 철거</div>
+                  <span class="shot-caption-sub">1주일 교내 상설 전시·도슨트 후 분리수거장·화단으로 100% 환원</span>
+                </div>
+                <span class="zoom-pill">🔍 확대</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="summary-banner">
+            <span>🎨 <strong>다문화·디지털 격차 해소 환류:</strong> 프롬프트 작성 숙련도에 따라 2D 원작 의도가 달라지는 편차를 발견하고, <strong>다문화 학생용 시각 안내문 & 조건 프롬프트 구조화 템플릿</strong>을 비계로 구축함</span>
+          </div>
+        </div>
+
+        <div class="slide-footer">
+          <span>1학년 1~8반 전 학급 패들렛 온라인 갤러리 & 복도 게시판 동시 전시 (강소혜·변희연T)</span>
+          <a href="https://padlet.com/bbx25067/26-1-3-5ugatlpunu4vm9h4" target="_blank">1학년 미술 에코아바타 대표 패들렛 열기 ↗</a>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           SLIDE 10: [국어 · 사회 확장] 인문·사회 교과의 AI 수업 실천 (10:45 ~ 11:50 | 65초)
+      ====================================================================== -->
+      <section class="slide" data-part="1" data-time="10:45~11:50 (65초)" data-script="저희 교학공의 큰 강점은 수학·과학·정보·미술에 그치지 않고 국어, 사회, 역사, 가정, 진로까지 인문·사회 전 교과로 AI 수업이 자연스럽게 퍼져나갔다는 점입니다. 왼쪽 국어과에서는 AI 글쓰기 플랫폼 ‘자작자작’을 도입해 성취기준에 맞는 글감 추천과 실시간 AI 첨삭 가이드를 제공함으로써, 구두 발표는 부끄러워하던 학생들의 글쓰기 분량과 구성력을 끌어올리고 교사의 개별 첨삭 부담도 덜었습니다. 가운데와 오른쪽은 3학년 사회 수업 산출물 두 가지입니다. 간식 포장지의 원산지를 지리적으로 분석해 기후·식량 위기 해결 포스터를 AI 이미지로 만든 전시회와, 우리 지역을 살기 좋은 도시로 만드는 공약을 세우고 Suno AI로 직접 선거송을 작곡해 패들렛으로 공유한 프로젝트입니다.">
+        <div class="slide-header-row">
+          <div>
+            <div class="slide-eyebrow" style="color:var(--rose);">PART 2 · SUBJECT AI RECORDS — HUMANITIES & SOCIAL STUDIES <span class="subject-chip" style="background:var(--rose-soft); color:var(--rose);">국어 · 사회 전 교과 확산</span></div>
+            <h2 class="slide-title">[인문·사회 확장] 국어 ‘자작자작’ AI 작문·첨삭 & 사회 AI 지리 전시회 · Suno 선거송</h2>
+          </div>
+          <span class="slide-time-badge">⏱️ 10:45~11:50 (65초)</span>
+        </div>
+
+        <div class="slide-content">
+          <div class="grid-3col">
+            <div class="shot-card zoom-trigger" data-img="assets/korean_jajak_live.png" data-title="[국어과 · 박준영·정수아·강주은T] AI 글쓰기 교육 플랫폼 ‘자작자작’ 활용 작문 및 AI 윤리 독서토론" data-url="https://www.jajakjajak.com/">
+              <div class="shot-bar">
+                <div class="shot-dots"><span></span><span></span><span></span></div>
+                <span class="shot-bar-title">국어과 · AI 작문 플랫폼 ‘자작자작(JajakJajak)’</span>
+                <span class="shot-badge" style="background:var(--sky-soft); color:var(--sky);">AI 첨삭·토론</span>
+              </div>
+              <div class="shot-img-wrap light-bg"><img src="assets/korean_jajak_live.png" alt="국어 자작자작" style="object-position:top left;" /></div>
+              <div class="shot-caption">
+                <div>
+                  <div class="shot-caption-text">1. 성취기준 맞춤 글감 & AI 실시간 피드백</div>
+                  <span class="shot-caption-sub">웹 공간에서 활발히 소통하는 학생 특성을 살려 글짓기 역량 향상</span>
+                </div>
+                <span class="zoom-pill">🔍 확대</span>
+              </div>
+            </div>
+
+            <div class="shot-card zoom-trigger" data-img="assets/social_geo_live.png" data-title="[사회 3학년 · 홍주은T] 농업 세계화 ‘포장지 지리 활동’ 수행평가 & 세계시민 AI 포스터 전시회" data-url="https://padlet.com/mihong0125/2026-3-2-8f3t2zvb6ozlqqtx">
+              <div class="shot-bar">
+                <div class="shot-dots"><span></span><span></span><span></span></div>
+                <span class="shot-bar-title">사회 3학년 · 포장지 지리 분석 & AI 포스터 전시회</span>
+                <span class="shot-badge" style="background:var(--emerald-soft); color:var(--emerald);">세계시민</span>
+              </div>
+              <div class="shot-img-wrap">
+                <img src="assets/social_geo_live.png" alt="사회 지리 패들렛" />
+                <div class="inset-thumb zoom-trigger" data-img="assets/social_geo_work_1.png" data-title="학생 제작 AI 인포그래픽 — 물 부족 문제를 극복한 미래의 호주" data-url="https://padlet.com/mihong0125/2026-3-2-8f3t2zvb6ozlqqtx">
+                  <img class="contain-img" src="assets/social_geo_work_1.png" alt="호주 물부족 포스터" />
+                  <div class="inset-label">학생 AI 포스터 작품</div>
+                </div>
+              </div>
+              <div class="shot-caption">
+                <div>
+                  <div class="shot-caption-text">2. 간식 포장지 원산지 추적 & 기후 해법 시각화</div>
+                  <span class="shot-caption-sub">생성형 AI 이미지를 활용한 세계시민 온라인 갤러리 비평</span>
+                </div>
+                <span class="zoom-pill">🔍 확대</span>
+              </div>
+            </div>
+
+            <div class="shot-card zoom-trigger" data-img="assets/social_song_live.png" data-title="[사회 3학년 · 홍주은T] 살기 좋은 도시 만들기 정당 공약 발표 & Suno AI 선거송 작곡 패들렛" data-url="https://padlet.com/geogeohong/2026-3-2-lzm9c8eh9z1szspd">
+              <div class="shot-bar">
+                <div class="shot-dots"><span></span><span></span><span></span></div>
+                <span class="shot-bar-title">사회 3학년 · 살기 좋은 도시 공약 & Suno 선거송</span>
+                <span class="shot-badge" style="background:var(--rose-soft); color:var(--rose);">Suno AI 작곡</span>
+              </div>
+              <div class="shot-img-wrap"><img src="assets/social_song_live.png" alt="사회 선거송 패들렛" /></div>
+              <div class="shot-caption">
+                <div>
+                  <div class="shot-caption-text">3. 우리 동네 긍정 비전 설계 & AI 선거송 제작</div>
+                  <span class="shot-caption-sub">6월 교학공 고민(‘부정적 지역 자화상 우려’)을 창작 수업으로 승화!</span>
+                </div>
+                <span class="zoom-pill">🔍 확대</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-footer">
+          <span>가정·진로·역사 교과에서도 지속가능한 기술 윤리, 진로 탐색, 역사 인물 탐구로 ‘1인 1작은시도’ 확산</span>
+          <a href="https://padlet.com/geogeohong/2026-3-2-lzm9c8eh9z1szspd" target="_blank">사회 Suno 선거송 패들렛 열기 ↗</a>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           SLIDE 11: [창체 ①] 전교생 참여 자체 개발 웹앱 캠페인 3종 (11:50 ~ 13:05 | 75초)
+      ====================================================================== -->
+      <section class="slide" data-part="2" data-time="11:50~13:05 (75초)" data-script="이제 3부, 교과 교실을 넘어 전교생 529명의 일상을 바꾼 창의적 체험활동과 동아리 AI·디지털 기록입니다. 선생님들이 구글 앱스크립트와 바이브 코딩으로 직접 개발한 무설치 웹앱 세 가지가 전교생 창체 캠페인의 중심이 되었습니다. 왼쪽 ‘생태전환 Eco-MBTI’는 20문항 환경 습관 진단을 통해 백두산 호랑이, 수달, 꿀벌 등 16종 지표종과 매칭해주고, 응답이 구글 시트에 실시간 통계로 쌓이며 1·2·3학년 전교생 패들렛으로 실천 다짐을 나누는 창체 방송 캠페인입니다. 가운데 ‘클로즈업 네이처’는 선생님 네 분이 찍은 화단 식물 초근접 사진 단서를 보고 점심시간마다 교정을 누비며 인증샷을 올리는 모바일 웹앱이고, 오른쪽은 급식실 앞에서 운영한 ‘분리배출 스피드 웹게임’입니다.">
+        <div class="slide-header-row">
+          <div>
+            <div class="slide-eyebrow" style="color:var(--emerald);">PART 3 · CREATIVE EXPERIENTIAL ACTIVITIES (창체 ①) <span class="subject-chip" style="background:var(--emerald-soft); color:var(--emerald);">전교생 529명 디지털 캠페인</span></div>
+            <h2 class="slide-title">[창체 ①] 교사 자체 개발 웹앱으로 전교생이 참여한 Eco-MBTI · 클로즈업 네이처 · 환경 챌린지</h2>
+          </div>
+          <span class="slide-time-badge">⏱️ 11:50~13:05 (75초)</span>
+        </div>
+
+        <div class="slide-content">
+          <div class="grid-3col">
+            <div class="shot-card zoom-trigger" data-img="assets/webapp_ecombt.png" data-title="[전교생 창체 웹앱] 🌍 생태전환 Eco-MBTI (20문항 진단 · 16종 지표종 · 구글 시트 자동 집계 · 전교생 패들렛)" data-url="https://script.google.com/macros/s/AKfycbxzytTr14cZFXljnBUJkJzBzUnRL_1t0YnmsxQEbPvM6fU564otKE1Xfk8v8GLIH1gB/exec">
+              <div class="shot-bar">
+                <div class="shot-dots"><span></span><span></span><span></span></div>
+                <span class="shot-bar-title">🌍 생태전환 Eco-MBTI 진단 웹앱 & 학급 방송</span>
+                <span class="shot-badge" style="background:var(--emerald-soft); color:var(--emerald);">GAS + 시트DB</span>
+              </div>
+              <div class="shot-img-wrap">
+                <img src="assets/webapp_ecombt.png" alt="Eco-MBTI 웹앱" />
+                <div class="inset-thumb zoom-trigger" data-img="assets/changche_ecombt_class.jpg" data-title="전 학급 창체 방송 연계 Eco-MBTI 진단 및 1·2·3학년 패들렛 다짐 공유" data-url="https://padlet.com/sjylim0829/1-kd5sblek5ok8yjlo">
+                  <img src="assets/changche_ecombt_class.jpg" alt="창체 방송 참여" />
+                  <div class="inset-label">전 학급 창체 참여</div>
+                </div>
+              </div>
+              <div class="shot-caption">
+                <div>
+                  <div class="shot-caption-text">1. 20문항 환경습관 진단 & 1·2·3학년 패들렛</div>
+                  <span class="shot-caption-sub">구글 시트 학급별 생태 유형 실시간 통계 자동 축적</span>
+                </div>
+                <span class="zoom-pill">🔍 확대</span>
+              </div>
+            </div>
+
+            <div class="shot-card zoom-trigger" data-img="assets/webapp_nature.png" data-title="[교내행사 1 · 4.20.~21.] 🌿 클로즈업 네이처(Close-up Nature): 내 이름이 뭐게? 모바일 추리 미션 웹앱" data-url="https://script.google.com/macros/s/AKfycbxYqYrUmCCt9VlvrIlT0fAq7vQci2JV8paYAwUsTjR8PbpNsFk36HID-qLeOBwdoCCb/exec">
+              <div class="shot-bar">
+                <div class="shot-dots"><span></span><span></span><span></span></div>
+                <span class="shot-bar-title">🌿 클로즈업 네이처: 내 이름이 뭐게? QR 웹앱</span>
+                <span class="shot-badge" style="background:var(--amber-soft); color:var(--amber);">생태 탐사</span>
+              </div>
+              <div class="shot-img-wrap"><img src="assets/webapp_nature.png" alt="클로즈업 네이처" /></div>
+              <div class="shot-caption">
+                <div>
+                  <div class="shot-caption-text">2. 초근접 식물 사진 추리 & 화단 보물찾기 인증</div>
+                  <span class="shot-caption-sub">교사 4인 촬영 출제 · 모바일 QR 인증샷 제출 · 학년별 시상</span>
+                </div>
+                <span class="zoom-pill">🔍 확대</span>
+              </div>
+            </div>
+
+            <div class="shot-card zoom-trigger" data-img="assets/changche_recycle_game.png" data-title="[교내행사 2 · 7.9.~10.] ♻️ 하루 1시간 환경 챌린지! — 쓰레기 분리배출 스피드 게임 & 지구 식탁 챌린지" data-url="https://sjylim0829-commits.github.io/recycle-game/">
+              <div class="shot-bar">
+                <div class="shot-dots"><span></span><span></span><span></span></div>
+                <span class="shot-bar-title">♻️ 분리배출 스피드 웹게임 & 지구 식탁 챌린지</span>
+                <span class="shot-badge" style="background:var(--sky-soft); color:var(--sky);">GitHub 배포</span>
+              </div>
+              <div class="shot-img-wrap light-bg"><img src="assets/changche_recycle_game.png" alt="분리배출 게임" /></div>
+              <div class="shot-caption">
+                <div>
+                  <div class="shot-caption-text">3. 점심시간 급식실 앞 환경 시뮬레이션 부스</div>
+                  <span class="shot-caption-sub">헷갈리는 분리배출 오답 즉시 해설 및 탄소 식습관 점수 체험</span>
+                </div>
+                <span class="zoom-pill">🔍 확대</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-footer">
+          <span>전교생 학년별 Eco-MBTI 패들렛: <a href="https://padlet.com/sjylim0829/1-kd5sblek5ok8yjlo" target="_blank">1학년 ↗</a> · <a href="https://padlet.com/sjylim0829/2-aj5ykrgo18hihmm9" target="_blank">2학년 ↗</a> · <a href="https://padlet.com/sjylim0829/3-zvzbczkn0vg9jmlo" target="_blank">3학년 ↗</a></span>
+          <a href="https://sjylim0829-commits.github.io/recycle-game/" target="_blank">♻️ 분리배출 웹게임 실행 ↗</a>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           SLIDE 12: [창체 ② · 체험형 AI 윤리] AI 한마디, 나 한바퀴! 인간 발전소 (13:05 ~ 14:20 | 75초)
+      ====================================================================== -->
+      <section class="slide" data-part="2" data-time="13:05~14:20 (75초)" data-script="창체 주간에 가장 뜨거운 울림을 주었던 체험형 AI 윤리 교육, ‘AI 한마디, 나 한바퀴! 직접 만드는 에너지’ 행사입니다. 생성형 AI를 많이 쓰는 만큼, 그 이면에 숨겨진 막대한 데이터센터 전력 소비와 환경 비용을 아이들이 몸으로 느껴보게 하고 싶었습니다. 그래서 크롬 웹 시리얼 API로 아두이노 전류·전압 센서 데이터를 0.1초 단위로 사다리꼴 적분해 실시간 발전량을 보여주는 웹앱을 직접 코딩했습니다. 학생들이 손잡이 발전기를 힘껏 돌려 ‘AI에게 질문 한 번 던질 때 소모되는 전기의 단 100분의 1’을 만드는 미션에 도전했는데요, 팔이 아파 100분의 1조차 만들기 힘들다는 걸 체감하며 ‘장난삼아 던지던 AI 프롬프트를 신중하게 써야겠다’는 살아있는 AI 윤리 의식을 얻었습니다.">
+        <div class="slide-header-row">
+          <div>
+            <div class="slide-eyebrow" style="color:var(--emerald);">PART 3 · CREATIVE EXPERIENTIAL ACTIVITIES (창체 ② · AI 윤리) <span class="subject-chip" style="background:var(--amber-soft); color:var(--amber);">체험형 AI 소비전력 교육</span></div>
+            <h2 class="slide-title">[창체 ②] 『AI 한마디, 나 한바퀴! 직접 만드는 에너지』 — 몸으로 체득하는 책임 AI</h2>
+          </div>
+          <span class="slide-time-badge">⏱️ 13:05~14:20 (75초)</span>
+        </div>
+
+        <div class="slide-content">
+          <div class="grid-2col-asym">
+            <div class="shot-card zoom-trigger" data-img="assets/changche_generator_app.png" data-title="[교사 개발 피지컬×웹앱] ⚡ 미니 발전기 · 에너지 챌린지 웹앱 (Web Serial API 0.1초 전류·전압 적분)" data-url="https://sjylim0829-commits.github.io/presentation/">
+              <div class="shot-bar">
+                <div class="shot-dots"><span></span><span></span><span></span></div>
+                <span class="shot-bar-title">⚡ Web Serial API 실시간 전류·전압 적분 에너지 챌린지 웹앱</span>
+                <span class="shot-badge" style="background:var(--amber-soft); color:var(--amber);">센서 실시간 연동</span>
+              </div>
+              <div class="shot-img-wrap">
+                <img src="assets/changche_generator_app.png" alt="미니발전기 웹앱" />
+                <div class="inset-thumb zoom-trigger" data-img="assets/changche_humanpower_slide.png" data-title="핸드크랭크 인간 발전소 기획안 웹 슬라이드" data-url="https://sjylim0829-commits.github.io/presentation/">
+                  <img src="assets/changche_humanpower_slide.png" alt="인간발전소 기획안" />
+                  <div class="inset-label">인간발전소 기획 슬라이드</div>
+                </div>
+              </div>
+              <div class="shot-caption">
+                <div>
+                  <div class="shot-caption-text">생성형 AI 대화 1회 소비전력 계산 & 자가발전 1/100 도전 미션</div>
+                  <span class="shot-caption-sub">손잡이 발전기 + 전류·전압 센서 + 브라우저 실시간 게이지 연동</span>
+                </div>
+                <span class="zoom-pill">🔍 확대</span>
+              </div>
+            </div>
+
+            <div class="col-stack">
+              <div class="grid-2col-even" style="flex:1;">
+                <div class="shot-card zoom-trigger" data-img="assets/changche_gen_photo1.jpg" data-title="『AI 한마디, 나 한바퀴!』 부스에서 자가발전기를 돌리며 실시간 발전량 웹앱을 확인하는 학생들" data-url="https://sjylim0829-commits.github.io/presentation/">
+                  <div class="shot-bar">
+                    <div class="shot-dots"><span></span><span></span><span></span></div>
+                    <span class="shot-bar-title">학생 자가발전 도전 현장 ①</span>
+                  </div>
+                  <div class="shot-img-wrap"><img src="assets/changche_gen_photo1.jpg" alt="발전기 현장1" /></div>
+                </div>
+
+                <div class="shot-card zoom-trigger" data-img="assets/changche_gen_photo2.jpg" data-title="서로 응원하며 AI 대화 1회 전력의 1/100 생산에 도전하는 학생들" data-url="https://sjylim0829-commits.github.io/presentation/">
+                  <div class="shot-bar">
+                    <div class="shot-dots"><span></span><span></span><span></span></div>
+                    <span class="shot-bar-title">학생 자가발전 도전 현장 ②</span>
+                  </div>
+                  <div class="shot-img-wrap"><img src="assets/changche_gen_photo2.jpg" alt="발전기 현장2" /></div>
+                </div>
+              </div>
+
+              <div class="quote-box">
+                ⚡ <strong>[체험 학생 성찰 요약]</strong> "평소 클릭 한 번으로 쉽게 묻던 AI 대화 한 마디의 <strong>100분의 1 전기조차 직접 돌려서 만들기 이렇게 힘들다는 사실</strong>에 깜짝 놀랐어요. 이제 꼭 필요한 질문을 정리해서 책임감 있게 AI를 사용하겠습니다!"
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-footer">
+          <span>일방적 훈화 대신 <strong>피지컬 컴퓨팅 × 웹 시뮬레이션 체험</strong>으로 내면화한 디지털 시민성·탄소중립 윤리</span>
+          <a href="https://sjylim0829-commits.github.io/presentation/" target="_blank">⚡ 인간발전소 기획 웹슬라이드 열기 ↗</a>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           SLIDE 13: [창체 ③ · 동아리 & 지역 확산] IoT 스마트팜 · 1학급 1화분/무순 · 구로청소년축제 (14:20 ~ 15:30 | 70초)
+      ====================================================================== -->
+      <section class="slide" data-part="2" data-time="14:20~15:30 (70초)" data-script="창체 동아리와 학급 자치 활동에서는 학생들이 기술의 수혜자를 넘어 직접 동료와 지역사회를 가르치는 주체로 성장했습니다. 황폐했던 학교 화단을 개간하며 ‘방학이나 연휴 중 물 줄 사람이 없다’는 문제를 발견한 동아리 학생들이 서울식물원 견학과 당산중 AI 스마트팜 연합캠프를 이수한 뒤 ‘CANOPY 스마트 지원단’을 꾸렸습니다. 이 학생들이 교사 대신 동료교수로 나서 아두이노 토양 수분 센서 자동 급수 화분을 친구들에게 전수했고, 10월 17일 제11회 구로 청소년 축제에서는 직접 과학부스를 운영해 지역 주민들에게 스마트팜을 시연했습니다. 또한 2학년은 ‘1학급 1화분 결과보고서 웹앱’을, 1학년은 패들렛 ‘무순일기’와 무순 관리 AI 에이전트 설계를 통해 전 학급에 초록 돌봄을 확산했습니다.">
+        <div class="slide-header-row">
+          <div>
+            <div class="slide-eyebrow" style="color:var(--emerald);">PART 3 · CLUBS & COMMUNITY DIFFUSION (창체 ③ · 동아리·마을) <span class="subject-chip" style="background:var(--emerald-soft); color:var(--emerald);">학생 주도 동료교수 & 지역축제</span></div>
+            <h2 class="slide-title">[창체 ③] IoT 스마트팜 지원단 동료교수 · 1학급 1화분/무순 AI 에이전트 · 구로 청소년 축제</h2>
+          </div>
+          <span class="slide-time-badge">⏱️ 14:20~15:30 (70초)</span>
+        </div>
+
+        <div class="slide-content">
+          <div class="grid-3col">
+            <div class="shot-card zoom-trigger" data-img="assets/club_smartfarm_practice.jpg" data-title="[동아리 CANOPY 스마트 지원단 1·2기] 토양 수분·온습도 센서 기반 자동 급수 스마트 화분 동료교수 및 구로 청소년 축제 부스" data-url="https://padlet.com/sjylim0829/2026-uabqfny3nkkvyuik">
+              <div class="shot-bar">
+                <div class="shot-dots"><span></span><span></span><span></span></div>
+                <span class="shot-bar-title">IoT 스마트팜 동료교수 & 구로청소년축제 부스</span>
+                <span class="shot-badge" style="background:var(--emerald-soft); color:var(--emerald);">마을 확산</span>
+              </div>
+              <div class="shot-img-wrap">
+                <img src="assets/club_smartfarm_practice.jpg" alt="스마트팜 실습" />
+                <div class="inset-thumb zoom-trigger" data-img="assets/club_smartfarm_local.jpg" data-title="동아리 스마트 화분 설계 및 제11회 구로 청소년 축제(10.17.) 과학부스 운영" data-url="https://padlet.com/sjylim0829/2026-uabqfny3nkkvyuik">
+                  <img src="assets/club_smartfarm_local.jpg" alt="스마트팜 부스" />
+                  <div class="inset-label">동아리·축제 시연</div>
+                </div>
+              </div>
+              <div class="shot-caption">
+                <div>
+                  <div class="shot-caption-text">1. 연합캠프(6차시) ➔ 동료교수(4차시) ➔ 지역축제</div>
+                  <span class="shot-caption-sub">서울식물원·당산중 캠프 이수생이 학생 주도 스마트 화분 전파</span>
+                </div>
+                <span class="zoom-pill">🔍 확대</span>
+              </div>
+            </div>
+
+            <div class="shot-card zoom-trigger" data-img="assets/club_flowerpot_app.png" data-title="[2학년 동아리 · 전 학급] ‘우리 반 반려 꽃 · 1학급 1화분 키우기’ 디지털 활동 결과보고서 웹앱" data-url="https://sjylim0829-commits.github.io/CA/">
+              <div class="shot-bar">
+                <div class="shot-dots"><span></span><span></span><span></span></div>
+                <span class="shot-bar-title">🪴 [1학급 1화분 키우기] 결과보고서 발급 웹앱</span>
+                <span class="shot-badge" style="background:var(--sky-soft); color:var(--sky);">Canvas 웹앱</span>
+              </div>
+              <div class="shot-img-wrap light-bg"><img src="assets/club_flowerpot_app.png" alt="1학급 1화분 웹앱" /></div>
+              <div class="shot-caption">
+                <div>
+                  <div class="shot-caption-text">2. Canva 생육 설계 & 관찰 스케치 보고서 웹앱</div>
+                  <span class="shot-caption-sub">애칭 이름표·물 당번 돌봄 루틴 및 디지털 보고서 이미지 즉시 발급</span>
+                </div>
+                <span class="zoom-pill">🔍 확대</span>
+              </div>
+            </div>
+
+            <div class="shot-card zoom-trigger" data-img="assets/club_garden_work.jpg" data-title="[1학년 동아리 & 전 학급 행사] 울타리 텃밭 개간 및 ‘1학급 1무순 키우기 경진대회’ (패들렛 무순일기 & AI 관리 에이전트)" data-url="https://padlet.com/sjylim0829/2026-uabqfny3nkkvyuik">
+              <div class="shot-bar">
+                <div class="shot-dots"><span></span><span></span><span></span></div>
+                <span class="shot-bar-title">울타리 텃밭 & 1학급 1무순 패들렛 · AI 에이전트</span>
+                <span class="shot-badge" style="background:var(--violet-soft); color:var(--violet);">패들렛 일기</span>
+              </div>
+              <div class="shot-img-wrap"><img src="assets/club_garden_work.jpg" alt="울타리 텃밭" /></div>
+              <div class="shot-caption">
+                <div>
+                  <div class="shot-caption-text">3. 한 달간의 패들렛 ‘무순일기’ & AI 관리 에이전트</div>
+                  <span class="shot-caption-sub">재배 중 발견한 학급 환경 문제를 해결하는 관리 에이전트 정보 연계 구현</span>
+                </div>
+                <span class="zoom-pill">🔍 확대</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-footer">
+          <span>교실 ➔ 학교 텃밭 ➔ 인근 거점학교(당산중) ➔ 지역사회(서울식물원·구로 청소년 축제)로 뻗어가는 생태·AI 시민성</span>
+          <a href="https://sjylim0829-commits.github.io/CA/" target="_blank">🪴 1학급 1화분 보고서 웹앱 열기 ↗</a>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           SLIDE 14: [학교 업무 혁신 ① · 생기부 & 거버넌스] AI 생기부 도우미 & 오프라인 엑셀 검증기 (15:30 ~ 16:35 | 65초)
+      ====================================================================== -->
+      <section class="slide" data-part="3" data-time="15:30~16:35 (65초)" data-script="이제 4부, 선생님들께서 가장 체감하신 ‘학교 업무와 행정에서의 AI 활용 기록’입니다. 먼저 학년말마다 모든 선생님의 가장 큰 부담인 학교생활기록부 점검 업무입니다. 왼쪽은 구글 앱스크립트로 자체 제작해 공유한 ‘AI 생기부 검토 도우미’ 웹앱으로, 공백 교정과 기재 금지어 탐지, 관찰 중심 문장 다듬기를 도와줍니다. 특히 가운데 보시는 ‘학교생활기록부 엑셀 오류 검증 시스템’은 학생 개인정보 보호를 위해 외부 서버 전송이 전혀 없는 100% 오프라인 단일 HTML 파일로 개발했습니다. 나이스에서 받은 학급 출력물 엑셀 12종을 그대로 끌어다 놓으면 브라우저 내부에서 기재금지어, 맞춤법, 출결·독서·타학생 이름 혼입까지 단숨에 전수 검출해 주며, 전 교원 생기부 AI 3대 윤리 연수 슬라이드와 함께 보급했습니다.">
+        <div class="slide-header-row">
+          <div>
+            <div class="slide-eyebrow" style="color:var(--amber);">PART 4 · SCHOOL DUTY & ADMIN AI RECORDS ① <span class="subject-chip" style="background:var(--amber-soft); color:var(--amber);">교무·학생부 업무 자동화 & 보안</span></div>
+            <h2 class="slide-title">[학교 업무 ①] 『AI 생기부 검토 도우미』 · 100% 오프라인 엑셀 오류검증기 · AI 윤리 거버넌스</h2>
+          </div>
+          <span class="slide-time-badge">⏱️ 15:30~16:35 (65초)</span>
+        </div>
+
+        <div class="slide-content">
+          <div class="grid-3col">
+            <div class="shot-card zoom-trigger" data-img="assets/webapp_saenggibu.png" data-title="[교사 개발 행정 웹앱] 🌱 AI 생기부 검토 도우미 (공백 교정 · 금지어 탐지 · 관찰 중심 문장 최적화)" data-url="https://script.google.com/macros/s/AKfycbyUeElFdKai1kmnB36e6dk1XfRa7WrSg8OpYb_0wDKcgWKSDEbto-ABzU-u8GJF7gwi/exec">
+              <div class="shot-bar">
+                <div class="shot-dots"><span></span><span></span><span></span></div>
+                <span class="shot-bar-title">🌱 AI 생기부 검토 도우미 (GAS 웹앱)</span>
+                <span class="shot-badge" style="background:var(--sky-soft); color:var(--sky);">기재요령 보조</span>
+              </div>
+              <div class="shot-img-wrap"><img src="assets/webapp_saenggibu.png" alt="AI 생기부 도우미" /></div>
+              <div class="shot-caption">
+                <div>
+                  <div class="shot-caption-text">1. 금지어 자동 탐지 & 문장 다듬기 도우미</div>
+                  <span class="shot-caption-sub">사교육·대회·공인어학 등 기재 금지어 점검 및 공백·어미 정돈</span>
+                </div>
+                <span class="zoom-pill">🔍 확대</span>
+              </div>
+            </div>
+
+            <div class="shot-card zoom-trigger" data-img="assets/duty_saenggibu_validator.png" data-title="[업무망·오프라인 100% 호환] 학교생활기록부 엑셀(.xlsx) 일괄 오류 검증 시스템 (외부 서버 전송 Zero)" data-url="assets/saenggibu_validator.html">
+              <div class="shot-bar">
+                <div class="shot-dots"><span></span><span></span><span></span></div>
+                <span class="shot-bar-title">나이스 엑셀(12종) 100% 오프라인 일괄 검증기</span>
+                <span class="shot-badge" style="background:var(--amber-soft); color:var(--amber);">개인정보 100% 보호</span>
+              </div>
+              <div class="shot-img-wrap light-bg"><img src="assets/duty_saenggibu_validator.png" alt="생기부 엑셀 오류검증기" /></div>
+              <div class="shot-caption">
+                <div>
+                  <div class="shot-caption-text">2. 나이스 XLS 다중 시트 드래그 & 전수 검출</div>
+                  <span class="shot-caption-sub">외부 전송 없이 브라우저 내 SheetJS로 타학생 이름·금지어·오탈자 검출</span>
+                </div>
+                <span class="zoom-pill">🔍 확대</span>
+              </div>
+            </div>
+
+            <div class="shot-card zoom-trigger" data-img="assets/duty_saenggibu_training.png" data-title="2026학년도 2학기(학년말) 학교생활기록부 기재요령 및 생성형 AI 윤리 웹 연수 슬라이드" data-url="assets/saenggibu_slides.html">
+              <div class="shot-bar">
+                <div class="shot-dots"><span></span><span></span><span></span></div>
+                <span class="shot-bar-title">학년말 생기부 기재요령 웹 연수 슬라이드</span>
+                <span class="shot-badge" style="background:var(--emerald-soft); color:var(--emerald);">전 교원 연수</span>
+              </div>
+              <div class="shot-img-wrap light-bg"><img src="assets/duty_saenggibu_training.png" alt="생기부 연수 슬라이드" /></div>
+              <div class="shot-caption">
+                <div>
+                  <div class="shot-caption-text">3. 학교 AI 윤리 거버넌스 3종 체계 확립</div>
+                  <span class="shot-caption-sub">학운위 SW 심의 · 학부모 AI 동의서(529가구) · 생기부 3대 윤리 원칙</span>
+                </div>
+                <span class="zoom-pill">🔍 확대</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="summary-banner">
+            <span>🛡️ <strong>영서중 생기부 생성형 AI 3대 윤리 원칙:</strong> ① <strong>교사 직접 관찰</strong> 기록에 한해 보조 활용 · ② AI 생성 문장 <strong>단순 복사·붙여넣기 엄금</strong> · ③ 오프라인 검증도구 기반 <strong>최종 교차 검증 의무화</strong></span>
+          </div>
+        </div>
+
+        <div class="slide-footer">
+          <span>오프라인 데모 즉시 실행: <a href="assets/saenggibu_validator.html" target="_blank">📊 생기부 엑셀 오류검증기 열기 ↗</a> · <a href="assets/saenggibu_slides.html" target="_blank">📑 생기부 연수 슬라이드 열기 ↗</a></span>
+          <span>교무부 × 과학정보부 × 교학공 협업</span>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           SLIDE 15: [학교 업무 혁신 ② · 에이전틱 AI 행정] 안티그래비티 2.0 10초 파일 행정 & 채점 자동화 (16:35 ~ 17:40 | 65초)
+      ====================================================================== -->
+      <section class="slide" data-part="3" data-time="16:35~17:40 (65초)" data-script="두 번째 학교 업무 혁신은 9월 21일 교학공 연수로 진행한 ‘안티그래비티 2.0 에이전틱 AI 파일 행정 자동화’입니다. 기존 챗봇이 화면 밖에서 말만 해주는 친절한 상담원이었다면, 에이전틱 AI는 내 컴퓨터 폴더에 직접 들어가 문서를 정리해주는 ‘1급 교무실 인턴’입니다. 비전공 선생님들도 자연어 지시문 하나로 학생 30명이 뒤죽박죽 제출한 과제 파일명을 ‘학번_이름_보고서’로 10초 만에 일괄 변경하고, 명렬표와 대조해 미제출자 엑셀 명단을 자동 추출하는 실습에 전원 성공하셨습니다. 또한 구글 드라이브 API와 앱스크립트를 연동해 학생 태블릿 무로그인 제출 시 반별 폴더 자동 분류와 통합 채점대장 시트 생성까지 평가 행정을 자동화했습니다.">
+        <div class="slide-header-row">
+          <div>
+            <div class="slide-eyebrow" style="color:var(--amber);">PART 4 · SCHOOL DUTY & ADMIN AI RECORDS ② <span class="subject-chip" style="background:var(--amber-soft); color:var(--amber);">9.21. 에이전틱 AI 연수 & 평가·예산 행정</span></div>
+            <h2 class="slide-title">[학교 업무 ②] 안티그래비티 2.0 『10초 파일 행정』 & 수행평가 채점대장 · 예산 자동화</h2>
+          </div>
+          <span class="slide-time-badge">⏱️ 16:35~17:40 (65초)</span>
+        </div>
+
+        <div class="slide-content">
+          <div class="grid-2col-asym">
+            <div class="shot-card zoom-trigger" data-img="assets/duty_antigravity_slides.png" data-title="[9.21. 선도학교 교학공 실습 특강 · 임종윤T] 코딩 몰라도 OK! 안티그래비티 2.0으로 끝내는 교실 수업 도구 & 1초 파일 행정" data-url="assets/workshop_0921_slides.html">
+              <div class="shot-bar">
+                <div class="shot-dots"><span></span><span></span><span></span></div>
+                <span class="shot-bar-title">9.21. 안티그래비티 2.0 에이전틱 AI 실습 특강 (60분)</span>
+                <span class="shot-badge">전원 실습 성공</span>
+              </div>
+              <div class="shot-img-wrap light-bg">
+                <img src="assets/duty_antigravity_slides.png" alt="안티그래비티 연수 슬라이드" />
+                <div class="inset-thumb zoom-trigger" data-img="assets/duty_classtools_roulette.png" data-title="[실습 1 결과물] 자연어 한 문장으로 1분 만에 만든 발표자 추첨 룰렛 & 3분 집중 타이머 웹도구" data-url="assets/class_tools_sample.html">
+                  <img src="assets/duty_classtools_roulette.png" alt="수업 룰렛 타이머" />
+                  <div class="inset-label">1분 제작 룰렛·타이머</div>
+                </div>
+              </div>
+              <div class="shot-caption">
+                <div>
+                  <div class="shot-caption-text">‘화면 밖 상담원(챗봇)’ ➔ 내 폴더를 정리하는 ‘1급 교무실 인턴’</div>
+                  <span class="shot-caption-sub">1분 수업 웹도구 제작 · 10초 과제 파일 정돈 · 명령어 없는 GitHub 무료 배포</span>
+                </div>
+                <span class="zoom-pill">🔍 확대</span>
+              </div>
+            </div>
+
+            <div class="col-stack" style="justify-content:space-between;">
+              <div class="info-card" style="border-left:4px solid var(--primary);">
+                <h4>⚡ ① 과제 파일명 일괄 변경 & 미제출자 엑셀 10초 추출</h4>
+                <p>제각각인 제출 파일에서 학번·이름을 자동 식별해 <code>[학번_이름_보고서]</code>로 일괄 변경하고, <code>명렬표.csv</code>와 대조해 한글 깨짐 없는(<code>utf-8-sig</code>) <strong>미제출자 명단 엑셀</strong> 즉시 생성</p>
+              </div>
+
+              <div class="info-card" style="border-left:4px solid var(--sky);">
+                <h4>☁️ ② Google Drive 수행평가 반별 분류 & 채점대장 자동 생성</h4>
+                <p>학생이 디벗에서 구글 로그인 없이 [제출] 클릭 시, 교사 드라이브에 <strong>반별 하위 폴더 자동 생성</strong>(답안카드 PNG + 인쇄용 HTML) 및 <strong>점수 합산 수식이 걸린 통합 채점대장 시트</strong> 실시간 기록</p>
+              </div>
+
+              <div class="info-card" style="border-left:4px solid var(--emerald);">
+                <h4>📊 ③ 다학급 신청서 취합 · 설문 요약 · 노션×시트 예산 정산</h4>
+                <p>여러 학급 엑셀 시트 자동 병합, 학부모 주관식 응답 키워드 분류 보고서 초안 생성, <code>선도학교 리더십팀 예산 시트</code> & 노션 연동으로 16명 구독료·물품비 실시간 투명 정산</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-footer">
+          <span>실습 결과물 시연: <a href="assets/workshop_0921_slides.html" target="_blank">🚀 9.21. 안티그래비티 특강 슬라이드 ↗</a> · <a href="assets/class_tools_sample.html" target="_blank">🎯 발표자 룰렛·타이머 웹도구 ↗</a></span>
+          <a href="https://buly.kr/2fgVB4n" target="_blank">9.21. 연수 패들렛 ↗</a>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           SLIDE 16: QUANTITATIVE & QUALITATIVE OUTCOMES (17:40 ~ 18:55 | 75초)
+      ====================================================================== -->
+      <section class="slide" data-part="4" data-time="17:40~18:55 (75초)" data-script="5부, 지난 1년간의 운영 성과 검증입니다. 1·2학년 총 354명을 대상으로 실시한 4대 핵심역량 사전·사후 진단 결과, 모든 학년·모든 영역에서 유의미한 성장을 거두었습니다. 특히 학기 초 사전 진단에서 가장 점수가 낮았던 ‘생성형 AI·디지털 도구의 책임감 있는 활용 역량’이 1학년 3.67에서 4.16점으로 0.49점, 프로젝트 문항은 무려 0.74점이나 급상승했고, 2학년 역시 3.81에서 4.33점으로 0.52점 오르며 전 영역 중 최대 폭 성장을 기록했습니다. 교원 문화 역시 16명 공동체의 정기 모임 16회와 웹앱 10종 이상 개발을 넘어, 7월과 10월 전 교직원 44명 나눔 연수와 남부 수업·평가나눔 교사단 5개 분임 출강, 관내 34개 중학교 소식지 배포로 학교 안팎에 깊이 뿌리내렸습니다.">
+        <div class="slide-header-row">
+          <div>
+            <div class="slide-eyebrow" style="color:var(--rose);">PART 5 · VERIFIED OUTCOMES & IMPACT <span class="subject-chip" style="background:var(--rose-soft); color:var(--rose);">사전·사후 정량 검증 & 학교·권역 성과</span></div>
+            <h2 class="slide-title">데이터로 입증된 학생 역량 전 영역 상승(N=354) & 학교·권역 확산 실적</h2>
+          </div>
+          <span class="slide-time-badge">⏱️ 17:40~18:55 (75초)</span>
+        </div>
+
+        <div class="slide-content">
+          <div class="grid-2col-asym">
+            <!-- Left: Pre/Post Chart -->
+            <div class="chart-panel">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+                <strong style="font-size:13px; color:#0F172A;">📈 학생 4대 핵심역량(CARE) 사전·사후 비교 (5점 만점 · 1학년 164명 / 2학년 190명)</strong>
+                <span style="font-size:10.5px; color:#475569; font-weight:700;">회색: 사전 / 파랑: 사후</span>
+              </div>
+
+              <div class="metric-row">
+                <div class="metric-head">
+                  <span>🤖 R · 책임감 있는 AI·디지털 활용 역량 <em style="color:var(--primary); font-style:normal;">(사전 최하위 ➔ 최대 폭 상승!)</em></span>
+                  <span class="metric-gain">프로젝트 문항 +0.74↑</span>
+                </div>
+                <div class="bar-pair">
+                  <span>1학년</span>
+                  <div class="bar-track"><div class="bar-post" style="width:83.2%;"></div><div class="bar-pre" style="width:73.4%;"></div></div>
+                  <span>3.67 ➔ <strong>4.16 (+0.49)</strong></span>
+                </div>
+                <div class="bar-pair">
+                  <span>2학년</span>
+                  <div class="bar-track"><div class="bar-post" style="width:86.6%;"></div><div class="bar-pre" style="width:76.2%;"></div></div>
+                  <span>3.81 ➔ <strong>4.33 (+0.52)</strong></span>
+                </div>
+              </div>
+
+              <div class="metric-row">
+                <div class="metric-head">
+                  <span>🛡️ E · 윤리적 디지털 리터러시 (정보 신뢰성·공유 판단)</span>
+                  <span class="metric-gain">전 학년 4.30+ 돌파</span>
+                </div>
+                <div class="bar-pair">
+                  <span>1학년</span>
+                  <div class="bar-track"><div class="bar-post" style="width:86.0%;"></div><div class="bar-pre" style="width:78.4%;"></div></div>
+                  <span>3.92 ➔ <strong>4.30 (+0.38)</strong></span>
+                </div>
+                <div class="bar-pair">
+                  <span>2학년</span>
+                  <div class="bar-track"><div class="bar-post" style="width:88.6%;"></div><div class="bar-pre" style="width:79.8%;"></div></div>
+                  <span>3.99 ➔ <strong>4.43 (+0.44)</strong></span>
+                </div>
+              </div>
+
+              <div class="metric-row">
+                <div class="metric-head">
+                  <span>🤝 A · 협력을 통한 학교·공동체 변화 실천 효능감</span>
+                  <span class="metric-gain">2학년 +0.57↑ 급상승</span>
+                </div>
+                <div class="bar-pair">
+                  <span>1학년</span>
+                  <div class="bar-track"><div class="bar-post" style="width:83.2%;"></div><div class="bar-pre" style="width:75.8%;"></div></div>
+                  <span>3.79 ➔ <strong>4.16 (+0.37)</strong></span>
+                </div>
+                <div class="bar-pair">
+                  <span>2학년</span>
+                  <div class="bar-track"><div class="bar-post" style="width:85.8%;"></div><div class="bar-pre" style="width:74.4%;"></div></div>
+                  <span>3.72 ➔ <strong>4.29 (+0.57)</strong></span>
+                </div>
+              </div>
+
+              <div class="metric-row">
+                <div class="metric-head">
+                  <span>🌱 C · 실천 중심 생태감수성 역량</span>
+                  <span class="metric-gain">완수율 100% (이탈 0명)</span>
+                </div>
+                <div class="bar-pair">
+                  <span>1·2학년</span>
+                  <div class="bar-track"><div class="bar-post" style="width:88.8%;"></div><div class="bar-pre" style="width:80.6%;"></div></div>
+                  <span>1학년 <strong>4.37</strong> / 2학년 <strong>4.44</strong></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: KPI Grid + Training Photo -->
+            <div class="col-stack">
+              <div class="kpi-grid-4">
+                <div class="kpi-card">
+                  <div class="kpi-num">9개 교과 16명 · 16회</div>
+                  <div class="kpi-label">전 교원 36.4% 자발적 참여</div>
+                  <div class="kpi-sub">패들렛 상시 코칭·나눔 댓글 60건+</div>
+                </div>
+                <div class="kpi-card" style="border-left-color:var(--sky);">
+                  <div class="kpi-num">자체 웹앱 10종+</div>
+                  <div class="kpi-label">무설치 수업·평가·행정 도구</div>
+                  <div class="kpi-sub">수학LMS·입자·동료평가·생기부검증 등</div>
+                </div>
+                <div class="kpi-card" style="border-left-color:var(--emerald);">
+                  <div class="kpi-num">교원 44명 전원 × 2회</div>
+                  <div class="kpi-label">전 교직원 수업·결과 나눔 연수</div>
+                  <div class="kpi-sub">7.13. 융합수업 나눔 / 10.26. 나눔의 날</div>
+                </div>
+                <div class="kpi-card" style="border-left-color:var(--rose);">
+                  <div class="kpi-num">5개 분임 · 34개교</div>
+                  <div class="kpi-label">남부 교사단 출강 & 소식지 확산</div>
+                  <div class="kpi-sub">공개수업(9.9/10.12) · 연수(10.21) · 한마당</div>
+                </div>
+              </div>
+
+              <div class="shot-card zoom-trigger" style="flex:1;" data-img="assets/plc_teacher_training.jpg" data-title="전 교직원 대상 AI·디지털 융합수업 및 교원학습공동체 나눔 연수 현장" data-url="https://sjylim0829-commits.github.io/Community/">
+                <div class="shot-bar">
+                  <div class="shot-dots"><span></span><span></span><span></span></div>
+                  <span class="shot-bar-title">전 교원(44명) 수업·도구 나눔 연수 및 공개수업(5회) 확산</span>
+                  <span class="shot-badge">학교 문화 정착</span>
+                </div>
+                <div class="shot-img-wrap"><img src="assets/plc_teacher_training.jpg" alt="전교원 연수 현장" /></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-footer">
+          <span>교원 직무연수 실적: 1인 15시간 이상 핵심 교원 다수 확보 (임종윤 53h, 정수아 30h, 변희연 30h, 최효석 30h, 전세연 21h 등)</span>
+          <a href="https://sjylim0829-commits.github.io/Community/" target="_blank">💌 교학공 따뜻한 응원 포스트잇 보드 열기 ↗</a>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           SLIDE 17: CONCLUSION, 3 SHIFTS & 2027 ROADMAP (18:55 ~ 20:00 | 65초)
+      ====================================================================== -->
+      <section class="slide" data-part="4" data-time="18:55~20:00 (65초)" data-script="마지막 마무리 슬라이드입니다. 올 한 해 저희 영서중학교 AI·디지털 선도학교 교원학습공동체는 세 가지 분명한 변화를 일궈냈습니다. 첫째, 신기한 기능 체험에서 벗어나 ‘수업 목표의 타당성과 AI 비판적 검증’을 중심에 두게 되었고, 둘째, 초보와 숙련 교사가 각자 겪던 고립을 ‘배움-나눔 이원화’라는 따뜻한 동료 코칭 문화로 풀어냈으며, 셋째, 유료 에듀테크의 소비자를 넘어 우리 교실과 행정에 필요한 도구를 직접 만들어 쓰는 ‘바이브 코딩 크리에이터’로 함께 성장했습니다. 내년에는 올해 축적한 10여 종의 웹도구를 ‘교내 오픈소스 무설치 웹앱 뱅크’와 ‘전입교원 온보딩 키트’로 체계화해 인사이동에도 흔들리지 않는 영서중만의 문화로 이어가겠습니다. 함께 도전해주신 열여섯 분의 선생님들과 경청해주신 모든 분께 깊이 감사드립니다!">
+        <div class="slide-header-row">
+          <div>
+            <div class="slide-eyebrow" style="color:var(--primary);">PART 5 · REFLECTION & 2027 SUSTAINABLE ROADMAP <span class="subject-chip">성찰과 지속가능 비전</span></div>
+            <h2 class="slide-title">함께 일궈낸 3가지 변화 & 2027 자생적 학교 AI 문화 로드맵</h2>
+          </div>
+          <span class="slide-time-badge">⏱️ 18:55~20:00 (65초)</span>
+        </div>
+
+        <div class="slide-content">
+          <div class="shift-3col">
+            <div class="shift-card">
+              <div style="font-size:10.5px; font-weight:800; color:#64748B;">CHANGE 01 · 수업 설계의 기준</div>
+              <div class="shift-flow">
+                <span class="shift-from">신기한 에듀테크 기능 위주</span>
+                <span>➔</span>
+                <span class="shift-to">수업 타당성 & AI 비판적 검증</span>
+              </div>
+              <div style="font-size:11.2px; color:#475569;">5단계 AS-IS/TO-BE 진단과 현미경·공학 대조로 사고의 외주화 극복</div>
+            </div>
+
+            <div class="shift-card">
+              <div style="font-size:10.5px; font-weight:800; color:#64748B;">CHANGE 02 · 연구 공동체 문화</div>
+              <div class="shift-flow">
+                <span class="shift-from">초보·숙련 각자의 이중 고립</span>
+                <span>➔</span>
+                <span class="shift-to" style="background:var(--sky-soft); color:var(--sky);">배움-나눔 이원화 동료 코칭</span>
+              </div>
+              <div style="font-size:11.2px; color:#475569;">실패담도 안전하게 나누고 2주 내 동료 눈높이 연수로 즉각 응답</div>
+            </div>
+
+            <div class="shift-card">
+              <div style="font-size:10.5px; font-weight:800; color:#64748B;">CHANGE 03 · 교사 역할의 확장</div>
+              <div class="shift-flow">
+                <span class="shift-from">기성 유료 플랫폼 소비자</span>
+                <span>➔</span>
+                <span class="shift-to" style="background:var(--emerald-soft); color:var(--emerald);">무설치 바이브코딩 크리에이터</span>
+              </div>
+              <div style="font-size:11.2px; color:#475569;">교과 시뮬레이션부터 생기부 검증·10초 파일 행정까지 직접 제작</div>
+            </div>
+          </div>
+
+          <div class="grid-2col-asym" style="flex:1;">
+            <!-- Left: 2027 Roadmap & Closing Message -->
+            <div style="background:linear-gradient(135deg, #EEF2FF 0%, #F0F9FF 55%, #ECFDF5 100%); border:1px solid #C7D2FE; border-radius:15px; padding:16px 20px; display:flex; flex-direction:column; justify-content:space-between;">
+              <div>
+                <div style="font-size:11.5px; font-weight:900; color:var(--primary-dark); margin-bottom:6px;">🚀 2027 차년도 지속가능 자생 로드맵</div>
+                <ul style="padding-left:16px; font-size:12px; color:#1E293B; line-height:1.55; font-weight:600; display:flex; flex-direction:column; gap:4px;">
+                  <li><strong>『교내 오픈소스 무설치 수업·업무 웹앱 뱅크』 구축:</strong> 올해 개발한 10종+ 웹앱과 1인 1작은시도 산출물을 교과·단원·행정 업무별로 상설 아카이빙</li>
+                  <li><strong>『전입·신규 교원 배움-나눔 온보딩 스타터 키트』 운영:</strong> 노션 허브 + 상시 질문 패들렛 + 60분 실습 모듈로 인사이동에도 흔들리지 않는 학교 문화 계승</li>
+                </ul>
+              </div>
+              <div style="border-top:1px solid rgba(99,102,241,0.2); padding-top:10px; margin-top:8px;">
+                <p style="font-size:15.5px; font-weight:900; color:#0F172A; line-height:1.38;">
+                  “기술보다 위대한 것은 교실을 향한 선생님의 다정한 상상력과,<br />
+                  막히는 순간 곁에서 함께 걸어주는 <span style="color:var(--primary);">동료성</span>입니다.”
+                </p>
+                <p style="font-size:11.5px; color:#475569; margin-top:4px; font-weight:700;">경청해 주신 모든 선생님께 감사드립니다! 👏</p>
+              </div>
+            </div>
+
+            <!-- Right: 12-Item Interactive Gallery Strip for Q&A -->
+            <div class="mini-gallery-12">
+              <div class="mini-shot zoom-trigger" data-img="assets/notion_workspace.png" data-title="① 노션 통합 허브" data-url="https://app.notion.com/p/AI-3134913c2bb98017a95dcd0fb5e3b735"><img src="assets/notion_workspace.png" alt="노션" /><span>① 노션 통합 허브</span></div>
+              <div class="mini-shot zoom-trigger" data-img="assets/padlet_6wol_live.png" data-title="② 6월 5단계 분석 패들렛" data-url="https://padlet.com/sjylim0829/ai-6-4feja002kbn5lpd7"><img src="assets/padlet_6wol_live.png" alt="6월" /><span>② 6월 수업고민 패들렛</span></div>
+              <div class="mini-shot zoom-trigger" data-img="assets/math_lms_portal.png" data-title="③ 클라우드 수학 LMS" data-url="https://sjylim0829-commits.github.io/redbook-math-app/portal.html"><img src="assets/math_lms_portal.png" alt="수학LMS" /><span>③ 클라우드 수학 LMS</span></div>
+              <div class="mini-shot zoom-trigger" data-img="assets/math_starmix_lab.png" data-title="④ 중2 닮음 랩 Starmix" data-url="https://sjylim0829-commits.github.io/Starmix/"><img src="assets/math_starmix_lab.png" alt="Starmix" /><span>④ 수학 Starmix 랩</span></div>
+              <div class="mini-shot zoom-trigger" data-img="assets/claude_vibe_coding.jpg" data-title="⑤ 과학 입자 시뮬레이션" data-url="assets/particle_sim.html"><img src="assets/claude_vibe_coding.jpg" alt="입자" /><span>⑤ 과학 입자 시뮬레이션</span></div>
+              <div class="mini-shot zoom-trigger" data-img="assets/sci_cell_strip.png" data-title="⑥ 과학 상상세포 현미경 검증" data-url="https://padlet.com/chlgytjr111/2026-1-r9q8je40x6mokv5m"><img src="assets/sci_cell_strip.png" alt="세포" /><span>⑥ 과학 AI세포 검증</span></div>
+              <div class="mini-shot zoom-trigger" data-img="assets/info_ar_class.jpg" data-title="⑦ 정보 Entry·3D AR" data-url="https://padlet.com/sjylim0829/2026-uabqfny3nkkvyuik"><img src="assets/info_ar_class.jpg" alt="정보AR" /><span>⑦ 정보 Entry·3D AR</span></div>
+              <div class="mini-shot zoom-trigger" data-img="assets/art_avatar_work1.jpg" data-title="⑧ 미술 이음AI 에코아바타" data-url="https://padlet.com/bbx25067/26-1-3-5ugatlpunu4vm9h4"><img src="assets/art_avatar_work1.jpg" alt="미술" /><span>⑧ 미술 3D 에코아바타</span></div>
+              <div class="mini-shot zoom-trigger" data-img="assets/webapp_ecombt.png" data-title="⑨ 창체 Eco-MBTI 웹앱" data-url="https://script.google.com/macros/s/AKfycbxzytTr14cZFXljnBUJkJzBzUnRL_1t0YnmsxQEbPvM6fU564otKE1Xfk8v8GLIH1gB/exec"><img src="assets/webapp_ecombt.png" alt="EcoMBTI" /><span>⑨ 창체 Eco-MBTI</span></div>
+              <div class="mini-shot zoom-trigger" data-img="assets/changche_gen_photo1.jpg" data-title="⑩ AI 소비전력 자가발전" data-url="https://sjylim0829-commits.github.io/presentation/"><img src="assets/changche_gen_photo1.jpg" alt="발전기" /><span>⑩ AI 인간발전소</span></div>
+              <div class="mini-shot zoom-trigger" data-img="assets/duty_saenggibu_validator.png" data-title="⑪ 오프라인 생기부 검증기" data-url="assets/saenggibu_validator.html"><img src="assets/duty_saenggibu_validator.png" alt="생기부" /><span>⑪ 생기부 오류검증기</span></div>
+              <div class="mini-shot zoom-trigger" data-img="assets/duty_antigravity_slides.png" data-title="⑫ 안티그래비티 10초 행정" data-url="assets/workshop_0921_slides.html"><img src="assets/duty_antigravity_slides.png" alt="안티그래비티" /><span>⑫ 10초 파일 행정</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-footer">
+          <span>2026 영서중학교 AI·디지털 선도학교 교원학습공동체 (대표교사: 홍은영 / 발표자: 임종윤)</span>
+          <button class="archive-nav-btn open-archive-trigger" style="padding:3px 10px;">📂 전체 원본 링크 · 오프라인 데모 열기</button>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Live Presenter Script Bar Underneath Slide -->
+    <div class="script-under-bar" id="scriptUnderBar">
+      <div class="script-under-badge" id="scriptUnderBadge">🎤 SLIDE 01 대본</div>
+      <div class="script-under-text" id="scriptUnderText"></div>
+    </div>
+  </main>
+
+  <!-- Bottom Navigation Footer -->
+  <footer class="deck-footer">
+    <div class="slide-dots" id="slideDots"></div>
+    <div class="nav-buttons">
+      <span class="slide-counter" id="slideCounter">1 / 17</span>
+      <button class="nav-btn" id="prevBtn">← 이전</button>
+      <button class="nav-btn" id="nextBtn">다음 →</button>
+    </div>
+  </footer>
+
+  <!-- 1. Image Lightbox Modal -->
+  <div class="modal-backdrop" id="lightboxModal">
+    <div class="lightbox-img-box">
+      <img id="lightboxImg" src="" alt="확대 미리보기" />
+    </div>
+    <div class="lightbox-bar">
+      <span class="lightbox-title" id="lightboxTitle">결과물 미리보기</span>
+      <a class="lightbox-link" id="lightboxUrl" href="#" target="_blank" rel="noopener noreferrer">원본 페이지 / 데모 열기 ↗</a>
+      <button class="lightbox-close" id="lightboxClose">닫기 (ESC)</button>
+    </div>
+  </div>
+
+  <!-- 2. 17-Slide Overview Modal -->
+  <div class="modal-backdrop" id="overviewModal">
+    <div class="dialog-card">
+      <div class="dialog-head">
+        <div>
+          <h3 style="font-size:18px; font-weight:900; color:#0F172A;">⊞ 전체 슬라이드 목차 (총 5부 · 17장 · 20분 구성)</h3>
+          <p style="font-size:12px; color:#64748B;">이동할 슬라이드를 클릭하세요.</p>
+        </div>
+        <button class="tool-btn" id="closeOverviewBtn">✕ 닫기 (ESC)</button>
+      </div>
+      <div class="dialog-body">
+        <div class="overview-grid" id="overviewGrid"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Full 20-Minute Presenter Script Modal (Printable) -->
+  <div class="modal-backdrop" id="scriptModal">
+    <div class="dialog-card">
+      <div class="dialog-head">
+        <div>
+          <h3 style="font-size:18px; font-weight:900; color:#0F172A;">📜 2026 선도학교 교원학습공동체 운영 결과 발표 — 20분 전체 대본집</h3>
+          <p style="font-size:12px; color:#64748B;">화면은 [👁️ 청중 모드]로 띄워두고, 이 대본집을 인쇄하거나 태블릿으로 보며 발표하실 수 있습니다.</p>
+        </div>
+        <div class="no-print" style="display:flex; gap:8px;">
+          <button class="archive-nav-btn" onclick="window.print()">🖨️ A4 대본 인쇄</button>
+          <button class="tool-btn" id="closeScriptModalBtn">✕ 닫기 (ESC)</button>
+        </div>
+      </div>
+      <div class="dialog-body" id="fullScriptContainer"></div>
+    </div>
+  </div>
+
+  <!-- 4. Categorized Source Links & Live Web Apps Hub Modal -->
+  <div class="modal-backdrop" id="archiveModal">
+    <div class="dialog-card">
+      <div class="dialog-head">
+        <div>
+          <h3 style="font-size:18px; font-weight:900; color:#0F172A;">📂 영서중 AI·디지털 선도학교 원본 아카이브 & 자체 개발 웹앱 허브</h3>
+          <p style="font-size:12px; color:#64748B;">구글 드라이브 · 노션 · 학급/교학공 패들렛 · 클라우드 LMS · 오프라인 행정도구 바로가기</p>
+        </div>
+        <button class="tool-btn" id="closeArchiveModalBtn">✕ 닫기 (ESC)</button>
+      </div>
+      <div class="dialog-body">
+        <div class="hub-section-title">1. 교원학습공동체 노션 허브 & 월별 소통 패들렛</div>
+        <div class="archive-link-grid">
+          <a class="archive-item" href="https://app.notion.com/p/AI-3134913c2bb98017a95dcd0fb5e3b735" target="_blank">
+            <span class="a-type">NOTION 통합 허브</span>
+            <span class="a-name">AI디지털 선도학교 교원학습공동체 노션 ↗</span>
+            <span class="a-desc">계정 목록, 예산, 월별 회의록, 워크북, 수업 기록 총괄</span>
+          </a>
+          <a class="archive-item" href="https://padlet.com/chlgytjr111/ai-wcol3kwzmsseism8" target="_blank">
+            <span class="a-type">상시 코칭 PADLET</span>
+            <span class="a-name">2~3월 초기 운영 & 「이런 수업, 어떤 도구?」 보드 ↗</span>
+            <span class="a-desc">운영계획서, 이음AI 안내, 동료 Q&A 및 초기 시뮬레이션 공유</span>
+          </a>
+          <a class="archive-item" href="https://padlet.com/sjylim0829/ai-6-4feja002kbn5lpd7" target="_blank">
+            <span class="a-type">나눔 트랙 PADLET</span>
+            <span class="a-name">6월 모임 · 5단계 수업 타당성(AS-IS/TO-BE) 분석 보드 ↗</span>
+            <span class="a-desc">초보·숙련 교사 수업 고충 및 공동 처방 댓글 14건+</span>
+          </a>
+          <a class="archive-item" href="https://padlet.com/sjylim0829/260907-ai-s023ck0j0wsjhppwt7at" target="_blank">
+            <span class="a-type">배움×나눔 PADLET</span>
+            <span class="a-name">9월 7일 · 캔바 AI 바이브 코딩 연수 & 1인 1작은시도 ↗</span>
+            <span class="a-desc">교과별 2학기 수업 디자인 아이디어 및 응원 댓글 45건</span>
+          </a>
+        </div>
+
+        <div class="hub-section-title">2. 교과별(수학·과학·정보·미술·국어·사회) 수업 웹앱 & 학생 패들렛</div>
+        <div class="archive-link-grid">
+          <a class="archive-item" href="https://sjylim0829-commits.github.io/redbook-math-app/portal.html" target="_blank">
+            <span class="a-type">수학 · 클라우드 LMS</span>
+            <span class="a-name">영서 디지털 수학 통합 플랫폼 (Supabase DB 연동) ↗</span>
+            <span class="a-desc">중1 좌표평면·중2 도형의 성질/닮음 60fps 동적 조작 코스웨어</span>
+          </a>
+          <a class="archive-item" href="https://sjylim0829-commits.github.io/examination/" target="_blank">
+            <span class="a-type">수학 1학년 · 수행평가 웹앱</span>
+            <span class="a-name">생태 친화적 동물원 좌표평면 재설계 시뮬레이션 ↗</span>
+            <span class="a-desc">사분면 재배치 · 절댓값 생태 통로 검증 · 드라이브 자동 제출</span>
+          </a>
+          <a class="archive-item" href="https://sjylim0829-commits.github.io/Starmix/" target="_blank">
+            <span class="a-type">수학 2학년 · 탐구 웹앱</span>
+            <span class="a-name">Starmix 도형의 닮음 평면·3D 입체 탐구 랩 ↗</span>
+            <span class="a-desc">배율 왜곡 실험 · 합동 포개기 · 화단 식물 기하학 연계</span>
+          </a>
+          <a class="archive-item" href="assets/particle_sim.html" target="_blank">
+            <span class="a-type">과학 1학년 · 로컬 즉시 실행</span>
+            <span class="a-name">⚛️ 이음AI(Claude) 바이브 코딩 ‘입자 운동 시뮬레이션’ ↗</span>
+            <span class="a-desc">온도·입자 수 슬라이더 및 잔상 빠르기 표현 HTML (최효석T)</span>
+          </a>
+          <a class="archive-item" href="https://padlet.com/chlgytjr111/2026-1-r9q8je40x6mokv5m" target="_blank">
+            <span class="a-type">과학 1학년 · 전체 패들렛</span>
+            <span class="a-name">2026 영서중 1학년 과학 멸종위기동물·생태지도 패들렛 ↗</span>
+            <span class="a-desc">GAS 동물 관찰 카드 웹앱 연동 및 현장 관찰 대조 아카이브</span>
+          </a>
+          <a class="archive-item" href="https://padlet.com/tracy02/padlet-u7lge642nsm7fgwq" target="_blank">
+            <span class="a-type">과학 2학년 · 학생 산출물</span>
+            <span class="a-name">광합성 산물의 저장과 이용 이음AI 정보그림 패들렛 ↗</span>
+            <span class="a-desc">손그림 ➔ GPT·Claude·Gemini 변환 비교 작품 160건+ (홍은영T)</span>
+          </a>
+          <a class="archive-item" href="https://padlet.com/bbx25067/26-1-3-5ugatlpunu4vm9h4" target="_blank">
+            <span class="a-type">미술 1학년 · 학급별 패들렛(1~8반)</span>
+            <span class="a-name">에코 아바타: 이음AI(Gemini) 3D 캐릭터 대표 패들렛 ↗</span>
+            <span class="a-desc">스케치 ➔ 2D 채색 ➔ 프롬프트 캡처 ➔ 3D 변환 전 과정 (변희연T)</span>
+          </a>
+          <a class="archive-item" href="https://padlet.com/mihong0125/2026-3-2-8f3t2zvb6ozlqqtx" target="_blank">
+            <span class="a-type">사회 3학년 · 수행평가 패들렛</span>
+            <span class="a-name">포장지 지리 분석 AI 포스터 전시회 & Suno 선거송 ↗</span>
+            <span class="a-desc">기후·식량 문제 AI 인포그래픽 전시회 (홍주은T)</span>
+          </a>
+        </div>
+
+        <div class="hub-section-title">3. 창의적 체험활동 · 동아리 자체 개발 웹앱 & 캠페인 보드</div>
+        <div class="archive-link-grid">
+          <a class="archive-item" href="https://script.google.com/macros/s/AKfycbxzytTr14cZFXljnBUJkJzBzUnRL_1t0YnmsxQEbPvM6fU564otKE1Xfk8v8GLIH1gB/exec" target="_blank">
+            <span class="a-type">창체 전교생 진단 웹앱</span>
+            <span class="a-name">🌍 생태전환 Eco-MBTI (20문항 · 16종 지표종 · 시트 연동) ↗</span>
+            <span class="a-desc">전교생 529명 환경습관 진단 및 학년별 패들렛 다짐 연계</span>
+          </a>
+          <a class="archive-item" href="https://sjylim0829-commits.github.io/recycle-game/" target="_blank">
+            <span class="a-type">창체 환경 챌린지 게임</span>
+            <span class="a-name">♻️ 쓰레기 분리배출 스피드 시뮬레이션 게임 ↗</span>
+            <span class="a-desc">6종 분리수거 실시간 분류 및 품목별 오답 교정 피드백</span>
+          </a>
+          <a class="archive-item" href="https://sjylim0829-commits.github.io/presentation/" target="_blank">
+            <span class="a-type">AI 윤리 · 에너지 체험</span>
+            <span class="a-name">⚡ AI 한마디, 나 한바퀴! 핸드크랭크 인간발전소 슬라이드 ↗</span>
+            <span class="a-desc">AI 대화 소비전력 계산 및 Web Serial 자가발전 체험 기획</span>
+          </a>
+          <a class="archive-item" href="https://sjylim0829-commits.github.io/CA/" target="_blank">
+            <span class="a-type">동아리 · 전 학급 돌봄 웹앱</span>
+            <span class="a-name">🪴 [1학급 1화분 키우기] 디지털 활동 결과보고서 웹앱 ↗</span>
+            <span class="a-desc">식물 관찰 그림 캔버스 드로잉 및 학급 보고서 이미지 발급</span>
+          </a>
+        </div>
+
+        <div class="hub-section-title">4. 학교 업무 · 생기부 검증 · 에이전틱 AI 연수 도구 (오프라인 즉시 실행 가능)</div>
+        <div class="archive-link-grid">
+          <a class="archive-item" href="assets/saenggibu_validator.html" target="_blank">
+            <span class="a-type">학교 업무 ① · 오프라인 단일 HTML</span>
+            <span class="a-name">📊 2026 학교생활기록부 엑셀(.xlsx) 일괄 오류 검증 도구 ↗</span>
+            <span class="a-desc">외부 서버 전송 Zero · 나이스 12종 엑셀 드래그 전수 검사</span>
+          </a>
+          <a class="archive-item" href="https://script.google.com/macros/s/AKfycbyUeElFdKai1kmnB36e6dk1XfRa7WrSg8OpYb_0wDKcgWKSDEbto-ABzU-u8GJF7gwi/exec" target="_blank">
+            <span class="a-type">학교 업무 ① · GAS 웹앱</span>
+            <span class="a-name">🌱 AI 생기부 검토 도우미 (금지어 탐지 · 문장 최적화) ↗</span>
+            <span class="a-desc">기재요령 준수 점검 및 교사 관찰 중심 문장 다듬기 보조</span>
+          </a>
+          <a class="archive-item" href="assets/saenggibu_slides.html" target="_blank">
+            <span class="a-type">학교 업무 ① · 전 교원 연수 슬라이드</span>
+            <span class="a-name">📑 2026 학년말 생기부 기재요령 & 생성형 AI 윤리 슬라이드 ↗</span>
+            <span class="a-desc">교직원 생기부 생성형 AI 3대 윤리 원칙 및 점검 기준 안내</span>
+          </a>
+          <a class="archive-item" href="assets/workshop_0921_slides.html" target="_blank">
+            <span class="a-type">학교 업무 ② · 9.21. 교학공 특강</span>
+            <span class="a-name">🚀 안티그래비티 2.0 교실 수업 도구 & 1초 파일 행정 슬라이드 ↗</span>
+            <span class="a-desc">과제 파일명 일괄 변경 · 명렬표 미제출자 추출 · GitHub 배포</span>
+          </a>
+          <a class="archive-item" href="assets/class_tools_sample.html" target="_blank">
+            <span class="a-type">교실 미니 웹도구 · 오프라인 실행</span>
+            <span class="a-name">🎯 1분 제작 학급 발표자 추첨 룰렛 & 3분 집중 타이머 ↗</span>
+            <span class="a-desc">안티그래비티 2.0 연수 실습 1 결과물 샘플</span>
+          </a>
+          <a class="archive-item" href="https://padlet.com/sjylim0829/2026-uabqfny3nkkvyuik" target="_blank">
+            <span class="a-type">통합 연구 아카이브 PADLET</span>
+            <span class="a-name">📌 2026 영서중 AI·생태전환 통합 아카이브 패들렛 ↗</span>
+            <span class="a-desc">전 교과 융합수업 · 동아리 · 초록소식 통합 보드</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      // Pure-JS SHA-256 (works identically on https:// GitHub Pages and offline file:///)
+      function sha256Ascii(rawStr) {
+        let ascii = unescape(encodeURIComponent(rawStr));
+        function rightRotate(v, a) { return (v >>> a) | (v << (32 - a)); }
+        const maxWord = Math.pow(2, 32);
+        let result = '';
+        const words = [];
+        const asciiBitLength = ascii.length * 8;
+        const hash = [
+          0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a,
+          0x510e527f, 0x9b05688c, 0x1f83d9ab, 0x5be0cd19
+        ];
+        const k = [
+          0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5,
+          0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3, 0x72be5d74, 0x80deb1fe, 0x9bdc06a7, 0xc19bf174,
+          0xe49b69c1, 0xefbe4786, 0x0fc19dc6, 0x240ca1cc, 0x2de92c6f, 0x4a7484aa, 0x5cb0a9dc, 0x76f988da,
+          0x983e5152, 0xa831c66d, 0xb00327c8, 0xbf597fc7, 0xc6e00bf3, 0xd5a79147, 0x06ca6351, 0x14292967,
+          0x27b70a85, 0x2e1b2138, 0x4d2c6dfc, 0x53380d13, 0x650a7354, 0x766a0abb, 0x81c2c92e, 0x92722c85,
+          0xa2bfe8a1, 0xa81a664b, 0xc24b8b70, 0xc76c51a3, 0xd192e819, 0xd6990624, 0xf40e3585, 0x106aa070,
+          0x19a4c116, 0x1e376c08, 0x2748774c, 0x34b0bcb5, 0x391c0cb3, 0x4ed8aa4a, 0x5b9cca4f, 0x682e6ff3,
+          0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208, 0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2
+        ];
+        ascii += String.fromCharCode(0x80);
+        while (ascii.length % 64 - 56) ascii += String.fromCharCode(0);
+        for (let i = 0; i < ascii.length; i++) {
+          const j = ascii.charCodeAt(i);
+          words[i >> 2] |= j << ((3 - i) % 4) * 8;
+        }
+        words[words.length] = ((asciiBitLength / maxWord) | 0);
+        words[words.length] = (asciiBitLength | 0);
+        for (let j = 0; j < words.length;) {
+          const w = words.slice(j, j += 16);
+          const oldHash = hash.slice(0);
+          for (let i = 0; i < 64; i++) {
+            const w15 = w[i - 15], w2 = w[i - 2];
+            const a = hash[0], e = hash[4];
+            const temp1 = (hash[7]
+              + (rightRotate(e, 6) ^ rightRotate(e, 11) ^ rightRotate(e, 25))
+              + ((e & hash[5]) ^ ((~e) & hash[6]))
+              + k[i]
+              + (w[i] = (i < 16) ? w[i] : (
+                w[i - 16]
+                + (rightRotate(w15, 7) ^ rightRotate(w15, 18) ^ (w15 >>> 3))
+                + w[i - 7]
+                + (rightRotate(w2, 17) ^ rightRotate(w2, 19) ^ (w2 >>> 10))
+              ) | 0)
+            ) | 0;
+            const temp2 = ((rightRotate(a, 2) ^ rightRotate(a, 13) ^ rightRotate(a, 22))
+              + ((a & hash[1]) ^ (a & hash[2]) ^ (hash[1] & hash[2]))
+            ) | 0;
+            hash.unshift((temp1 + temp2) | 0);
+            hash[4] = (hash[4] + temp1) | 0;
+            hash.pop();
+          }
+          for (let i = 0; i < 8; i++) hash[i] = (hash[i] + oldHash[i]) | 0;
+        }
+        for (let i = 0; i < 8; i++) {
+          for (let j = 3; j + 1; j--) {
+            const b = (hash[i] >> (j * 8)) & 255;
+            result += ((b < 16) ? '0' : '') + b.toString(16);
+          }
+        }
+        return result;
+      }
+
+      const AUTH_STORAGE_KEY = 'ys_plc_2026_auth_v1';
+      const EXPECTED_DIGEST = 'c036e97cfe24db9e715533d12c67fb56a601bc33b51c0d96139e88c800b6ea8c';
+      const authGateOverlay = document.getElementById('authGateOverlay');
+      const authGateCard = document.getElementById('authGateCard');
+      const authGateForm = document.getElementById('authGateForm');
+      const authPwInput = document.getElementById('authPwInput');
+      const authEyeBtn = document.getElementById('authEyeBtn');
+      const authErrorNotice = document.getElementById('authErrorNotice');
+      const lockDeckBtn = document.getElementById('lockDeckBtn');
+
+      function unlockDeck() {
+        document.body.classList.remove('locked');
+        authGateOverlay.classList.add('unlocked');
+        authErrorNotice.classList.remove('visible');
+        try { sessionStorage.setItem(AUTH_STORAGE_KEY, EXPECTED_DIGEST); } catch (_) {}
+      }
+
+      function lockDeck() {
+        try { sessionStorage.removeItem(AUTH_STORAGE_KEY); } catch (_) {}
+        authPwInput.value = '';
+        authErrorNotice.classList.remove('visible');
+        document.body.classList.add('locked');
+        authGateOverlay.classList.remove('unlocked');
+        setTimeout(() => authPwInput.focus(), 60);
+      }
+
+      try {
+        if (sessionStorage.getItem(AUTH_STORAGE_KEY) === EXPECTED_DIGEST) {
+          unlockDeck();
+        }
+      } catch (_) {}
+
+      authEyeBtn.addEventListener('click', () => {
+        const isPw = authPwInput.type === 'password';
+        authPwInput.type = isPw ? 'text' : 'password';
+        authEyeBtn.textContent = isPw ? '🙈' : '👁️';
+        authPwInput.focus();
+      });
+
+      authGateForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const raw = (authPwInput.value || '').trim();
+        const digest = sha256Ascii('ys-plc-2026:' + raw);
+        if (digest === EXPECTED_DIGEST) {
+          unlockDeck();
+        } else {
+          authErrorNotice.classList.add('visible');
+          authGateCard.classList.remove('shake');
+          void authGateCard.offsetWidth;
+          authGateCard.classList.add('shake');
+          authPwInput.value = '';
+          authPwInput.focus();
+        }
+      });
+
+      if (lockDeckBtn) {
+        lockDeckBtn.addEventListener('click', lockDeck);
+      }
+
+      const slides = Array.from(document.querySelectorAll('.slide'));
+      const totalSlides = slides.length;
+      let currentIndex = 0;
+
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      const slideCounter = document.getElementById('slideCounter');
+      const progressBar = document.getElementById('progressBar');
+      const slideDots = document.getElementById('slideDots');
+      const partPills = Array.from(document.querySelectorAll('.part-pill'));
+
+      const scriptUnderBadge = document.getElementById('scriptUnderBadge');
+      const scriptUnderText = document.getElementById('scriptUnderText');
+
+      // Modals
+      const lightboxModal = document.getElementById('lightboxModal');
+      const lightboxImg = document.getElementById('lightboxImg');
+      const lightboxTitle = document.getElementById('lightboxTitle');
+      const lightboxUrl = document.getElementById('lightboxUrl');
+      const overviewModal = document.getElementById('overviewModal');
+      const overviewGrid = document.getElementById('overviewGrid');
+      const archiveModal = document.getElementById('archiveModal');
+      const scriptModal = document.getElementById('scriptModal');
+      const fullScriptContainer = document.getElementById('fullScriptContainer');
+
+      // 20-Minute Countdown Timer (1200 sec)
+      let remainingSec = 20 * 60;
+      let timerInterval = null;
+      const timerDisplay = document.getElementById('timerDisplay');
+      const timerToggleBtn = document.getElementById('timerToggleBtn');
+      const timerResetBtn = document.getElementById('timerResetBtn');
+
+      function renderTimer() {
+        const mins = Math.floor(Math.abs(remainingSec) / 60);
+        const secs = Math.abs(remainingSec) % 60;
+        const sign = remainingSec < 0 ? '+' : '';
+        timerDisplay.textContent = `${sign}${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+        timerDisplay.classList.remove('running', 'warning', 'ended');
+        if (remainingSec <= 0) timerDisplay.classList.add('ended');
+        else if (remainingSec <= 180) timerDisplay.classList.add('warning');
+        else if (timerInterval) timerDisplay.classList.add('running');
+      }
+
+      timerToggleBtn.addEventListener('click', () => {
+        if (timerInterval) {
+          clearInterval(timerInterval);
+          timerInterval = null;
+          timerToggleBtn.textContent = '▶';
+        } else {
+          timerInterval = setInterval(() => {
+            remainingSec--;
+            renderTimer();
+          }, 1000);
+          timerToggleBtn.textContent = '⏸';
+        }
+        renderTimer();
+      });
+
+      timerResetBtn.addEventListener('click', () => {
+        if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
+        remainingSec = 20 * 60;
+        timerToggleBtn.textContent = '▶';
+        renderTimer();
+      });
+
+      // Audience Clean Mode Toggle
+      const audienceModeBtn = document.getElementById('audienceModeBtn');
+      function toggleAudienceMode() {
+        const isClean = document.body.classList.toggle('audience-mode');
+        audienceModeBtn.classList.toggle('active', isClean);
+        audienceModeBtn.textContent = isClean ? '🎤 발표자 모드 켜기' : '👁️ 청중 모드';
+      }
+      audienceModeBtn.addEventListener('click', toggleAudienceMode);
+
+      // Build Dots, Overview Cards, and Printable Script List
+      const partNames = [
+        'PART 1 · 출발과 운영 철학',
+        'PART 2 · 교과별 AI 수업 기록',
+        'PART 3 · 창체·동아리 AI 기록',
+        'PART 4 · 학교 업무 자동화 기록',
+        'PART 5 · 성과 검증 및 일반화'
+      ];
+
+      slides.forEach((slide, idx) => {
+        // Dot
+        const dot = document.createElement('div');
+        dot.className = `dot ${idx === 0 ? 'active' : ''}`;
+        dot.title = `슬라이드 ${idx + 1}`;
+        dot.addEventListener('click', () => updateSlide(idx));
+        slideDots.appendChild(dot);
+
+        // Overview Card
+        const titleEl = slide.querySelector('.slide-title') || slide.querySelector('.cover-title');
+        const titleText = titleEl ? titleEl.innerText.replace(/\s+/g, ' ').trim() : `슬라이드 ${idx + 1}`;
+        const timeStr = slide.getAttribute('data-time') || '';
+        const partIdx = parseInt(slide.getAttribute('data-part') || '0', 10);
+
+        const thumb = document.createElement('div');
+        thumb.className = `overview-thumb ${idx === 0 ? 'active' : ''}`;
+        thumb.innerHTML = `
+          <div style="display:flex; justify-content:space-between; font-size:10.5px; font-weight:800; color:#4F46E5;">
+            <span>SLIDE ${String(idx + 1).padStart(2, '0')} · ${partNames[partIdx].split('·')[0]}</span>
+            <span style="color:#64748B;">${timeStr}</span>
+          </div>
+          <div style="font-size:13px; font-weight:800; color:#0F172A; line-height:1.35;">${titleText}</div>
+        `;
+        thumb.addEventListener('click', () => {
+          updateSlide(idx);
+          overviewModal.classList.remove('open');
+        });
+        overviewGrid.appendChild(thumb);
+
+        // Printable Script Entry
+        const scriptItem = document.createElement('div');
+        scriptItem.className = 'script-list-item';
+        scriptItem.innerHTML = `
+          <h4>[SLIDE ${String(idx + 1).padStart(2, '0')}] ${titleText} <span style="font-size:11.5px; color:#4F46E5; font-weight:700; margin-left:6px;">(${timeStr})</span></h4>
+          <p>${slide.getAttribute('data-script') || ''}</p>
+        `;
+        fullScriptContainer.appendChild(scriptItem);
+      });
+
+      // Part Navigation Pills
+      partPills.forEach(pill => {
+        pill.addEventListener('click', () => {
+          const targetIdx = parseInt(pill.getAttribute('data-jump'), 10);
+          updateSlide(targetIdx);
+        });
+      });
+
+      function updateSlide(newIdx) {
+        if (newIdx < 0 || newIdx >= totalSlides) return;
+        slides.forEach((s, idx) => {
+          s.classList.remove('active', 'prev');
+          if (idx < newIdx) s.classList.add('prev');
+          else if (idx === newIdx) s.classList.add('active');
+        });
+        currentIndex = newIdx;
+
+        // Sync dots & overview
+        slideDots.querySelectorAll('.dot').forEach((d, idx) => d.classList.toggle('active', idx === currentIndex));
+        overviewGrid.querySelectorAll('.overview-thumb').forEach((t, idx) => t.classList.toggle('active', idx === currentIndex));
+
+        // Sync Part Pill
+        const activePart = parseInt(slides[currentIndex].getAttribute('data-part') || '0', 10);
+        partPills.forEach((p, pIdx) => p.classList.toggle('active', pIdx === activePart));
+
+        // Counter & Progress
+        slideCounter.textContent = `${currentIndex + 1} / ${totalSlides}`;
+        progressBar.style.width = `${((currentIndex + 1) / totalSlides) * 100}%`;
+        prevBtn.disabled = currentIndex === 0;
+        nextBtn.disabled = currentIndex === totalSlides - 1;
+
+        // Script Bar
+        const timeStr = slides[currentIndex].getAttribute('data-time') || '';
+        scriptUnderBadge.textContent = `🎤 SLIDE ${String(currentIndex + 1).padStart(2, '0')} (${timeStr})`;
+        scriptUnderText.textContent = slides[currentIndex].getAttribute('data-script') || '';
+      }
+
+      prevBtn.addEventListener('click', () => updateSlide(currentIndex - 1));
+      nextBtn.addEventListener('click', () => updateSlide(currentIndex + 1));
+
+      // Lightbox Zoom
+      document.querySelectorAll('.zoom-trigger').forEach(el => {
+        el.addEventListener('click', (e) => {
+          e.stopPropagation();
+          lightboxImg.src = el.getAttribute('data-img') || '';
+          lightboxTitle.textContent = el.getAttribute('data-title') || '';
+          lightboxUrl.href = el.getAttribute('data-url') || '#';
+          lightboxModal.classList.add('open');
+        });
+      });
+
+      function closeAllModals() {
+        lightboxModal.classList.remove('open');
+        overviewModal.classList.remove('open');
+        archiveModal.classList.remove('open');
+        scriptModal.classList.remove('open');
+      }
+
+      document.getElementById('lightboxClose').addEventListener('click', closeAllModals);
+      document.getElementById('overviewBtn').addEventListener('click', () => overviewModal.classList.toggle('open'));
+      document.getElementById('closeOverviewBtn').addEventListener('click', closeAllModals);
+      document.getElementById('archiveModalBtn').addEventListener('click', () => archiveModal.classList.toggle('open'));
+      document.getElementById('closeArchiveModalBtn').addEventListener('click', closeAllModals);
+      document.getElementById('scriptModalBtn').addEventListener('click', () => scriptModal.classList.toggle('open'));
+      document.getElementById('closeScriptModalBtn').addEventListener('click', closeAllModals);
+      document.querySelectorAll('.open-archive-trigger').forEach(b => b.addEventListener('click', () => archiveModal.classList.add('open')));
+
+      [lightboxModal, overviewModal, archiveModal, scriptModal].forEach(m => {
+        m.addEventListener('click', (e) => { if (e.target === m) closeAllModals(); });
+      });
+
+      document.getElementById('fullscreenBtn').addEventListener('click', () => {
+        if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+        else document.exitFullscreen();
+      });
+
+      // Keyboard Shortcuts
+      document.addEventListener('keydown', (e) => {
+        if (document.body.classList.contains('locked')) return;
+        const anyOpen = [lightboxModal, overviewModal, archiveModal, scriptModal].some(m => m.classList.contains('open'));
+        if (anyOpen) {
+          if (e.key === 'Escape') closeAllModals();
+          return;
+        }
+        if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
+          e.preventDefault();
+          updateSlide(currentIndex + 1);
+        } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+          e.preventDefault();
+          updateSlide(currentIndex - 1);
+        } else if (e.key === 'Home') {
+          updateSlide(0);
+        } else if (e.key === 'End') {
+          updateSlide(totalSlides - 1);
+        } else if (e.key === 'p' || e.key === 'P') {
+          toggleAudienceMode();
+        } else if (e.key === 'o' || e.key === 'O') {
+          overviewModal.classList.toggle('open');
+        } else if (e.key === 'n' || e.key === 'N') {
+          scriptModal.classList.toggle('open');
+        } else if (e.key === 'l' || e.key === 'L') {
+          archiveModal.classList.toggle('open');
+        } else if (e.key === 'f' || e.key === 'F') {
+          if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+          else document.exitFullscreen();
+        }
+      });
+
+      const params = new URLSearchParams(window.location.search);
+      const hashParams = new URLSearchParams(window.location.hash.replace(/^#/, ''));
+      if (params.get('clean') === '1' || hashParams.get('clean') === '1') {
+        toggleAudienceMode();
+      }
+      const rawSlide = params.get('slide') || hashParams.get('slide') || '1';
+      const initSlide = parseInt(rawSlide, 10) || 1;
+      updateSlide(Math.min(Math.max(initSlide - 1, 0), totalSlides - 1));
+      renderTimer();
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => document.body.classList.add('transitions-ready'));
+      });
+    })();
+  </script>
+</body>
+</html>
