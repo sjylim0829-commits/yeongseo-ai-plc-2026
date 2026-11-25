@@ -796,6 +796,60 @@
       line-height: 1.46;
     }
 
+    /* High-Readability School Duty Cards (Slide 15) */
+    .duty-readable-card {
+      flex: 1;
+      background: #F8FAFC;
+      border: 1.5px solid #CBD5E1;
+      border-left: 5px solid var(--primary);
+      border-radius: 13px;
+      padding: 12px 17px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 6px;
+      min-height: 0;
+    }
+    .duty-head-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .duty-head-row h4 {
+      font-size: 16px;
+      font-weight: 900;
+      color: #0F172A;
+      letter-spacing: -0.3px;
+      line-height: 1.3;
+    }
+    .duty-tag {
+      font-size: 11.2px;
+      font-weight: 800;
+      padding: 2.5px 8px;
+      border-radius: 6px;
+      background: #EEF2FF;
+      color: #4338CA;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .duty-desc {
+      font-size: 13.9px;
+      font-weight: 600;
+      color: #1E293B;
+      line-height: 1.48;
+    }
+    .duty-key-pill {
+      display: inline-block;
+      background: #FFFFFF;
+      border: 1px solid #CBD5E1;
+      color: #0F172A;
+      font-size: 12.6px;
+      font-weight: 800;
+      padding: 1px 7px;
+      border-radius: 5px;
+    }
+
     /* Slide 1 Cover Split */
     .cover-split {
       display: grid;
@@ -2058,23 +2112,26 @@
               </div>
             </div>
 
-            <div class="shot-card zoom-trigger" data-img="assets/inf_ecodata_strip.png" data-title="[2학기 정보 5차시] 교정 생물 관찰(Google Lens·이음AI) ➔ 구글 시트 전처리·구조화 ➔ 차트 시각화" data-url="https://padlet.com/sjylim0829/2026-uabqfny3nkkvyuik">
+            <div class="shot-card zoom-trigger" data-img="assets/info_ecodata_chart.png" data-title="[2학기 정보 5차시] 교정 생물 관찰 ➔ 스프레드시트 전처리·차트 시각화 & AI 활용 윤리 수업 웹슬라이드" data-url="assets/eco_data_class.html">
               <div class="shot-bar">
                 <div class="shot-dots"><span></span><span></span><span></span></div>
-                <span class="shot-bar-title">2학기 · 우리 학교 생태·환경 데이터 분석·시각화</span>
+                <span class="shot-bar-title">2학기 · 학교 생태 데이터 시각화 & AI 활용 수업웹</span>
                 <span class="shot-badge" style="background:var(--emerald-soft); color:var(--emerald);">데이터 리터러시</span>
               </div>
-              <div class="shot-img-wrap light-bg">
-                <img class="contain-img" src="assets/inf_ecodata_strip.png" alt="생태 데이터 시각화" />
-                <div class="inset-thumb zoom-trigger" data-img="assets/info_ecodata_web.png" data-title="자체 제작 생태데이터 프로젝트 수업 안내 웹페이지" data-url="https://padlet.com/sjylim0829/2026-uabqfny3nkkvyuik">
-                  <img src="assets/info_ecodata_web.png" alt="생태데이터 수업웹" />
-                  <div class="inset-label">수업 안내 웹페이지</div>
+              <div class="shot-img-wrap light-bg" style="flex-direction:column; padding:7px; gap:6px; background:#F1F5F9;">
+                <div class="zoom-trigger" style="flex:1.05; width:100%; min-height:0; border-radius:8px; overflow:hidden; border:1px solid #CBD5E1; position:relative; background:#F1F4EC;" data-img="assets/info_ecodata_chart.png" data-title="[정보 2학기 수업웹] 스프레드시트 데이터 구조화 및 그래프 시각화 안내" data-url="assets/eco_data_class.html">
+                  <img class="contain-img" src="assets/info_ecodata_chart.png" alt="생태 데이터 차트 시각화" />
+                  <span style="position:absolute; top:5px; left:7px; background:rgba(23,53,42,0.9); color:#FFF; font-size:10.5px; font-weight:800; padding:2px 7px; border-radius:5px;">① 표 데이터 전처리 ➔ 차트 시각화</span>
+                </div>
+                <div class="zoom-trigger" style="flex:0.95; width:100%; min-height:0; border-radius:8px; overflow:hidden; border:1px solid #4A3128; position:relative; background:#22140F;" data-img="assets/info_ecodata_ethics.png" data-title="[정보 2학기 평가 기준] AI·검색 도구 출처 명시 및 자기 이해 기반 설명 루브릭" data-url="assets/eco_data_class.html">
+                  <img class="contain-img" src="assets/info_ecodata_ethics.png" alt="AI 검색 도구 활용 기준" />
+                  <span style="position:absolute; top:5px; right:7px; background:#FF7A5C; color:#22140F; font-size:10.2px; font-weight:900; padding:2px 7px; border-radius:5px;">② AI 도구 출처·자기언어 정리</span>
                 </div>
               </div>
               <div class="shot-caption">
                 <div>
-                  <div class="shot-caption-text">3. 직접 수집한 생물 데이터 전처리 · 차트 해석</div>
-                  <span class="shot-caption-sub">"내 데이터가 타인에게 쓰인다 생각하니 정확도에 책임감 생겨"</span>
+                  <div class="shot-caption-text">3. 직접 수집한 생물 데이터 시각화 & AI 활용 기준</div>
+                  <span class="shot-caption-sub">도구 출처 기록 · 단순 베끼기 지양 · 데이터 기반 의미 해석 평가</span>
                 </div>
                 <span class="zoom-pill">🔍 확대</span>
               </div>
@@ -2088,18 +2145,18 @@
 
         <div class="slide-footer">
           <span>교내 공개수업(9.21.) & 남부 교사단 디지털 소외 토론 나눔(10.12.) · 바이브코딩 권역 연수 출강(10.21.)</span>
-          <span>성취기준 [9정02-02~04, 9정03-08]</span>
+          <a href="assets/eco_data_class.html" target="_blank">📊 정보 생태데이터 수업 웹슬라이드 열기 ↗</a>
         </div>
       </section>
 
       <!-- =====================================================================
-           SLIDE 09: [미술] 이음AI 3D 에코 아바타 & 그린 리빙랩 순환 설치미술 (09:30 ~ 10:45 | 75초)
+           SLIDE 09: [미술] 이음AI 3D 에코 아바타 · 4컷 만화 & 생태미술 패들렛 (09:30 ~ 10:45 | 75초)
       ====================================================================== -->
-      <section class="slide" data-part="1" data-time="09:30~10:45 (75초)" data-script="다음은 변희연, 강소혜 부장님의 미술과 기록입니다. 1학기 8차시 ‘에코 아바타’ 수업에서는 과학 패들렛의 동물 조사 카드에서 나와 닮은 멸종위기종과 ‘나 키워드’ 세 가지를 찾아 4등분 도화지에 2D 캐릭터를 채색한 뒤, 개인정보 입력 금지와 출처 표기 등 생성형 AI 윤리를 익히고 이음AI 제미나이에게 조건 프롬프트를 입력해 입체감 있는 3D 캐릭터로 변환했습니다. 1학년 1반부터 8반까지 학급 패들렛과 ‘다했니’에 스케치부터 프롬프트 캡처본, 3D 완성작까지 과정이 차곡차곡 기록되었고, 9월 9일에는 남부 교사단 ‘AI로 재해석하는 서양미술사’ 공개수업으로도 나눴습니다. 2학기에는 친환경 재료를 패들렛으로 인증하며 교내 설치미술 전시 후 자연·재활용으로 되돌리는 순환 철거를 실천했습니다.">
+      <section class="slide" data-part="1" data-time="09:30~10:45 (75초)" data-script="다음은 변희연, 강소혜 부장님의 미술과 기록입니다. 1학기 ‘에코 아바타’ 수업에서는 과학 패들렛의 동물 조사 카드에서 나와 닮은 멸종위기종과 ‘나 키워드’ 세 가지를 찾아 2D 캐릭터를 채색한 뒤, 개인정보 입력 금지와 출처 표기 등 생성형 AI 윤리를 익히고 이음AI 제미나이에게 조건 프롬프트를 입력해 입체감 있는 3D 캐릭터로 변환했습니다. 1학년 1반부터 8반까지 학급 패들렛과 ‘다했니’에 스케치부터 프롬프트 캡처본, 3D 완성작까지 과정이 차곡차곡 기록되었고, 나아가 변환한 AI 3D 캐릭터를 오려 붙여 생태와 디지털 일상을 주제로 한 4컷 만화로 확장하고 2학기 생태미술 패들렛 기록까지 이어갔습니다.">
         <div class="slide-header-row">
           <div>
-            <div class="slide-eyebrow" style="color:#DB2777;">PART 2 · SUBJECT AI RECORDS — FINE ARTS <span class="subject-chip" style="background:#FCE7F3; color:#BE185D;">미술 1·2학기 AI 캐릭터 & 그린 리빙랩</span></div>
-            <h2 class="slide-title">[미술] 이음AI(Gemini) 3D ‘에코 아바타’ 창작 & 친환경 순환 생태 설치미술</h2>
+            <div class="slide-eyebrow" style="color:#DB2777;">PART 2 · SUBJECT AI RECORDS — FINE ARTS <span class="subject-chip" style="background:#FCE7F3; color:#BE185D;">미술 AI 3D 캐릭터 · 4컷 만화 & 패들렛 포트폴리오</span></div>
+            <h2 class="slide-title">[미술] 이음AI(Gemini) 3D ‘에코 아바타’ 창작 & AI 캐릭터 활용 4컷 만화 확장</h2>
           </div>
           <span class="slide-time-badge">⏱️ 09:30~10:45 (75초)</span>
         </div>
@@ -2136,33 +2193,33 @@
               </div>
               <div class="shot-img-wrap">
                 <img src="assets/art_avatar_work1.jpg" alt="에코아바타 작품1" />
-                <div class="inset-thumb zoom-trigger" data-img="assets/art_avatar_work2.jpg" data-title="학생 에코 아바타 작품 및 4컷 생태 만화 확장" data-url="https://padlet.com/bbx25067/26-1-3-5ugatlpunu4vm9h4">
-                  <img src="assets/art_avatar_work2.jpg" alt="에코아바타 작품2" />
-                  <div class="inset-label">학생 창작 산출물</div>
+                <div class="inset-thumb zoom-trigger" data-img="assets/art_livinglab_padlet.png" data-title="2학기 생태 미술 프로젝트 조별 과정 기록 패들렛" data-url="https://padlet.com/sjylim0829/2026-uabqfny3nkkvyuik">
+                  <img src="assets/art_livinglab_padlet.png" alt="생태미술 패들렛" />
+                  <div class="inset-label">조별 패들렛 포트폴리오</div>
                 </div>
               </div>
               <div class="shot-caption">
                 <div>
-                  <div class="shot-caption-text">2. 스케치 ➔ 채색 ➔ 프롬프트 캡처 ➔ 3D 전시</div>
+                  <div class="shot-caption-text">2. 스케치 ➔ 채색 ➔ 프롬프트 캡처 ➔ 전시 공유</div>
                   <span class="shot-caption-sub">9.9. 남부 교사단 『AI로 재해석하는 서양미술사』 관내 수업공개</span>
                 </div>
                 <span class="zoom-pill">🔍 확대</span>
               </div>
             </div>
 
-            <div class="shot-card zoom-trigger" data-img="assets/art_livinglab_strip.png" data-title="[2학기 미술 10차시] 그린 리빙랩 생태 설치미술 — 패들렛 1~3차 친환경 재료 인증 및 순환 철거" data-url="https://padlet.com/sjylim0829/2026-uabqfny3nkkvyuik">
+            <div class="shot-card zoom-trigger" data-img="assets/art_ai_4cut_comics.jpg" data-title="[AI 캐릭터 스토리 확장] 이음AI(제미나이)로 생성한 3D 에코 아바타 캐릭터를 활용한 4컷 만화 창작 작품" data-url="https://padlet.com/bbx25067/26-1-3-5ugatlpunu4vm9h4">
               <div class="shot-bar">
                 <div class="shot-dots"><span></span><span></span><span></span></div>
-                <span class="shot-bar-title">2학기 · 그린 리빙랩 설치미술 & 패들렛 재료인증</span>
-                <span class="shot-badge" style="background:var(--emerald-soft); color:var(--emerald);">순환 전시</span>
+                <span class="shot-bar-title">AI 3D 에코 아바타 활용 4컷 스토리 만화 창작</span>
+                <span class="shot-badge" style="background:var(--emerald-soft); color:var(--emerald);">AI×수작업 융합</span>
               </div>
-              <div class="shot-img-wrap light-bg">
-                <img class="contain-img" src="assets/art_livinglab_strip.png" alt="그린 리빙랩 미술" />
+              <div class="shot-img-wrap">
+                <img src="assets/art_ai_4cut_comics.jpg" alt="AI 3D 캐릭터 4컷 만화" style="object-fit:cover; object-position:center center;" />
               </div>
               <div class="shot-caption">
                 <div>
-                  <div class="shot-caption-text">3. 패들렛 1~3차 친환경 재료 인증 & 순환 철거</div>
-                  <span class="shot-caption-sub">1주일 교내 전시·도슨트 활동 후 분리배출 및 화단으로 환원</span>
+                  <div class="shot-caption-text">3. 생성형 AI 캐릭터 × 아날로그 4컷 만화 결합</div>
+                  <span class="shot-caption-sub">내가 만든 3D 아바타에 생태·미디어 일상 서사를 입힌 창작 활동</span>
                 </div>
                 <span class="zoom-pill">🔍 확대</span>
               </div>
@@ -2401,13 +2458,13 @@
       </section>
 
       <!-- =====================================================================
-           SLIDE 13: [창체 ③ · 동아리 & 지역 확산] IoT 스마트팜 · 1학급 1화분/무순 · 구로청소년축제 (14:20 ~ 15:30 | 70초)
+           SLIDE 13: [창체 ③ · 동아리 & 지역 확산] IoT 스마트팜 · 이음AI 시제품 설계 · 디지털 화분 보고서 (14:20 ~ 15:30 | 70초)
       ====================================================================== -->
-      <section class="slide" data-part="2" data-time="14:20~15:30 (70초)" data-script="창체 동아리와 학급 자치 활동에서는 학생들이 기술의 수혜자를 넘어 직접 동료와 지역사회를 가르치는 주체로 성장했습니다. 황폐했던 학교 화단을 개간하며 ‘방학이나 연휴 중 물 줄 사람이 없다’는 문제를 발견한 동아리 학생들이 서울식물원 견학과 당산중 AI 스마트팜 연합캠프를 이수한 뒤 ‘CANOPY 스마트 지원단’을 꾸렸습니다. 이 학생들이 교사 대신 동료교수로 나서 아두이노 토양 수분 센서 자동 급수 화분을 친구들에게 전수했고, 10월 17일 제11회 구로 청소년 축제에서는 직접 과학부스를 운영해 지역 주민들에게 스마트팜을 시연했습니다. 또한 2학년은 ‘1학급 1화분 결과보고서 웹앱’을, 1학년은 패들렛 ‘무순일기’와 무순 관리 AI 에이전트 설계를 통해 전 학급에 초록 돌봄을 확산했습니다.">
+      <section class="slide" data-part="2" data-time="14:20~15:30 (70초)" data-script="창체 동아리와 학급 자치 활동에서도 학생들이 AI와 센서 기술을 직접 다루며 동료와 지역사회로 배움을 넓혔습니다. 동아리 학생들이 서울식물원 견학과 당산중 AI 스마트팜 연합캠프를 이수한 뒤 ‘CANOPY 스마트 지원단’을 꾸려, 친구들에게 아두이노 토양 수분 센서 기반 자동 급수 화분 제작을 동료교수로 전파하고 10월 구로 청소년 축제 과학부스에서도 시연했습니다. 또한 학급에서는 ‘1학급 1화분 디지털 결과보고서 웹앱’으로 식물 관찰 그림과 기록을 공유했고, 오른쪽 화면처럼 동아리 학생들이 손그림으로 그린 친환경 스마트홈·스마트팜 설계도를 디벗의 이음AI 제미나이·GPT에 입력해 3D 시제품으로 시각화하고 AI가 잘못 그린 부분을 프롬프트로 직접 수정하며 센서 모형을 구체화했습니다.">
         <div class="slide-header-row">
           <div>
-            <div class="slide-eyebrow" style="color:var(--emerald);">PART 3 · CLUBS & COMMUNITY DIFFUSION (창체 ③ · 동아리·마을) <span class="subject-chip" style="background:var(--emerald-soft); color:var(--emerald);">학생 주도 동료교수 & 지역축제</span></div>
-            <h2 class="slide-title">[창체 ③] IoT 스마트팜 지원단 동료교수 · 1학급 1화분/무순 AI 에이전트 · 구로 청소년 축제</h2>
+            <div class="slide-eyebrow" style="color:var(--emerald);">PART 3 · CLUBS & COMMUNITY DIFFUSION (창체 ③ · 동아리·마을) <span class="subject-chip" style="background:var(--emerald-soft); color:var(--emerald);">동아리 AI·IoT 설계 & 동료교수</span></div>
+            <h2 class="slide-title">[창체 ③] IoT 스마트팜 동료교수 · 학급 화분 웹앱 · 이음AI 스마트홈/팜 시제품 설계</h2>
           </div>
           <span class="slide-time-badge">⏱️ 14:20~15:30 (70초)</span>
         </div>
@@ -2430,7 +2487,7 @@
               <div class="shot-caption">
                 <div>
                   <div class="shot-caption-text">1. 연합캠프(6차시) ➔ 동료교수(4차시) ➔ 지역축제</div>
-                  <span class="shot-caption-sub">서울식물원·당산중 캠프 이수생이 학생 주도 스마트 화분 전파</span>
+                  <span class="shot-caption-sub">당산중 AI 캠프 이수생이 동료들에게 센서 코딩·배선 전파</span>
                 </div>
                 <span class="zoom-pill">🔍 확대</span>
               </div>
@@ -2442,27 +2499,39 @@
                 <span class="shot-bar-title">🪴 [1학급 1화분 키우기] 결과보고서 발급 웹앱</span>
                 <span class="shot-badge" style="background:var(--sky-soft); color:var(--sky);">Canvas 웹앱</span>
               </div>
-              <div class="shot-img-wrap light-bg"><img src="assets/club_flowerpot_app.png" alt="1학급 1화분 웹앱" /></div>
+              <div class="shot-img-wrap light-bg">
+                <img src="assets/club_flowerpot_app.png" alt="1학급 1화분 웹앱" />
+                <div class="inset-thumb zoom-trigger" style="width:38%; height:52%;" data-img="assets/club_flowerpot_student.png" data-title="학생이 웹앱 캔버스에 직접 그려 발급한 반려화분 관찰 보고서" data-url="https://sjylim0829-commits.github.io/CA/">
+                  <img class="contain-img" src="assets/club_flowerpot_student.png" alt="학생 작성 보고서" />
+                  <div class="inset-label">학생 디지털 드로잉</div>
+                </div>
+              </div>
               <div class="shot-caption">
                 <div>
-                  <div class="shot-caption-text">2. Canva 생육 설계 & 관찰 스케치 보고서 웹앱</div>
-                  <span class="shot-caption-sub">애칭 이름표·물 당번 돌봄 루틴 및 디지털 보고서 이미지 즉시 발급</span>
+                  <div class="shot-caption-text">2. 관찰 드로잉 캔버스 & 디지털 보고서 발급 웹앱</div>
+                  <span class="shot-caption-sub">식물 생육 관찰 그림을 태블릿에 직접 그려 이미지 보고서로 저장</span>
                 </div>
                 <span class="zoom-pill">🔍 확대</span>
               </div>
             </div>
 
-            <div class="shot-card zoom-trigger" data-img="assets/club_garden_work.jpg" data-title="[1학년 동아리 & 전 학급 행사] 울타리 텃밭 개간 및 ‘1학급 1무순 키우기 경진대회’ (패들렛 무순일기 & AI 관리 에이전트)" data-url="https://padlet.com/sjylim0829/2026-uabqfny3nkkvyuik">
+            <div class="shot-card zoom-trigger" data-img="assets/club_ai_smarthome.jpg" data-title="[동아리 AI×IoT 설계] 손그림 스마트홈·팜 도면을 이음AI(Gemini·GPT)로 3D 시각화하고 프롬프트로 오류를 수정하는 실습" data-url="https://padlet.com/sjylim0829/2026-uabqfny3nkkvyuik">
               <div class="shot-bar">
                 <div class="shot-dots"><span></span><span></span><span></span></div>
-                <span class="shot-bar-title">울타리 텃밭 & 1학급 1무순 패들렛 · AI 에이전트</span>
-                <span class="shot-badge" style="background:var(--violet-soft); color:var(--violet);">패들렛 일기</span>
+                <span class="shot-bar-title">손그림 도면 ➔ 이음AI 스마트홈·팜 시제품 설계</span>
+                <span class="shot-badge" style="background:var(--violet-soft); color:var(--violet);">이음AI × 센서</span>
               </div>
-              <div class="shot-img-wrap"><img src="assets/club_garden_work.jpg" alt="울타리 텃밭" /></div>
+              <div class="shot-img-wrap">
+                <img src="assets/club_ai_smarthome.jpg" alt="이음AI 스마트홈 시제품 설계" style="object-fit:cover; object-position:center center;" />
+                <div class="inset-thumb zoom-trigger" style="width:38%; height:44%;" data-img="assets/club_ai_sensor_design.jpg" data-title="초음파 센서·설계 스케치를 이음AI(Gemini)와 연동해 구체화하는 동아리 모둠 활동" data-url="https://padlet.com/sjylim0829/2026-uabqfny3nkkvyuik">
+                  <img src="assets/club_ai_sensor_design.jpg" alt="초음파센서 AI 설계" />
+                  <div class="inset-label">센서 도면 AI 피드백</div>
+                </div>
+              </div>
               <div class="shot-caption">
                 <div>
-                  <div class="shot-caption-text">3. 한 달간의 패들렛 ‘무순일기’ & AI 관리 에이전트</div>
-                  <span class="shot-caption-sub">재배 중 발견한 학급 환경 문제를 해결하는 관리 에이전트 정보 연계 구현</span>
+                  <div class="shot-caption-text">3. 손그림 도면 ➔ 이음AI 3D 시제품 & 프롬프트 교정</div>
+                  <span class="shot-caption-sub">태양광·센서 구상도를 Gemini·GPT로 구현하고 세부 형태를 직접 수정</span>
                 </div>
                 <span class="zoom-pill">🔍 확대</span>
               </div>
@@ -2471,7 +2540,7 @@
         </div>
 
         <div class="slide-footer">
-          <span>교실 ➔ 학교 텃밭 ➔ 인근 거점학교(당산중) ➔ 지역사회(서울식물원·구로 청소년 축제)로 뻗어가는 생태·AI 시민성</span>
+          <span>동아리 AI·센서 설계 ➔ 인근 거점학교(당산중 캠프) ➔ 지역사회(서울식물원·구로 청소년 축제 부스)로 이어진 학생 주도 나눔</span>
           <a href="https://sjylim0829-commits.github.io/CA/" target="_blank">🪴 1학급 1화분 보고서 웹앱 열기 ↗</a>
         </div>
       </section>
@@ -2567,39 +2636,55 @@
             <div class="shot-card zoom-trigger" data-img="assets/duty_antigravity_slides.png" data-title="[9.21. 선도학교 교학공 실습 특강 · 임종윤T] 코딩 몰라도 OK! 안티그래비티 2.0으로 끝내는 교실 수업 도구 & 파일 행정" data-url="assets/workshop_0921_slides.html">
               <div class="shot-bar">
                 <div class="shot-dots"><span></span><span></span><span></span></div>
-                <span class="shot-bar-title">9.21. 안티그래비티 2.0 에이전틱 AI 실습 연수 (60분)</span>
-                <span class="shot-badge">동료 실습 연수</span>
+                <span class="shot-bar-title" style="font-size:12.4px;">9.21. 안티그래비티 2.0 에이전틱 AI 실습 연수 (60분)</span>
+                <span class="shot-badge" style="font-size:10.8px;">동료 실습 연수</span>
               </div>
               <div class="shot-img-wrap light-bg">
-                <img src="assets/duty_antigravity_slides.png" alt="안티그래비티 연수 슬라이드" />
-                <div class="inset-thumb zoom-trigger" data-img="assets/duty_classtools_roulette.png" data-title="[실습 1 결과물] 자연어 지시문으로 만든 발표자 추첨 룰렛 & 3분 집중 타이머 웹도구" data-url="assets/class_tools_sample.html">
+                <img class="contain-img" src="assets/duty_antigravity_slides.png" alt="안티그래비티 연수 슬라이드" style="transform:scale(1.06); transform-origin:left top;" />
+                <div class="inset-thumb zoom-trigger" style="width:35%; height:40%;" data-img="assets/duty_classtools_roulette.png" data-title="[실습 1 결과물] 자연어 지시문으로 만든 발표자 추첨 룰렛 & 3분 집중 타이머 웹도구" data-url="assets/class_tools_sample.html">
                   <img src="assets/duty_classtools_roulette.png" alt="수업 룰렛 타이머" />
                   <div class="inset-label">발표자 룰렛·타이머</div>
                 </div>
               </div>
-              <div class="shot-caption">
-                <div>
-                  <div class="shot-caption-text">질문·답변형 챗봇을 넘어 로컬 폴더 정리를 돕는 에이전틱 AI 실습</div>
-                  <span class="shot-caption-sub">간단한 학급 웹도구 제작 · 제출 파일명 정돈 · GitHub 웹 배포 실습</span>
+              <div class="sci-caption-box" style="border-top-color:#FDE68A;">
+                <div class="sci-pill-row">
+                  <span class="sci-highlight-pill" style="background:#FFFBEB; color:#B45309; border-color:#FDE68A;">🤖 대화창 답변(챗봇) ➔ 내 폴더 정리를 돕는 에이전틱 AI</span>
+                  <span class="zoom-pill">🔍 확대</span>
                 </div>
-                <span class="zoom-pill">🔍 확대</span>
+                <div class="sci-main-title">코딩 비전공 교사를 위한 60분 실습 특강</div>
+                <div class="sci-sub-desc">학급 타이머·룰렛 웹도구 제작부터 로컬 파일 정돈·GitHub 배포까지 실습</div>
               </div>
             </div>
 
-            <div class="col-stack" style="justify-content:space-between;">
-              <div class="info-card" style="border-left:4px solid var(--primary);">
-                <h4>⚡ ① 과제 파일명 일괄 변경 & 미제출자 명단 추출</h4>
-                <p>제각각인 제출 파일에서 학번·이름을 식별해 <code>[학번_이름_보고서]</code>로 일괄 정리하고, <code>명렬표.csv</code>와 대조해 한글 깨짐 없는(<code>utf-8-sig</code>) <strong>미제출자 명단 엑셀</strong> 생성</p>
+            <div class="col-stack" style="gap:10px;">
+              <div class="duty-readable-card" style="border-left-color:var(--primary); background:linear-gradient(180deg, #EEF2FF 0%, #FFFFFF 100%);">
+                <div class="duty-head-row">
+                  <h4>⚡ ① 제출 과제 파일명 일괄 정돈 & 미제출자 추출</h4>
+                  <span class="duty-tag">실습 1 · 파일 행정</span>
+                </div>
+                <div class="duty-desc">
+                  제각각인 제출 파일에서 학번·이름을 식별해 <span class="duty-key-pill">학번_이름_보고서</span> 형식으로 일괄 변경하고, 학급 명렬표와 대조해 한글 깨짐 없는 <strong>미제출자 명단 엑셀</strong> 자동 생성
+                </div>
               </div>
 
-              <div class="info-card" style="border-left:4px solid var(--sky);">
-                <h4>☁️ ② Google Drive 수행평가 반별 분류 & 채점대장 기록</h4>
-                <p>학생이 디벗에서 별도 로그인 없이 [제출] 클릭 시, 교사 드라이브에 <strong>반별 하위 폴더로 분류 저장</strong>(답안카드 PNG + 인쇄용 HTML) 및 <strong>통합 채점대장 시트</strong> 자동 기록</p>
+              <div class="duty-readable-card" style="border-left-color:var(--sky); background:linear-gradient(180deg, #F0F9FF 0%, #FFFFFF 100%);">
+                <div class="duty-head-row">
+                  <h4>☁️ ② 수행평가 반별 폴더 분류 & 채점대장 기록</h4>
+                  <span class="duty-tag" style="background:#E0F2FE; color:#0369A1;">실습 2 · 평가 연동</span>
+                </div>
+                <div class="duty-desc">
+                  학생이 디벗에서 별도 로그인 없이 <strong>[제출]</strong> 클릭 시, 교사 구글 드라이브에 <strong>반별 하위 폴더로 답안카드(PNG·HTML) 분류 저장</strong> 및 <strong>통합 채점대장 시트</strong> 실시간 기록
+                </div>
               </div>
 
-              <div class="info-card" style="border-left:4px solid var(--emerald);">
-                <h4>📊 ③ 다학급 신청서 취합 · 설문 요약 · 노션×시트 예산 관리</h4>
-                <p>학급별 엑셀 시트 병합, 주관식 설문 응답 키워드 분류 초안 작성, <code>선도학교 예산 시트</code> & 노션 연동으로 구독료·물품비 집행 내역 공유</p>
+              <div class="duty-readable-card" style="border-left-color:var(--emerald); background:linear-gradient(180deg, #ECFDF5 0%, #FFFFFF 100%);">
+                <div class="duty-head-row">
+                  <h4>📊 ③ 다학급 신청서 병합 · 설문 요약 · 예산 관리</h4>
+                  <span class="duty-tag" style="background:#D1FAE5; color:#047857;">실습 3 · 취합·예산</span>
+                </div>
+                <div class="duty-desc">
+                  여러 학급 엑셀 파일 일괄 병합, 주관식 설문 응답 키워드 분류 초안 작성, <strong>선도학교 예산 시트 × 노션 연동</strong>으로 구독료·물품비 집행 내역 투명 공유
+                </div>
               </div>
             </div>
           </div>
